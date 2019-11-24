@@ -133,7 +133,6 @@ public class Tablero {
     public List<Unidad> ObtenerEnemigosCercanos (Celda celdaPrincipal) {
         List<Unidad> EnemigosCercanos = new LinkedList<Unidad>();
         Unidad unidadPrincipal = celdaPrincipal.getUnidad();
-        Jugador duenioPrincipal = unidadPrincipal.getDueño();
 
         Coordenada coordenadaPrincipal = celdaPrincipal.getUnidad().getCoordenadas();
         Set<Coordenada> setCoordenadas = tablero.keySet();
@@ -141,8 +140,7 @@ public class Tablero {
             Celda celdaAux = tablero.get(coordenada);
             Unidad unidadAux = celdaAux.getUnidad();
             if (unidadAux!=null && unidadAux!=unidadPrincipal) {
-                Jugador duenioAux = unidadAux.getDueño();
-                if(duenioPrincipal!= duenioAux && coordenadaPrincipal.estanADistanciaCercana(unidadPrincipal, unidadAux)) {
+                if(!unidadAux.esAliadaDe(unidadPrincipal) && coordenadaPrincipal.estanADistanciaCercana(unidadPrincipal, unidadAux)) {
                     EnemigosCercanos.add(unidadAux);
                 }
             }
@@ -154,16 +152,13 @@ public class Tablero {
     public List<Unidad> ObtenerAliadosCercanos (Celda celdaPrincipal) {
         List<Unidad> AliadosCercanos = new LinkedList<Unidad>();
         Unidad unidadPrincipal = celdaPrincipal.getUnidad();
-        Jugador duenioPrincipal = unidadPrincipal.getDueño();
-
         Coordenada coordenadaPrincipal = celdaPrincipal.getUnidad().getCoordenadas();
         Set<Coordenada> setCoordenadas = tablero.keySet();
         for (Coordenada coordenada : setCoordenadas) {
             Celda celdaAux = tablero.get(coordenada);
             Unidad unidadAux = celdaAux.getUnidad();
             if (unidadAux!=null && unidadAux!=unidadPrincipal) {
-                Jugador duenioAux = unidadAux.getDueño();
-                if(duenioPrincipal== duenioAux && coordenadaPrincipal.estanADistanciaCercana(unidadPrincipal, unidadAux)) {
+                if(unidadAux.esAliadaDe(unidadPrincipal) && coordenadaPrincipal.estanADistanciaCercana(unidadPrincipal, unidadAux)) {
                     AliadosCercanos.add(unidadAux);
                 }
             }

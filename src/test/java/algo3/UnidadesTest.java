@@ -196,7 +196,7 @@ public class UnidadesTest {
     }
 
     @Test
-    public void testJineteSinEnemigosCercaAtacaADistanciaLejanaSeVerificaQueNoSeLeRestaVida() throws PuntosInsuficientesException, ErrorAutoAtaque, CoordenadaFueraDeRango, NoPuedeAtacar, CeldaDeTerritorioEnemigo, ErrorNoHayUnidadAtacante, CeldaOcupada {
+    public void testJineteSinEnemigosCercaYSinSIAtacaADistanciaLejanaSeVerificaQueNoSeLeRestaVida() throws PuntosInsuficientesException, ErrorAutoAtaque, CoordenadaFueraDeRango, NoPuedeAtacar, CeldaDeTerritorioEnemigo, ErrorNoHayUnidadAtacante, CeldaOcupada {
         AlgoChess juego = new AlgoChess(20,20);
         juego.agregarJugador("maria",1);
         juego.agregarJugador("jose",2);
@@ -207,5 +207,52 @@ public class UnidadesTest {
         juego.atacarDesdeHasta(9,3,19,12);
 
         Assert.assertEquals(100, juego.verVida(19,12));
+    }
+    @Test
+    public void testJineteConEnemigosCercaYConSICercaAtacaADistanciaCercanaSeVerificaQueNoSeLeRestaVida() throws PuntosInsuficientesException, ErrorAutoAtaque, CoordenadaFueraDeRango, NoPuedeAtacar, CeldaDeTerritorioEnemigo, ErrorNoHayUnidadAtacante, CeldaOcupada {
+        AlgoChess juego = new AlgoChess(20,20);
+        juego.agregarJugador("maria",1);
+        juego.agregarJugador("jose",2);
+
+        juego.colocarJinetePara("maria",9,3);
+        juego.colocarSoldadoInfanteriaPara("maria",9,4);
+        juego.colocarSoldadoInfanteriaPara("jose",11,3);
+
+        juego.atacarDesdeHasta(9,3,11,3);
+
+        Assert.assertEquals(100, juego.verVida(11,3));
+    }
+
+    @Test
+    public void testJineteConEnemigosCercaYConAliadosNoSICercaAtacaADistanciaLejanaSeVerificaQueNoSeLeRestaVida() throws PuntosInsuficientesException, ErrorAutoAtaque, CoordenadaFueraDeRango, NoPuedeAtacar, CeldaDeTerritorioEnemigo, ErrorNoHayUnidadAtacante, CeldaOcupada {
+        AlgoChess juego = new AlgoChess(20,20);
+        juego.agregarJugador("maria",1);
+        juego.agregarJugador("jose",2);
+
+        juego.colocarJinetePara("maria",9,3);
+        juego.colocarCatapultaPara("maria",9,4);
+        juego.colocarSoldadoInfanteriaPara("jose",11,4);
+        juego.colocarSoldadoInfanteriaPara("jose",19,12);
+
+        juego.atacarDesdeHasta(9,3,19,12);
+
+        Assert.assertEquals(100, juego.verVida(19,12));
+    }
+
+
+    @Test
+    public void testJineteConEnemigosCercaYConAliadosNoSICercaAtacaADistanciaCercanaSeVerificaQueNoSeLeRestaVida() throws PuntosInsuficientesException, ErrorAutoAtaque, CoordenadaFueraDeRango, NoPuedeAtacar, CeldaDeTerritorioEnemigo, ErrorNoHayUnidadAtacante, CeldaOcupada {
+        AlgoChess juego = new AlgoChess(20,20);
+        juego.agregarJugador("maria",1);
+        juego.agregarJugador("jose",2);
+
+        juego.colocarJinetePara("maria",9,3);
+        juego.colocarCatapultaPara("maria",9,4);
+        juego.colocarSoldadoInfanteriaPara("jose",11,4);
+        juego.colocarSoldadoInfanteriaPara("jose",19,12);
+
+        juego.atacarDesdeHasta(9,3,11,4);
+
+        Assert.assertEquals(100, juego.verVida(11,4));
     }
 }

@@ -35,4 +35,7 @@ public class Catapulta extends NoMovibleYNoCura {
         agrupacion.unirMiembro(this);
         return agrupacion;
     }
+
+
+    public boolean puedeAyudarJinete() { return false;}
 }

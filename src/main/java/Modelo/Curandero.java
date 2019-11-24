@@ -32,4 +32,6 @@ public class Curandero extends PuedeCurar {
         agrupacion.unirMiembro(this);
         return agrupacion;
     }
+
+    public boolean puedeAyudarJinete() { return false;}
 }
