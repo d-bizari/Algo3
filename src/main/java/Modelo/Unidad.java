@@ -95,5 +95,14 @@ public abstract class Unidad {
     }
 
     public abstract Agrupacion getAgrupacion();
-        //if(this.agrupacion == null)
+
+    public boolean esAliadaDe(Unidad otraUnidad) {
+        if (this.duenio == otraUnidad.duenio) {
+            return true;
+        }
+        return false;
+    }
+
+    public abstract boolean puedeAyudarJinete();
+    //if(this.agrupacion == null)
 }

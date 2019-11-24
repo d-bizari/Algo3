@@ -30,4 +30,6 @@ public class SoldadoInfanteria extends NoCura {
         agrupacion.unirMiembro(this);
         return agrupacion;
     }
+
+    public boolean puedeAyudarJinete() { return true;}
 }

@@ -24,8 +24,10 @@ public class Jinete extends NoCura {
     public void atacar(Unidad otraUnidad) throws ErrorAutoAtaque {
         if (this.enemigosCercanos.size()!=0 && this.aliadosCercanos.size()==0) {
             estado = new EstadoJineteEspada();
-        } else {
+        } else if (puedenAyudar() || this.enemigosCercanos.size()==0) {
             estado = new EstadoJineteArcoYFlecha();
+        } else {
+            estado = new EstadoJineteNoAtaca();
         }
         estado.atacar(this, otraUnidad);
     }
@@ -36,4 +38,15 @@ public class Jinete extends NoCura {
         agrupacion.unirMiembro(this);
         return agrupacion;
     }
+
+    private boolean puedenAyudar() {
+        for (int i= 0; i<aliadosCercanos.size(); i++) {
+            if (aliadosCercanos.get(i).puedeAyudarJinete()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean puedeAyudarJinete() { return false;}
 }
