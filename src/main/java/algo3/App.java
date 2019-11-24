@@ -19,7 +19,7 @@ public class App extends Application {
 
     private Stage window;
     private Scene scene1, scene2, scene3;
-    private AlgoChess juego;
+    AlgoChess juego;
 
     public static void main(String[] args) {
         launch(args);
@@ -103,7 +103,7 @@ public class App extends Application {
         //Play
         //Cuando toca el boton pasa a la scene del juego
         Button play = new Button("Comenzar a jugar!");
-        play.setOnAction(e -> { juego.agregarJugador(nombreIngresado1.getText(), sectores1.getValue()); juego.agregarJugador(nombreIngresado2.getText(), sectores2.getValue()); window.setScene(scene2);});
+        play.setOnAction(e -> { juego.agregarJugador(nombreIngresado1.getText(), sectores1.getValue()); juego.agregarJugador(nombreIngresado2.getText(), sectores2.getValue()); window.setScene(this.scene3);});
         GridPane.setConstraints(play, 10, 10);
 
         //Add everything to grid
