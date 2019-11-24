@@ -3,14 +3,12 @@ package algo3;
 import Modelo.AlgoChess;
 import javafx.application.Application;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -19,9 +17,9 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
 
-    Stage window;
-    Scene scene1, scene2;
-    AlgoChess juego;
+    private Stage window;
+    private Scene scene1, scene2, scene3;
+    private AlgoChess juego;
 
     public static void main(String[] args) {
         launch(args);
@@ -31,18 +29,20 @@ public class App extends Application {
     public void start(Stage primaryStage) {
         window = primaryStage;
 
-        //Bienvenida
+        //Creacion scene: Bienvenida
         Label label1 = new Label("Bienvenido a ALGOCHESS!");
         Button button1 = new Button("Jugar");
         button1.setOnAction(e -> {juego= new AlgoChess(20,20); window.setScene(scene2);});
-
-        //Crear layout1
+        //Crear layout bienvenida
         VBox layout1 = new VBox(20);
         layout1.getChildren().addAll(label1, button1);
         scene1 = new Scene(layout1, 2000, 2000);
 
-        //Configuracion juego
-        scene2 = createSecondScene();
+        //Creacion scene: Configuracion juego
+        scene2 = createSceneConfiguracion();
+
+        //Creacion scene: JUEGO
+        scene3 = createSceneJuego(); //TODO scene juego
 
         //Empieza por la bienvenida, cuando toca el boton va a la configuracion del juego
         window.setScene(scene1);
@@ -50,7 +50,8 @@ public class App extends Application {
         window.show();
     }
 
-    public Scene createSecondScene () {
+
+    private Scene createSceneConfiguracion() {
 
         //Creo grilla y pongo tamaño
         GridPane grid = new GridPane();
@@ -100,15 +101,22 @@ public class App extends Application {
         GridPane.setConstraints(sectores2, 6, 5);
 
         //Play
+        //Cuando toca el boton pasa a la scene del juego
         Button play = new Button("Comenzar a jugar!");
-        play.setOnAction(e -> { juego.agregarJugador(nombreIngresado1.getText(), sectores1.getValue()); juego.agregarJugador(nombreIngresado2.getText(), sectores2.getValue());});
+        play.setOnAction(e -> { juego.agregarJugador(nombreIngresado1.getText(), sectores1.getValue()); juego.agregarJugador(nombreIngresado2.getText(), sectores2.getValue()); window.setScene(scene2);});
         GridPane.setConstraints(play, 10, 10);
 
         //Add everything to grid
         grid.getChildren().addAll(nombreJugador1, nombreIngresado1, nombreJugador2, nombreIngresado2, sectores1, sectores2, play);
 
-        Scene scene2 = new Scene(grid, 2000, 2000);
-        return scene2;
+        return new Scene(grid, 2000, 2000);
+    }
+
+    private Scene createSceneJuego() {
+        Label label = new Label("GUERRA");
+        VBox layout = new VBox(20);
+        layout.getChildren().addAll(label);
+        return new Scene(layout, 2000, 2000);
     }
 
 
