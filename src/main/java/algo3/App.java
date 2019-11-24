@@ -31,12 +31,14 @@ public class App extends Application {
 
         //Creacion scene: Bienvenida
         Label label1 = new Label("Bienvenido a ALGOCHESS!");
+        label1.setId("bold-label");
         Button button1 = new Button("Jugar");
         button1.setOnAction(e -> {juego= new AlgoChess(20,20); window.setScene(scene2);});
         //Crear layout bienvenida
         VBox layout1 = new VBox(20);
         layout1.getChildren().addAll(label1, button1);
         scene1 = new Scene(layout1, 2000, 2000);
+        //scene1.getStylesheets().add("BienvenidaTheme");
 
         //Creacion scene: Configuracion juego
         scene2 = createSceneConfiguracion();
@@ -46,7 +48,7 @@ public class App extends Application {
 
         //Empieza por la bienvenida, cuando toca el boton va a la configuracion del juego
         window.setScene(scene1);
-        window.setTitle("Title Here");
+        window.setTitle("Algoritmos III - TP2");
         window.show();
     }
 
