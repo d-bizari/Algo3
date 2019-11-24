@@ -105,7 +105,16 @@ public class App extends Application {
         //Play
         //Cuando toca el boton pasa a la scene del juego
         Button play = new Button("Comenzar a jugar!");
-        play.setOnAction(e -> { juego.agregarJugador(nombreIngresado1.getText(), sectores1.getValue()); juego.agregarJugador(nombreIngresado2.getText(), sectores2.getValue()); window.setScene(this.scene3);});
+        play.setOnAction(e -> {
+            if(sectores1.getValue().equals(sectores2.getValue())){
+                AlertBoxEleccionSector.display("Error", "No pueden elegir el mismo sector del tablero");
+            }
+            else {
+                juego.agregarJugador(nombreIngresado1.getText(), sectores1.getValue());
+                juego.agregarJugador(nombreIngresado2.getText(), sectores2.getValue());
+                window.setScene(this.scene3);
+            }
+        });
         GridPane.setConstraints(play, 10, 10);
 
         //Add everything to grid

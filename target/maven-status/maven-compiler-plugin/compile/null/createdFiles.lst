@@ -1,4 +1,5 @@
 Excepciones/NoPuedeCurar.class
+algo3/AlertBoxEleccionSector.class
 Excepciones/CoordenadaFueraDeRango.class
 Excepciones/NoPuedeAtacar.class
 module-info.class
