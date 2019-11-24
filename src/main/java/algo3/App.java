@@ -30,15 +30,7 @@ public class App extends Application {
         window = primaryStage;
 
         //Creacion scene: Bienvenida
-        Label label1 = new Label("Bienvenido a ALGOCHESS!");
-        label1.setId("bold-label");
-        Button button1 = new Button("Jugar");
-        button1.setOnAction(e -> {juego= new AlgoChess(20,20); window.setScene(scene2);});
-        //Crear layout bienvenida
-        VBox layout1 = new VBox(20);
-        layout1.getChildren().addAll(label1, button1);
-        scene1 = new Scene(layout1, 2000, 2000);
-        //scene1.getStylesheets().add("BienvenidaTheme");
+        scene1 = createSceneBienvenida();
 
         //Creacion scene: Configuracion juego
         scene2 = createSceneConfiguracion();
@@ -52,6 +44,15 @@ public class App extends Application {
         window.show();
     }
 
+    private Scene createSceneBienvenida() {
+        Label label1 = new Label("Bienvenido a ALGOCHESS!");
+        Button button1 = new Button("Jugar");
+        button1.setOnAction(e -> {juego= new AlgoChess(20,20); window.setScene(scene2);});
+        //Crear layout bienvenida
+        VBox layout1 = new VBox(30);
+        layout1.getChildren().addAll(label1, button1);
+        return new Scene(layout1, 2000, 2000);
+    }
 
     private Scene createSceneConfiguracion() {
 
