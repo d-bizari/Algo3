@@ -10,6 +10,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 /**
@@ -18,7 +23,7 @@ import javafx.stage.Stage;
 public class App extends Application {
 
     private Stage window;
-    private Scene scene1, scene2, scene3;
+    private Scene scene1, scene2, scene3, scene4;
     AlgoChess juego;
 
     public static void main(String[] args) {
@@ -36,12 +41,87 @@ public class App extends Application {
         scene2 = createSceneConfiguracion();
 
         //Creacion scene: JUEGO
-        scene3 = createSceneJuego(); //TODO scene juego
+        scene3 = jugadorEligeUnidades("uno");
+        scene4 = jugadorEligeUnidades("dos");
 
         //Empieza por la bienvenida, cuando toca el boton va a la configuracion del juego
         window.setScene(scene1);
         window.setTitle("Algoritmos III - TP2");
         window.show();
+    }
+
+    private Scene jugadorEligeUnidades(String jugador){
+        int puntaje = 20;
+
+        String tituloCompleto = String.format("Jugador %s eliga unidades", jugador);
+        Label titulo = new Label(tituloCompleto);
+        titulo.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
+        titulo.setTextAlignment(TextAlignment.CENTER);
+        titulo.setTextFill(Color.web("000000"));
+
+        String puntos = String.format("Puntaje: %s", puntaje);
+        Label puntajeParcial = new Label(puntos);
+
+        VBox vista = new VBox(30);
+
+        vista.getChildren().addAll(titulo, puntajeParcial, createGridSoldadoInfanteria(), createSelector());
+        return new Scene(vista, 2000, 2000);
+    }
+
+
+    private GridPane createSelector(){
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(8);
+        grid.setHgap(10);
+
+        ChoiceBox<Integer> cantidadSoldados = new ChoiceBox<Integer>();
+        for(int i = 0 ; i<21; i++){
+            cantidadSoldados.getItems().add(i);
+        }
+
+        Text text_soldadoCantidad = new Text("Soldado infanteria:");
+        GridPane.setConstraints(text_soldadoCantidad, 1, 1);
+        GridPane.setConstraints(cantidadSoldados, 2, 1);
+
+        Button continuar = new Button("Continuar");
+
+        GridPane.setConstraints(continuar, 3, 1);
+
+        continuar.setOnAction(e -> {
+            if(cantidadSoldados.getValue() > 10){
+                AlertBoxEleccionSector.display("Error", "Se paso de los puntos");
+            }
+            else {
+                //TODO llamar a metodo de algochess para iniciar a todos las unidades.
+            }
+        });
+
+        grid.getChildren().addAll(text_soldadoCantidad, cantidadSoldados, continuar);
+        return grid;
+    }
+
+
+    private GridPane createGridSoldadoInfanteria() {
+
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(8);
+        grid.setHgap(10);
+
+        Label soldadoInfanteria  = new Label("Soldado Infanteria");
+        GridPane.setConstraints(soldadoInfanteria, 1, 1);
+        Text text_soldado1 = new Text("Costo: 1");
+        Text text_soldado2 = new Text("Atributos: Vida 100 + Daño cuerpo a cuerpo: 10 + Daño a distancia: 0");
+        Text text_soldado3 = new Text("Comportamiento: Puede atacar a un enemigo a corta distancia + Si hay más de 3 Soldados contiguos (en cualquier dirección) se comportan como un Batallón y PUEDEN moverse los 3 al mismo tiempo en el mismo turno.");
+
+        GridPane.setConstraints(text_soldado1, 1, 2);
+        GridPane.setConstraints(text_soldado2, 1, 3);
+        GridPane.setConstraints(text_soldado3, 1, 4);
+
+        grid.getChildren().addAll(soldadoInfanteria, text_soldado1, text_soldado2, text_soldado3);
+
+        return grid;
     }
 
     private Scene createSceneBienvenida() {
@@ -129,6 +209,7 @@ public class App extends Application {
         VBox layout = new VBox(20);
         layout.getChildren().addAll(label);
         return new Scene(layout, 2000, 2000);
+        
     }
 
 
