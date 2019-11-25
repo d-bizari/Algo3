@@ -1,13 +1,18 @@
 package algo3;
 
 import Modelo.AlgoChess;
+import algo3.Controller.tableroGridPane;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -23,8 +28,9 @@ import javafx.stage.Stage;
 public class App extends Application {
 
     private Stage window;
-    private Scene scene1, scene2, scene3, scene4;
-    AlgoChess juego;
+    private Scene scene1, scene2, scene3, scene4, scene5;
+    AlgoChess juego = new AlgoChess(20,20);
+    private tableroGridPane tablero;
 
     public static void main(String[] args) {
         launch(args);
@@ -44,11 +50,26 @@ public class App extends Application {
         scene3 = jugadorEligeUnidades("uno");
         scene4 = jugadorEligeUnidades("dos");
 
+        //Crea el Tablero
+        scene5 = createSceneJuego();
+
         //Empieza por la bienvenida, cuando toca el boton va a la configuracion del juego
+        //window.setScene(scene5); para el tablero, si presionas una posicion te lo indica
         window.setScene(scene1);
         window.setTitle("Algoritmos III - TP2");
+
+        scene5.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                AlertBoxEleccionSector.display("Atencion", tablero.clickGrid(event));
+                event.consume();
+            }
+        });
         window.show();
+
+
     }
+
 
     private Scene jugadorEligeUnidades(String jugador){
         int puntaje = 20;
@@ -205,13 +226,13 @@ public class App extends Application {
     }
 
     private Scene createSceneJuego() {
+        tablero = new tableroGridPane(juego, 2000, 2000);
         Label label = new Label("GUERRA");
-        VBox layout = new VBox(20);
-        layout.getChildren().addAll(label);
+        BorderPane layout = new BorderPane();
+        layout.setCenter(tablero.getVisual());
         return new Scene(layout, 2000, 2000);
         
     }
-
 
 
 }
