@@ -5,6 +5,7 @@ import algo3.Controller.tableroGridPane;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -80,47 +81,14 @@ public class App extends Application {
         titulo.setTextAlignment(TextAlignment.CENTER);
         titulo.setTextFill(Color.web("000000"));
 
-        String puntos = String.format("Puntaje: %s", puntaje);
-        Label puntajeParcial = new Label(puntos);
-
         VBox vista = new VBox(30);
 
-        vista.getChildren().addAll(titulo, puntajeParcial, createGridSoldadoInfanteria(), createSelector());
+        SelectorUnidades selector = new SelectorUnidades(puntaje);
+
+        vista.getChildren().addAll(titulo, createGridSoldadoInfanteria(), selector.getGrid());
         return new Scene(vista, 2000, 2000);
     }
 
-
-    private GridPane createSelector(){
-        GridPane grid = new GridPane();
-        grid.setPadding(new Insets(10, 10, 10, 10));
-        grid.setVgap(8);
-        grid.setHgap(10);
-
-        ChoiceBox<Integer> cantidadSoldados = new ChoiceBox<Integer>();
-        for(int i = 0 ; i<21; i++){
-            cantidadSoldados.getItems().add(i);
-        }
-
-        Text text_soldadoCantidad = new Text("Soldado infanteria:");
-        GridPane.setConstraints(text_soldadoCantidad, 1, 1);
-        GridPane.setConstraints(cantidadSoldados, 2, 1);
-
-        Button continuar = new Button("Continuar");
-
-        GridPane.setConstraints(continuar, 3, 1);
-
-        continuar.setOnAction(e -> {
-            if(cantidadSoldados.getValue() > 10){
-                AlertBoxEleccionSector.display("Error", "Se paso de los puntos");
-            }
-            else {
-                //TODO llamar a metodo de algochess para iniciar a todos las unidades.
-            }
-        });
-
-        grid.getChildren().addAll(text_soldadoCantidad, cantidadSoldados, continuar);
-        return grid;
-    }
 
 
     private GridPane createGridSoldadoInfanteria() {
