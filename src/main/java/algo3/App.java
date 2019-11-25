@@ -48,8 +48,8 @@ public class App extends Application {
         scene2 = createSceneConfiguracion();
 
         //Creacion scene: JUEGO
-        scene3 = jugadorEligeUnidades("uno");
-        scene4 = jugadorEligeUnidades("dos");
+        scene3 = jugadorEligeUnidades("1");
+        scene4 = jugadorEligeUnidades("2");
 
         //Crea el Tablero
         scene5 = createSceneJuego();
@@ -134,7 +134,7 @@ public class App extends Application {
         //Para recibir nombres jugadores y sectores1 seleccionados
 
         //Jugador 1
-        Label nombreJugador1 = new Label("Nombre:");
+        Label nombreJugador1 = new Label("Jugador 1:");
         GridPane.setConstraints(nombreJugador1, 5, 0);
         //Nombre ingresado
         TextField nombreIngresado1 = new TextField();
@@ -142,7 +142,7 @@ public class App extends Application {
         nombreIngresado1.setEditable(true);
         GridPane.setConstraints(nombreIngresado1, 6, 0);
         //Jugador 2
-        Label nombreJugador2 = new Label("Nombre:");
+        Label nombreJugador2 = new Label("Jugador 2:");
         GridPane.setConstraints(nombreJugador2, 5, 4);
         //Nombre Ingresado
         TextField nombreIngresado2 = new TextField();

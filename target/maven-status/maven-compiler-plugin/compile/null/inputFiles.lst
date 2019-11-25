@@ -1,35 +1,39 @@
-/home/valeria/Documents/Algo3/src/main/java/algo3/AlertBoxEleccionSector.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/NoMovibleYNoCura.java
-/home/valeria/Documents/Algo3/src/main/java/Excepciones/CeldaOcupada.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/Tablero.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/AlgoChess.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/Puntaje.java
-/home/valeria/Documents/Algo3/src/main/java/Excepciones/CoordenadaFueraDeRango.java
-/home/valeria/Documents/Algo3/src/main/java/Excepciones/NoPuedeAtacar.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/Unidad.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/Curandero.java
-/home/valeria/Documents/Algo3/src/main/java/Excepciones/NoPuedeMoverseException.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/Catapulta.java
-/home/valeria/Documents/Algo3/src/main/java/algo3/App.java
-/home/valeria/Documents/Algo3/src/main/java/Excepciones/ErrorNoHayUnidadAtacante.java
-/home/valeria/Documents/Algo3/src/main/java/module-info.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/Jugador.java
-/home/valeria/Documents/Algo3/src/main/java/Excepciones/NoPuedeCurar.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/Celda.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/EstadoJineteArcoYFlecha.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/AgrupacionActiva.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/Coordenada.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/SoldadoInfanteria.java
-/home/valeria/Documents/Algo3/src/main/java/Excepciones/PuntosInsuficientesException.java
-/home/valeria/Documents/Algo3/src/main/java/Excepciones/CeldaDeTerritorioEnemigo.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/Agrupacion.java
-/home/valeria/Documents/Algo3/src/main/java/Excepciones/ErrorAutoAtaque.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/PuedeCurar.java
-/home/valeria/Documents/Algo3/src/main/java/algo3/SystemInfo.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/EstadoJineteEspada.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/AgrupacionInactiva.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/EstadoJinete.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/Movible.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/NoCura.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/Vida.java
-/home/valeria/Documents/Algo3/src/main/java/Modelo/Jinete.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/Catapulta.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/algo3/PropiedadUnidad.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Excepciones/CeldaOcupada.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/algo3/SystemInfo.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/EstadoJinete.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/Vida.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Excepciones/ErrorAutoAtaque.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/AgrupacionActiva.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/EstadoJineteArcoYFlecha.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/Puntaje.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/Jugador.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/Tablero.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Excepciones/NoPuedeAtacar.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/EstadoJineteEspada.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/EstadoJineteNoAtaca.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/PuedeCurar.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Excepciones/NoPuedeCurar.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Excepciones/NoPuedeMoverseException.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Excepciones/ErrorNoHayUnidadAtacante.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/NoMovibleYNoCura.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/algo3/AlertBoxEleccionSector.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Excepciones/CeldaDeTerritorioEnemigo.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/NoCura.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/SoldadoInfanteria.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/algo3/SelectorUnidades.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Excepciones/PuntosInsuficientesException.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Excepciones/CoordenadaFueraDeRango.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/Unidad.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/Celda.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/Movible.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/algo3/App.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/AgrupacionInactiva.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/AlgoChess.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/Curandero.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/module-info.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/algo3/Controller/tableroGridPane.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/Agrupacion.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/Jinete.java
+/home/laptop-hp/Escritorio/FAC ING/Algo III/TP2/Algo3/src/main/java/Modelo/Coordenada.java
