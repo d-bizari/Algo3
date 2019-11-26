@@ -41,24 +41,24 @@ public class tableroGridPane {
 
     private void setColoresEnTablero() {
         Label label;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
+        for (int y = 0; y < n; y++) {
+            for (int x = 0; x < m; x++) {
                 label = new Label();
 
                 label.setPrefWidth(anchoCelda);
                 label.setPrefHeight(altoCelda);
 
-                Image image = new Image("file:img/sector" + getNumeroSector(i, j) + ".png",anchoCelda,altoCelda,false,false);
+                Image image = new Image("file:img/sector" + getNumeroSector(y) + ".png",anchoCelda,altoCelda,false,false);
                 label.setGraphic(new ImageView(image));
 
                 label.setPadding(new Insets(0, 0, 0, 0));
-                tableroGridPane.add(label, j, i);
+                tableroGridPane.add(label, x, y);
             }
         }
 
     }
 
-    private String getNumeroSector(double x, double y) {
+    private String getNumeroSector(double y) {
         if (y<m/2) {return "1";}
         return "2";
     }
