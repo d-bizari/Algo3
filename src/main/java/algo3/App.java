@@ -71,7 +71,6 @@ public class App extends Application {
 
     }
 
-
     private Scene jugadorEligeUnidades(String jugador){
         int puntaje = 20;
 
@@ -85,32 +84,14 @@ public class App extends Application {
 
         SelectorUnidades selector = new SelectorUnidades(puntaje);
 
-        vista.getChildren().addAll(titulo, createGridSoldadoInfanteria(), selector.getGrid());
+        PropiedadUnidad gridSoldado = new PropiedadUnidad();
+        PropiedadUnidad gridJinete = new PropiedadUnidad();
+        PropiedadUnidad gridCatapulta = new PropiedadUnidad();
+        PropiedadUnidad gridCuradero = new PropiedadUnidad();
+
+
+        vista.getChildren().addAll(titulo, gridSoldado.gridSoldadoInfanteria(), gridJinete.gridJinete(), gridCatapulta.gridCatapulta(), gridCuradero.gridCurandero(), selector.getGrid());
         return new Scene(vista, 2000, 2000);
-    }
-
-
-
-    private GridPane createGridSoldadoInfanteria() {
-
-        GridPane grid = new GridPane();
-        grid.setPadding(new Insets(10, 10, 10, 10));
-        grid.setVgap(8);
-        grid.setHgap(10);
-
-        Label soldadoInfanteria  = new Label("Soldado Infanteria");
-        GridPane.setConstraints(soldadoInfanteria, 1, 1);
-        Text text_soldado1 = new Text("Costo: 1");
-        Text text_soldado2 = new Text("Atributos: Vida 100 + Daño cuerpo a cuerpo: 10 + Daño a distancia: 0");
-        Text text_soldado3 = new Text("Comportamiento: Puede atacar a un enemigo a corta distancia + Si hay más de 3 Soldados contiguos (en cualquier dirección) se comportan como un Batallón y PUEDEN moverse los 3 al mismo tiempo en el mismo turno.");
-
-        GridPane.setConstraints(text_soldado1, 1, 2);
-        GridPane.setConstraints(text_soldado2, 1, 3);
-        GridPane.setConstraints(text_soldado3, 1, 4);
-
-        grid.getChildren().addAll(soldadoInfanteria, text_soldado1, text_soldado2, text_soldado3);
-
-        return grid;
     }
 
     private Scene createSceneBienvenida() {
@@ -201,6 +182,29 @@ public class App extends Application {
         return new Scene(layout, 2000, 2000);
         
     }
+
+    /*private GridPane createGridSoldadoInfanteria() {
+
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(8);
+        grid.setHgap(10);
+
+        Label soldadoInfanteria  = new Label("Soldado Infanteria");
+        GridPane.setConstraints(soldadoInfanteria, 1, 1);
+        Text text_soldado1 = new Text("Costo: 1");
+        Text text_soldado2 = new Text("Atributos: Vida 100 + Daño cuerpo a cuerpo: 10 + Daño a distancia: 0");
+        Text text_soldado3 = new Text("Comportamiento: Puede atacar a un enemigo a corta distancia + Si hay más de 3 Soldados contiguos (en cualquier dirección) se comportan como un Batallón y PUEDEN moverse los 3 al mismo tiempo en el mismo turno.");
+
+        GridPane.setConstraints(text_soldado1, 1, 2);
+        GridPane.setConstraints(text_soldado2, 1, 3);
+        GridPane.setConstraints(text_soldado3, 1, 4);
+
+        grid.getChildren().addAll(soldadoInfanteria, text_soldado1, text_soldado2, text_soldado3);
+
+        return grid;
+    }*/
+
 
 
 }
