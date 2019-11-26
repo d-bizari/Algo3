@@ -22,6 +22,7 @@ public class SelectorUnidades {
 
         puntaje = puntos;
         continuar = new Button("Continuar");
+        continuar.setDisable(true);
 
         ChoiceBox<Integer> SoldadoInfanteria = createChoiceBox(cantidadSoldados);
 
@@ -35,17 +36,21 @@ public class SelectorUnidades {
         GridPane.setConstraints(continuar, 4,4 );
 
         continuar.setOnAction(e -> {
-                    //TODO llamar a metodo de algochess para iniciar a todos las unidades.
-                }
-        );
+            //TODO llamar a metodo de algochess para iniciar a todos las unidades.
+        });
 
         choiceBoxAgregarListener(SoldadoInfanteria);
+
         grid.getChildren().addAll(text_puntos, text_soldadoCantidad, SoldadoInfanteria, continuar);
     }
 
     private void choiceBoxAgregarListener(ChoiceBox<Integer> choiceBox) {
         choiceBox.getSelectionModel().selectedItemProperty().addListener((v, valorViejo, valorNuevo) -> {
-            puntaje = puntaje - v.getValue();
+            if(v.getValue() == 20){
+                continuar.setDisable(false);
+            }else{
+                continuar.setDisable(true);
+            }
         });
     }
 

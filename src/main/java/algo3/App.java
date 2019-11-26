@@ -55,7 +55,7 @@ public class App extends Application {
         scene5 = createSceneJuego();
 
         //Empieza por la bienvenida, cuando toca el boton va a la configuracion del juego
-        //window.setScene(scene5); para el tablero, si presionas una posicion te lo indica
+        //window.setScene(scene5); //para el tablero, si presionas una posicion te lo indica
         window.setScene(scene1);
         window.setTitle("Algoritmos III - TP2");
 
