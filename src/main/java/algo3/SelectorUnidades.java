@@ -12,6 +12,13 @@ public class SelectorUnidades {
     private GridPane grid;
     private int puntaje;
     private int cantidadSoldados = 21;
+    private int cantidadJinetes = 7;
+    private int cantidadCatapulta = 5;
+    private int cantidadCurandero = 11;
+    private ChoiceBox soldadoInfanteria;
+    private ChoiceBox jinete;
+    private ChoiceBox catapulta;
+    private ChoiceBox curandero;
     private Button continuar;
 
     public SelectorUnidades(int puntos){
@@ -19,38 +26,69 @@ public class SelectorUnidades {
         grid.setPadding(new Insets(10, 10, 10, 10));
         grid.setVgap(8);
         grid.setHgap(10);
-
         puntaje = puntos;
+
+        //Crea boton de continuar.
         continuar = new Button("Continuar");
         continuar.setDisable(true);
 
-        ChoiceBox<Integer> SoldadoInfanteria = createChoiceBox(cantidadSoldados);
+        //Crea los choice box para elegir cantidad de unidades.
+        soldadoInfanteria = createChoiceBox(cantidadSoldados);
+        jinete = createChoiceBox(cantidadJinetes);
+        catapulta = createChoiceBox(cantidadCatapulta);
+        curandero = createChoiceBox(cantidadCurandero);
+
+        //crea texto que se muestra al lado de cada choice box.
+        Text text_soldadoCantidad = new Text("Soldado infanteria:");
+        Text text_jineteCantidad = new Text("Jinete:");
+        Text text_catapultaCantidad = new Text("Catapulta:");
+        Text text_curanderoCantidad = new Text("Curandero:");
 
         String puntos_ = String.format("puntos: %s", puntaje);
-
-        Text text_soldadoCantidad = new Text("Soldado infanteria:");
         Text text_puntos = new Text(puntos_);
+
+        //Acomoda los textos y los choice box en el GridPane.
         GridPane.setConstraints(text_puntos, 1, 0);
+
         GridPane.setConstraints(text_soldadoCantidad, 1, 2);
-        GridPane.setConstraints(SoldadoInfanteria, 2, 2);
-        GridPane.setConstraints(continuar, 4,4 );
+        GridPane.setConstraints(soldadoInfanteria, 2, 2);
+
+        GridPane.setConstraints(text_jineteCantidad, 1, 3);
+        GridPane.setConstraints(jinete, 2, 3);
+
+        GridPane.setConstraints(text_catapultaCantidad, 1, 4);
+        GridPane.setConstraints(catapulta, 2, 4);
+
+        GridPane.setConstraints(text_curanderoCantidad, 1, 5);
+        GridPane.setConstraints(curandero, 2, 5);
+
+        GridPane.setConstraints(continuar, 6,6 );
+
+        //Crea listeners para los choice box.
+        ChoiceBoxListener(soldadoInfanteria);
+        ChoiceBoxListener(jinete);
+        ChoiceBoxListener(catapulta);
+        ChoiceBoxListener(curandero);
 
         continuar.setOnAction(e -> {
             //TODO llamar a metodo de algochess para iniciar a todos las unidades.
         });
 
-        choiceBoxAgregarListener(SoldadoInfanteria);
-
-        grid.getChildren().addAll(text_puntos, text_soldadoCantidad, SoldadoInfanteria, continuar);
+        grid.getChildren().addAll(text_puntos, text_soldadoCantidad, soldadoInfanteria, text_jineteCantidad, jinete, text_catapultaCantidad, catapulta, text_curanderoCantidad, curandero, continuar);
     }
 
-    private void choiceBoxAgregarListener(ChoiceBox<Integer> choiceBox) {
+    private void onChoiceBoxChange(){
+        int condicion = (int)soldadoInfanteria.getValue() + (int)jinete.getValue() * 3 + (int)catapulta.getValue() * 5 + (int)curandero.getValue() * 2;
+        if( condicion == 20){
+            continuar.setDisable(false);
+        }else{
+            continuar.setDisable(true);
+        }
+    }
+
+    public void ChoiceBoxListener(ChoiceBox<Integer> choiceBox) {
         choiceBox.getSelectionModel().selectedItemProperty().addListener((v, valorViejo, valorNuevo) -> {
-            if(v.getValue() == 20){
-                continuar.setDisable(false);
-            }else{
-                continuar.setDisable(true);
-            }
+            onChoiceBoxChange();
         });
     }
 
@@ -61,12 +99,9 @@ public class SelectorUnidades {
             choiceBox.getItems().add(i);
         }
         return choiceBox;
-
     }
 
-    public GridPane getGrid(){
-        return grid;
-    }
+    public GridPane getGrid(){ return grid; }
 
 }
 
