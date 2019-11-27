@@ -1,16 +1,22 @@
 package algo3;
 
+import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
-public class SelectorUnidades {
+import java.util.ArrayList;
+
+public class SelectorUnidades{
 
     private GridPane grid;
-    private int puntaje;
+    private int puntaje = 20;
     private int cantidadSoldados = 21;
     private int cantidadJinetes = 7;
     private int cantidadCatapulta = 5;
@@ -21,12 +27,11 @@ public class SelectorUnidades {
     private ChoiceBox curandero;
     private Button continuar;
 
-    public SelectorUnidades(int puntos){
+    public SelectorUnidades (Boolean pasarAtablero, Stage window, Scene scene4, Scene scene5){
         grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
         grid.setVgap(8);
         grid.setHgap(10);
-        puntaje = puntos;
 
         //Crea boton de continuar.
         continuar = new Button("Continuar");
@@ -65,30 +70,41 @@ public class SelectorUnidades {
         GridPane.setConstraints(continuar, 6,6 );
 
         //Crea listeners para los choice box.
-        ChoiceBoxListener(soldadoInfanteria);
-        ChoiceBoxListener(jinete);
-        ChoiceBoxListener(catapulta);
-        ChoiceBoxListener(curandero);
-
-        continuar.setOnAction(e -> {
-            //TODO llamar a metodo de algochess para iniciar a todos las unidades.
-        });
+        ChoiceBoxListener(soldadoInfanteria, pasarAtablero, window, scene4, scene5);
+        ChoiceBoxListener(jinete, pasarAtablero, window, scene4, scene5);
+        ChoiceBoxListener(catapulta, pasarAtablero, window, scene4, scene5);
+        ChoiceBoxListener(curandero, pasarAtablero, window, scene4, scene5);
 
         grid.getChildren().addAll(text_puntos, text_soldadoCantidad, soldadoInfanteria, text_jineteCantidad, jinete, text_catapultaCantidad, catapulta, text_curanderoCantidad, curandero, continuar);
+
+        continuar.setOnAction(e -> {
+            if(pasarAtablero){ //TODO QUE PASE DE ESCENA.
+                window.setScene(scene5);
+            }
+            window.setScene(scene4);
+        });
+    }
+    private ArrayList<Integer> unidadesDeJugador(){
+        ArrayList<Integer> unidades = new ArrayList<Integer>();
+        unidades.add((Integer)soldadoInfanteria.getValue());
+        unidades.add((Integer)jinete.getValue());
+        unidades.add((Integer)catapulta.getValue());
+        unidades.add((Integer)curandero.getValue());
+        return unidades;
     }
 
-    private void onChoiceBoxChange(){
+    private void onChoiceBoxChange(Boolean pasarAtablero, Stage window, Scene scene4, Scene scene5){
         int condicion = (int)soldadoInfanteria.getValue() + (int)jinete.getValue() * 3 + (int)catapulta.getValue() * 5 + (int)curandero.getValue() * 2;
-        if( condicion == 20){
+        if(condicion == 20){
             continuar.setDisable(false);
         }else{
             continuar.setDisable(true);
         }
     }
 
-    public void ChoiceBoxListener(ChoiceBox<Integer> choiceBox) {
+    public void ChoiceBoxListener(ChoiceBox<Integer> choiceBox, Boolean pasarAtablero, Stage window, Scene scene4, Scene scene5) {
         choiceBox.getSelectionModel().selectedItemProperty().addListener((v, valorViejo, valorNuevo) -> {
-            onChoiceBoxChange();
+            onChoiceBoxChange(pasarAtablero, window, scene4, scene5);
         });
     }
 

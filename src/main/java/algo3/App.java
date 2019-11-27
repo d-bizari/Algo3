@@ -23,12 +23,14 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 /**
  * JavaFX App
  */
 public class App extends Application {
 
-    private Stage window;
+    public Stage window;
     private Scene scene1, scene2, scene3, scene4, scene5;
     AlgoChess juego = new AlgoChess(20,20);
     private tableroGridPane tablero;
@@ -48,8 +50,8 @@ public class App extends Application {
         scene2 = createSceneConfiguracion();
 
         //Creacion scene: JUEGO
-        scene3 = jugadorEligeUnidades("1");
-        scene4 = jugadorEligeUnidades("2");
+        scene3 = jugadorEligeUnidades("1", false);
+        scene4 = jugadorEligeUnidades("2", true);
 
         //Crea el Tablero
         scene5 = createSceneJuego();
@@ -67,11 +69,9 @@ public class App extends Application {
             }
         });
         window.show();
-
-
     }
 
-    private Scene jugadorEligeUnidades(String jugador){
+    private Scene jugadorEligeUnidades(String jugador, Boolean pasarAtablero){
         int puntaje = 20;
 
         String tituloCompleto = String.format("Jugador %s eliga unidades", jugador);
@@ -82,15 +82,15 @@ public class App extends Application {
 
         VBox vista = new VBox(30);
 
-        SelectorUnidades selector = new SelectorUnidades(puntaje);
+        SelectorUnidades selector = new SelectorUnidades(pasarAtablero, window, scene4, scene5);
 
         PropiedadUnidad gridSoldado = new PropiedadUnidad();
         PropiedadUnidad gridJinete = new PropiedadUnidad();
         PropiedadUnidad gridCatapulta = new PropiedadUnidad();
         PropiedadUnidad gridCuradero = new PropiedadUnidad();
 
-
         vista.getChildren().addAll(titulo, gridSoldado.gridSoldadoInfanteria(), gridJinete.gridJinete(), gridCatapulta.gridCatapulta(), gridCuradero.gridCurandero(), selector.getGrid());
+
         return new Scene(vista, 2000, 2000);
     }
 
@@ -182,29 +182,5 @@ public class App extends Application {
         return new Scene(layout, 2000, 2000);
         
     }
-
-    /*private GridPane createGridSoldadoInfanteria() {
-
-        GridPane grid = new GridPane();
-        grid.setPadding(new Insets(10, 10, 10, 10));
-        grid.setVgap(8);
-        grid.setHgap(10);
-
-        Label soldadoInfanteria  = new Label("Soldado Infanteria");
-        GridPane.setConstraints(soldadoInfanteria, 1, 1);
-        Text text_soldado1 = new Text("Costo: 1");
-        Text text_soldado2 = new Text("Atributos: Vida 100 + Daño cuerpo a cuerpo: 10 + Daño a distancia: 0");
-        Text text_soldado3 = new Text("Comportamiento: Puede atacar a un enemigo a corta distancia + Si hay más de 3 Soldados contiguos (en cualquier dirección) se comportan como un Batallón y PUEDEN moverse los 3 al mismo tiempo en el mismo turno.");
-
-        GridPane.setConstraints(text_soldado1, 1, 2);
-        GridPane.setConstraints(text_soldado2, 1, 3);
-        GridPane.setConstraints(text_soldado3, 1, 4);
-
-        grid.getChildren().addAll(soldadoInfanteria, text_soldado1, text_soldado2, text_soldado3);
-
-        return grid;
-    }*/
-
-
 
 }
