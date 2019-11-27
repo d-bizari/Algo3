@@ -1,49 +1,40 @@
 package algo3;
 
 import Modelo.AlgoChess;
-import algo3.Controller.tableroGridPane;
 import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
 
 /**
  * JavaFX App
  */
 public class App extends Application {
 
-    public Stage window;
-    private Scene scene1, scene2, scene3, scene4, scene5;
-    AlgoChess juego = new AlgoChess(20,20);
-    private tableroGridPane tablero;
+    //public Stage window;
+    //private Scene scene1, scene2, scene3, scene4, scene5;
+    AlgoChess juego;
+    private TableroGridPane tablero;
 
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) {
-        window = primaryStage;
+    public void start(Stage stage) {
+        stage.setTitle("AlgoChess");
 
-        //Creacion scene: Bienvenida
+        juego = new AlgoChess(20,20);
+
+        ContenedorInicial contenedorInicial = new ContenedorInicial(stage, juego);
+        Scene escenaInicial = new Scene(contenedorInicial, 640, 480);
+
+        stage.setScene(escenaInicial);
+        stage.setFullScreen(false);
+
+        stage.show();
+    }
+
+    /*//Creacion scene: Bienvenida
         scene1 = createSceneBienvenida();
 
         //Creacion scene: Configuracion juego
@@ -69,9 +60,10 @@ public class App extends Application {
             }
         });
         window.show();
-    }
 
-    private Scene jugadorEligeUnidades(String jugador, Boolean pasarAtablero){
+
+
+        private Scene jugadorEligeUnidades(String jugador, Boolean pasarAtablero){
         int puntaje = 20;
 
         String tituloCompleto = String.format("Jugador %s eliga unidades", jugador);
@@ -82,7 +74,7 @@ public class App extends Application {
 
         VBox vista = new VBox(30);
 
-        SelectorUnidades selector = new SelectorUnidades(pasarAtablero, window, scene4, scene5);
+        SelectorUnidades selector = new SelectorUnidades(pasarAtablero, window, scene3, scene4, scene5);
 
         PropiedadUnidad gridSoldado = new PropiedadUnidad();
         PropiedadUnidad gridJinete = new PropiedadUnidad();
@@ -182,5 +174,5 @@ public class App extends Application {
         return new Scene(layout, 2000, 2000);
         
     }
-
+*/
 }

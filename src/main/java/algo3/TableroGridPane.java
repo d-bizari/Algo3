@@ -1,4 +1,4 @@
-package algo3.Controller;
+package algo3;
 
 import Modelo.AlgoChess;
 import Modelo.Tablero;
@@ -12,7 +12,7 @@ import javafx.scene.layout.*;
 
 import java.io.File;
 
-public class tableroGridPane {
+public class TableroGridPane {
 
 
     private GridPane tableroGridPane;
@@ -25,7 +25,7 @@ public class tableroGridPane {
     private int n;
     private int m;
 
-    public tableroGridPane(AlgoChess algoChess, double ancho, double alto) {
+    public TableroGridPane(AlgoChess algoChess, double ancho, double alto) {
 
         this.algoChess = algoChess;
 

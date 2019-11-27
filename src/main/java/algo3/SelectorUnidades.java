@@ -1,11 +1,13 @@
 package algo3;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -27,7 +29,7 @@ public class SelectorUnidades{
     private ChoiceBox curandero;
     private Button continuar;
 
-    public SelectorUnidades (Boolean pasarAtablero, Stage window, Scene scene4, Scene scene5){
+    public SelectorUnidades (Boolean pasarAtablero, Stage window, Scene scene3, Scene scene4, Scene scene5){
         grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
         grid.setVgap(8);
