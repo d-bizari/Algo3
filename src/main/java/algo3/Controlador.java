@@ -112,7 +112,6 @@ public class Controlador {
         stage.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event){
-                //AlertBox.display("Atencion", tablero.clickGrid(event));
                 Coordenada coordenada = tablero.clickGrid(event);
                 if(QuedanUnidades(hashUnidadesJugador1)){
                     abrirColocadorUnidades("Turno jugador 1", "Elija unidad para colocar", jugador1.getText(), coordenada.getCoordenadaX(), coordenada.getCoordenadaY(), hashUnidadesJugador1);
@@ -178,6 +177,7 @@ public class Controlador {
                     case "Jinete":
                         if(unidadesJugador.get("Jinete") == 0){
                         AlertBox.display("Error", "No tiene mas jinetes");
+                        break;
                     }
                         juego.colocarJinetePara(jugador, x, y);
                         unidadesJugador.put("Jinete", unidadesJugador.get("Jinete") - 1);
@@ -187,6 +187,7 @@ public class Controlador {
                     case "Soldado Infanteria":
                         if(unidadesJugador.get("Soldado Infanteria") == 0){
                         AlertBox.display("Error", "No tiene mas soldados");
+                        break;
                         }
                         juego.colocarSoldadoInfanteriaPara(jugador,x, y);
                         unidadesJugador.put("Soldado Infanteria",  unidadesJugador.get("Soldado Infanteria") - 1);
@@ -196,6 +197,7 @@ public class Controlador {
 
                     case "Catapulta": if(unidadesJugador.get("Catapulta") == 0){
                         AlertBox.display("Error", "No tiene mas catapultas");
+                        break;
                     }
                         juego.colocarCatapultaPara(jugador, x, y);
                         unidadesJugador.put("Catapulta", unidadesJugador.get("Catapulta") -1);
@@ -204,6 +206,7 @@ public class Controlador {
 
                     case "Curandero": if(unidadesJugador.get("Curandero") == 0){
                         AlertBox.display("Error", "No tiene mas curanderos");
+                        break;
                     }
                         juego.colocarCuranderoPara(jugador, x, y);
                         unidadesJugador.put("Curandero", unidadesJugador.get("Curandero") -1);
@@ -216,9 +219,13 @@ public class Controlador {
                 enem.printStackTrace();
                 AlertBox.display("Error - No se puede colocar", "Territorio enemigo"); //TODO MEJORAR TRATAMIENTO EXCEPCIONES PARICUALRES
             }
-            catch (CeldaOcupada | PuntosInsuficientesException | CoordenadaFueraDeRango ocup) {
+            catch (CeldaOcupada | CoordenadaFueraDeRango ocup) {
                 ocup.printStackTrace();
                 AlertBox.display("Error - No se puede colocar", "Celda ocupada");
+            }
+            catch(PuntosInsuficientesException exc) {
+                exc.printStackTrace();
+                AlertBox.display("Error","Puntos Insuficientes");
             }
             finally {
                 colocadorUnidades.close();
