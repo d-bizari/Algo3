@@ -112,7 +112,8 @@ public class TableroGridPane{
         pic.setFitWidth(40);
         pic.setFitHeight(40);
         pic.setImage(image);
-        tableroGridPane.add(pic, x, y);
+        tableroGridPane.getChildren().add(pic);
+        tableroGridPane.add(pic, y, x);
     }
 
     public void agregarContenidoCeldaJinete(int x, int y) {
@@ -121,7 +122,8 @@ public class TableroGridPane{
         pic.setFitWidth(40);
         pic.setFitHeight(40);
         pic.setImage(image);
-        tableroGridPane.add(pic, x, y);
+        tableroGridPane.getChildren().add(pic);
+        tableroGridPane.add(pic, y, x); //EL GRID SE MANEJA AL REVES, PRIMERO PONE Y Y DESPUES X
     }
 
     public void agregarContenidoCeldaCatapulta(int x, int y) {
@@ -130,7 +132,8 @@ public class TableroGridPane{
         pic.setFitWidth(40);
         pic.setFitHeight(40);
         pic.setImage(image);
-        tableroGridPane.add(pic, x, y);
+        tableroGridPane.getChildren().add(pic);
+        tableroGridPane.add(pic, y, x);
     }
 
     public void agregarContenidoCeldaCurandero(int x, int y) {
@@ -139,6 +142,7 @@ public class TableroGridPane{
         pic.setFitWidth(40);
         pic.setFitHeight(40);
         pic.setImage(image);
-        tableroGridPane.add(pic, x, y);
+        tableroGridPane.getChildren().add(pic);
+        tableroGridPane.add(pic, y, x);
     }
 }
