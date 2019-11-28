@@ -8,12 +8,9 @@ import Modelo.AlgoChess;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -68,7 +65,7 @@ public class BotonUbicacionJugador1 extends Button implements EventHandler<Actio
             }
 
         }else if(cantidadRestante == 0){
-            AlertBoxEleccionSector.display("Error", "No le quedan mas de esa unidad");
+            AlertBox.display("Error", "No le quedan mas de esa unidad");
         }
     }
 

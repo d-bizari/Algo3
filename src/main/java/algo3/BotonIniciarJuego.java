@@ -8,9 +8,6 @@ import Modelo.AlgoChess;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -37,7 +34,7 @@ public class BotonIniciarJuego extends Button implements EventHandler<ActionEven
     public void handle(ActionEvent actionEvent) {
 
         if(sectores1.getValue().equals(sectores2.getValue())){
-            AlertBoxEleccionSector.display("Error", "No pueden elegir el mismo sector del tablero");
+            AlertBox.display("Error", "No pueden elegir el mismo sector del tablero");
 
         }else{
             juego.agregarJugador(nombreJugador1.getText(), (int)sectores1.getValue());

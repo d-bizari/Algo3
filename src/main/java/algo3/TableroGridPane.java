@@ -1,6 +1,7 @@
 package algo3;
 
 import Modelo.AlgoChess;
+import Modelo.Coordenada;
 import Modelo.Tablero;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -12,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.event.ActionEvent;
+
 
 import java.io.File;
 import java.util.ArrayList;
@@ -76,13 +78,24 @@ public class TableroGridPane{
         return tableroGridPane;
     }
 
-    public void clickGrid(javafx.scene.input.MouseEvent event){
+    /*public void clickGrid(javafx.scene.input.MouseEvent event){
 
         Node clickedNode = event.getPickResult().getIntersectedNode();
         if (clickedNode != tableroGridPane) {
             colIndex = GridPane.getColumnIndex(clickedNode);
             rowIndex = GridPane.getRowIndex(clickedNode);
         }
+    }*/
+
+   public Coordenada clickGrid(javafx.scene.input.MouseEvent event){
+
+        Node clickedNode = event.getPickResult().getIntersectedNode();
+        if (clickedNode != tableroGridPane) {
+            colIndex = GridPane.getColumnIndex(clickedNode);
+            rowIndex = GridPane.getRowIndex(clickedNode);
+        }
+
+        return new Coordenada(colIndex, rowIndex);
     }
 
     public Integer getColIndex(){

@@ -6,7 +6,7 @@ import javafx.stage.*;
         import javafx.scene.control.*;
         import javafx.geometry.*;
 
-public class AlertBoxEleccionSector {
+public class AlertBox {
 
     public static void display(String title, String message) {
         Stage window = new Stage();
