@@ -105,7 +105,26 @@ public class SelectorUnidades{
     }
 
     private static void onChoiceBoxChange(){
-        int condicion = (int)soldadoInfanteria.getValue() + (int)jinete.getValue() * 3 + (int)catapulta.getValue() * 5 + (int)curandero.getValue() * 2;
+        int condicion = 0;
+
+        if (soldadoInfanteria != null){
+            condicion = (int)soldadoInfanteria.getValue() + condicion;
+        }
+
+        if(jinete.getValue() != null){
+            condicion = (int)jinete.getValue() * 3 + condicion;
+
+        }
+
+        if(catapulta.getValue() != null){
+            condicion = (int)catapulta.getValue() * 5 + condicion;
+
+        }
+
+        if(curandero.getValue() != null){
+            condicion = (int)curandero.getValue() * 2 + condicion;
+
+        }
         if(condicion == 20){
             continuar.setDisable(false);
         }else{
