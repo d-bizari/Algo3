@@ -1,9 +1,8 @@
 Excepciones/NoPuedeCurar.class
-algo3/AlertBoxEleccionSector.class
 Excepciones/CoordenadaFueraDeRango.class
 Excepciones/NoPuedeAtacar.class
-algo3/TableroGridPane.class
 module-info.class
+algo3/TableroGridPane.class
 Excepciones/CeldaOcupada.class
 Excepciones/PuntosInsuficientesException.class
 Excepciones/ErrorNoHayUnidadAtacante.class

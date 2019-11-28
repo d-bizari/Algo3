@@ -108,21 +108,37 @@ public class TableroGridPane{
 
     public void agregarContenidoCeldaSoldado(int x, int y) {
         Image image = new Image("file:img/soldadoooo.jpg");
-        tableroGridPane.getChildren().add(new ImageView(image));
+        ImageView pic = new ImageView();
+        pic.setFitWidth(40);
+        pic.setFitHeight(40);
+        pic.setImage(image);
+        tableroGridPane.add(pic, x, y);
     }
 
     public void agregarContenidoCeldaJinete(int x, int y) {
         Image image = new Image("file:img/Jinete.jpg");
-        tableroGridPane.getChildren().add(new ImageView(image));
+        ImageView pic = new ImageView();
+        pic.setFitWidth(40);
+        pic.setFitHeight(40);
+        pic.setImage(image);
+        tableroGridPane.add(pic, x, y);
     }
 
     public void agregarContenidoCeldaCatapulta(int x, int y) {
         Image image = new Image("file:img/Catapulta.png");
-        tableroGridPane.getChildren().add(new ImageView(image));
+        ImageView pic = new ImageView();
+        pic.setFitWidth(40);
+        pic.setFitHeight(40);
+        pic.setImage(image);
+        tableroGridPane.add(pic, x, y);
     }
 
     public void agregarContenidoCeldaCurandero(int x, int y) {
         Image image = new Image("file:img/curanderabuenacalidad.jpg");
-        tableroGridPane.getChildren().add(new ImageView(image));
+        ImageView pic = new ImageView();
+        pic.setFitWidth(40);
+        pic.setFitHeight(40);
+        pic.setImage(image);
+        tableroGridPane.add(pic, x, y);
     }
 }
