@@ -108,6 +108,23 @@ public class Controlador {
         hashUnidadesJugador2 = SelectorUnidades.display(jugador2);
 
         irAUbicarUnidades(stage, escenaJuego);
+
+        stage.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event){
+                //AlertBox.display("Atencion", tablero.clickGrid(event));
+                Coordenada coordenada = tablero.clickGrid(event);
+                if(QuedanUnidades(hashUnidadesJugador1)){
+                    abrirColocadorUnidades("Turno jugador 1", "Elija unidad para colocar", jugador1.getText(), coordenada.getCoordenadaX(), coordenada.getCoordenadaY(), hashUnidadesJugador1);
+                } else if (QuedanUnidades(hashUnidadesJugador2)){
+                    abrirColocadorUnidades("Turno jugador 2", "Elija unidad para colocar", jugador2.getText(), coordenada.getCoordenadaX(), coordenada.getCoordenadaY(), hashUnidadesJugador2);
+                }
+                else {
+                    System.out.println("Ataque");
+                }
+                event.consume();
+            }
+        });
     }
 
     private void irAUbicarUnidades(Stage stage, Scene scene) throws PuntosInsuficientesException, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, CeldaOcupada  {
@@ -124,29 +141,17 @@ public class Controlador {
         cantidadUnidadesJugador1 = crearGridCantidadUnidades(jugador1.getText() , hashUnidadesJugador1, botonUbicacion1);
         cantidadUnidadesJugador2 = crearGridCantidadUnidades(jugador2.getText() , hashUnidadesJugador2, botonUbicacion2);
 
-        scene.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                //AlertBox.display("Atencion", tablero.clickGrid(event));
-                Coordenada coordenada = tablero.clickGrid(event);
-                if(QuedanUnidades(hashUnidadesJugador1)){
-                    abrirColocadorUnidades("Turno jugador 1", "Elija unidad para colocar", jugador1.getText(), coordenada.getCoordenadaX(), coordenada.getCoordenadaY(), hashUnidadesJugador1);
-                } else if (QuedanUnidades(hashUnidadesJugador2)){
-                    abrirColocadorUnidades("Turno jugador 2", "Elija unidad para colocar", jugador2.getText(), coordenada.getCoordenadaX(), coordenada.getCoordenadaY(), hashUnidadesJugador2);
-                }
-                else {
-                    System.out.println("Ataque");
-                }
-                event.consume();
-            }
-        });
-
         HBox caja = new HBox(cantidadUnidadesJugador1, tablero.getVisual(), cantidadUnidadesJugador2);
         Scene escenaUbicarUnidades = new Scene(caja, 640, 480);
         stage.setScene(escenaUbicarUnidades);
     }
 
     private void abrirColocadorUnidades(String title, String message, String jugador, int x, int y, HashMap<String, Integer> unidadesJugador) {
+
+        final Integer cantRestante1;
+        final Integer cantRestante2;
+        final Integer cantRestante3;
+        final Integer cantRestante4;
 
         Stage colocadorUnidades = new Stage();
 
@@ -158,7 +163,7 @@ public class Controlador {
         //Eleccion de sector
         ComboBox<String> unidades = new ComboBox<String>();
         unidades.getItems().addAll(
-                "Jinete", "Soldado de infanteria", "Curandero", "Catapulta"
+                "Soldado Infanteria", "Jinete", "Curandero", "Catapulta"
         );
 
         unidades.setPromptText("Selecciona unidad");
@@ -169,26 +174,41 @@ public class Controlador {
         selectionButton.setOnAction(e -> {
             try {
                 switch (unidades.getValue()) {
-                    case "Jinete": if(unidadesJugador.get("Jinete") == 0){
+
+                    case "Jinete":
+                        if(unidadesJugador.get("Jinete") == 0){
                         AlertBox.display("Error", "No tiene mas jinetes");
                     }
                         juego.colocarJinetePara(jugador, x, y);
-                        unidadesJugador.put("Jinete", (unidadesJugador.get("Jinete") -1));
-                    case "Soldado de infanteria": if(unidadesJugador.get("Soldado de infanteria") == 0){
+                        unidadesJugador.put("Jinete", unidadesJugador.get("Jinete") - 1);
+                        tablero.agregarContenidoCeldaJinete(x,y);
+                        break;
+
+                    case "Soldado Infanteria":
+                        if(unidadesJugador.get("Soldado Infanteria") == 0){
                         AlertBox.display("Error", "No tiene mas soldados");
-                    }
+                        }
                         juego.colocarSoldadoInfanteriaPara(jugador,x, y);
-                        unidadesJugador.put("Soldado de infanteria", unidadesJugador.get("Soldado de infanteria") -1);
+                        unidadesJugador.put("Soldado Infanteria",  unidadesJugador.get("Soldado Infanteria") - 1);
+
+                        tablero.agregarContenidoCeldaSoldado(x,y);
+                        break;
+
                     case "Catapulta": if(unidadesJugador.get("Catapulta") == 0){
                         AlertBox.display("Error", "No tiene mas catapultas");
                     }
                         juego.colocarCatapultaPara(jugador, x, y);
                         unidadesJugador.put("Catapulta", unidadesJugador.get("Catapulta") -1);
+                        tablero.agregarContenidoCeldaCatapulta(x,y);
+                        break;
+
                     case "Curandero": if(unidadesJugador.get("Curandero") == 0){
                         AlertBox.display("Error", "No tiene mas curanderos");
                     }
                         juego.colocarCuranderoPara(jugador, x, y);
                         unidadesJugador.put("Curandero", unidadesJugador.get("Curandero") -1);
+                        tablero.agregarContenidoCeldaCurandero(x,y);
+                        break;
                 }
                 //TODO DESPUES DE CADA LLAMADA A JUEGO.COLOCAR HACER QUE APAREZCA LA IMAGEN EN EL TABLERO
             }
@@ -204,7 +224,6 @@ public class Controlador {
                 colocadorUnidades.close();
             }
         });
-
 
         VBox layout = new VBox(10);
         layout.getChildren().addAll(label, selectionButton, unidades);

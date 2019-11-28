@@ -13,13 +13,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.event.ActionEvent;
+import javafx.scene.text.Text;
 
 
 import java.io.File;
 import java.util.ArrayList;
 
 public class TableroGridPane{
-
 
     private GridPane tableroGridPane;
 
@@ -95,7 +95,7 @@ public class TableroGridPane{
             rowIndex = GridPane.getRowIndex(clickedNode);
         }
 
-        return new Coordenada(colIndex, rowIndex);
+        return new Coordenada(rowIndex, colIndex);
     }
 
     public Integer getColIndex(){
@@ -106,4 +106,23 @@ public class TableroGridPane{
         return rowIndex;
     }
 
+    public void agregarContenidoCeldaSoldado(int x, int y) {
+        Image image = new Image("file:img/soldadoooo.jpg");
+        tableroGridPane.getChildren().add(new ImageView(image));
+    }
+
+    public void agregarContenidoCeldaJinete(int x, int y) {
+        Image image = new Image("file:img/Jinete.jpg");
+        tableroGridPane.getChildren().add(new ImageView(image));
+    }
+
+    public void agregarContenidoCeldaCatapulta(int x, int y) {
+        Image image = new Image("file:img/Catapulta.png");
+        tableroGridPane.getChildren().add(new ImageView(image));
+    }
+
+    public void agregarContenidoCeldaCurandero(int x, int y) {
+        Image image = new Image("file:img/curanderabuenacalidad.jpg");
+        tableroGridPane.getChildren().add(new ImageView(image));
+    }
 }
