@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -14,22 +15,31 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SelectorUnidades{
 
-    private GridPane grid;
-    private int puntaje = 20;
-    private int cantidadSoldados = 21;
-    private int cantidadJinetes = 7;
-    private int cantidadCatapulta = 5;
-    private int cantidadCurandero = 11;
-    private ChoiceBox soldadoInfanteria;
-    private ChoiceBox jinete;
-    private ChoiceBox catapulta;
-    private ChoiceBox curandero;
-    private Button continuar;
+    static GridPane grid;
+    static int puntaje = 20;
+    static int cantidadSoldados = 21;
+    static int cantidadJinetes = 7;
+    static int cantidadCatapulta = 5;
+    static int cantidadCurandero = 11;
+    static ChoiceBox soldadoInfanteria;
+    static ChoiceBox jinete;
+    static ChoiceBox catapulta;
+    static ChoiceBox curandero;
+    static Button continuar;
 
-    public SelectorUnidades (Boolean pasarAtablero, Stage window, Scene scene3, Scene scene4, Scene scene5){
+    public static HashMap<String, Integer> display(TextField nombreJugador){
+
+        HashMap<String, Integer> unidadesSeleccionadas = new HashMap<String, Integer>();
+
+        Stage popWidow = new Stage();
+        String titulo = String.format("Jugador %s seleccione la cantidad de unidades que desea", nombreJugador.getText());
+        popWidow.setTitle(titulo);
+        popWidow.setMinWidth(250);
+
         grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
         grid.setVgap(8);
@@ -72,30 +82,29 @@ public class SelectorUnidades{
         GridPane.setConstraints(continuar, 6,6 );
 
         //Crea listeners para los choice box.
-        ChoiceBoxListener(soldadoInfanteria, pasarAtablero, window, scene4, scene5);
-        ChoiceBoxListener(jinete, pasarAtablero, window, scene4, scene5);
-        ChoiceBoxListener(catapulta, pasarAtablero, window, scene4, scene5);
-        ChoiceBoxListener(curandero, pasarAtablero, window, scene4, scene5);
+        ChoiceBoxListener(soldadoInfanteria);
+        ChoiceBoxListener(jinete);
+        ChoiceBoxListener(catapulta);
+        ChoiceBoxListener(curandero);
 
         grid.getChildren().addAll(text_puntos, text_soldadoCantidad, soldadoInfanteria, text_jineteCantidad, jinete, text_catapultaCantidad, catapulta, text_curanderoCantidad, curandero, continuar);
 
         continuar.setOnAction(e -> {
-            if(pasarAtablero){ //TODO QUE PASE DE ESCENA.
-                window.setScene(scene5);
-            }
-            window.setScene(scene4);
+            unidadesSeleccionadas.put("Soldado Infanteria", (Integer) soldadoInfanteria.getValue());
+            unidadesSeleccionadas.put("Jinete", (Integer) jinete.getValue());
+            unidadesSeleccionadas.put("Catapulta", (Integer) catapulta.getValue());
+            unidadesSeleccionadas.put("Curandero", (Integer) curandero.getValue());
+            popWidow.close();
         });
-    }
-    private ArrayList<Integer> unidadesDeJugador(){
-        ArrayList<Integer> unidades = new ArrayList<Integer>();
-        unidades.add((Integer)soldadoInfanteria.getValue());
-        unidades.add((Integer)jinete.getValue());
-        unidades.add((Integer)catapulta.getValue());
-        unidades.add((Integer)curandero.getValue());
-        return unidades;
+
+        Scene vista = new Scene(grid);
+        popWidow.setScene(vista);
+        popWidow.showAndWait();
+
+        return unidadesSeleccionadas;
     }
 
-    private void onChoiceBoxChange(Boolean pasarAtablero, Stage window, Scene scene4, Scene scene5){
+    private static void onChoiceBoxChange(){
         int condicion = (int)soldadoInfanteria.getValue() + (int)jinete.getValue() * 3 + (int)catapulta.getValue() * 5 + (int)curandero.getValue() * 2;
         if(condicion == 20){
             continuar.setDisable(false);
@@ -104,13 +113,13 @@ public class SelectorUnidades{
         }
     }
 
-    public void ChoiceBoxListener(ChoiceBox<Integer> choiceBox, Boolean pasarAtablero, Stage window, Scene scene4, Scene scene5) {
+    public static void ChoiceBoxListener(ChoiceBox<Integer> choiceBox) {
         choiceBox.getSelectionModel().selectedItemProperty().addListener((v, valorViejo, valorNuevo) -> {
-            onChoiceBoxChange(pasarAtablero, window, scene4, scene5);
+            onChoiceBoxChange();
         });
     }
 
-    private ChoiceBox<Integer> createChoiceBox(int cantidad) {
+    private static ChoiceBox<Integer> createChoiceBox(int cantidad) {
        ChoiceBox choiceBox = new ChoiceBox<Integer>();
 
         for(int i = 0 ; i<cantidad; i++){
@@ -118,8 +127,6 @@ public class SelectorUnidades{
         }
         return choiceBox;
     }
-
-    public GridPane getGrid(){ return grid; }
 
 }
 

@@ -2,17 +2,21 @@ package algo3;
 
 import Modelo.AlgoChess;
 import Modelo.Tablero;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.event.ActionEvent;
 
 import java.io.File;
+import java.util.ArrayList;
 
-public class TableroGridPane {
+public class TableroGridPane{
 
 
     private GridPane tableroGridPane;
@@ -25,7 +29,10 @@ public class TableroGridPane {
     private int n;
     private int m;
 
-    public TableroGridPane(AlgoChess algoChess, double ancho, double alto) {
+    Integer colIndex;
+    Integer rowIndex;
+
+    public TableroGridPane(AlgoChess algoChess, double ancho, double alto){
 
         this.algoChess = algoChess;
 
@@ -37,9 +44,11 @@ public class TableroGridPane {
         tableroGridPane.setPrefSize(ancho, alto);
 
         setColoresEnTablero();
+
     }
 
-    private void setColoresEnTablero() {
+
+    private void setColoresEnTablero(){
         Label label;
         for (int y = 0; y < n; y++) {
             for (int x = 0; x < m; x++) {
@@ -67,14 +76,21 @@ public class TableroGridPane {
         return tableroGridPane;
     }
 
-    public String clickGrid(javafx.scene.input.MouseEvent event) {
+    public void clickGrid(javafx.scene.input.MouseEvent event){
+
         Node clickedNode = event.getPickResult().getIntersectedNode();
         if (clickedNode != tableroGridPane) {
-            Integer colIndex = GridPane.getColumnIndex(clickedNode);
-            Integer rowIndex = GridPane.getRowIndex(clickedNode);
-            return "Clickeo posicion x: " + colIndex + " y: " + rowIndex;
+            colIndex = GridPane.getColumnIndex(clickedNode);
+            rowIndex = GridPane.getRowIndex(clickedNode);
         }
-        return "hola";
+    }
+
+    public Integer getColIndex(){
+        return colIndex;
+    }
+
+    public Integer getRowIndex(){
+        return rowIndex;
     }
 
 }

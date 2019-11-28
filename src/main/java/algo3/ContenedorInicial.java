@@ -85,7 +85,6 @@ public class ContenedorInicial extends VBox {
         //Jugador 2
         Label sectorJugador2 = new Label("Sector:");
 
-
         BotonIniciarJuego botonJugar = new BotonIniciarJuego(stage, juego, jugador1, jugador2, sectores1, sectores2);
         botonJugar.setText("Iniciar partida");
         botonJugar.setDefaultButton(true);

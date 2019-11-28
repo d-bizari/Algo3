@@ -1,5 +1,9 @@
 package algo3;
 
+import Excepciones.CeldaDeTerritorioEnemigo;
+import Excepciones.CeldaOcupada;
+import Excepciones.CoordenadaFueraDeRango;
+import Excepciones.PuntosInsuficientesException;
 import Modelo.AlgoChess;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -34,12 +38,18 @@ public class BotonIniciarJuego extends Button implements EventHandler<ActionEven
 
         if(sectores1.getValue().equals(sectores2.getValue())){
             AlertBoxEleccionSector.display("Error", "No pueden elegir el mismo sector del tablero");
+
         }else{
             juego.agregarJugador(nombreJugador1.getText(), (int)sectores1.getValue());
             juego.agregarJugador(nombreJugador2.getText(), (int)sectores2.getValue());
-        }
+            Controlador controlador = new Controlador(stage, juego, nombreJugador1, nombreJugador2, (int)sectores1.getValue(), (int)sectores2.getValue());
+            try{
+                controlador.mostrar(stage);
+            }
+            catch (PuntosInsuficientesException | CoordenadaFueraDeRango | CeldaDeTerritorioEnemigo | CeldaOcupada g){
+                //TODO MANEJAR ERRORES
+            }
 
-        Controlador controlador = new Controlador(stage, juego, nombreJugador1, nombreJugador2, (int)sectores1.getValue(), (int)sectores2.getValue());
-        controlador.mostrar(stage);
+        }
     }
 }
