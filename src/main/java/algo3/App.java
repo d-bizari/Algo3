@@ -1,6 +1,7 @@
 package algo3;
 
 import Modelo.AlgoChess;
+import Vista.ContenedorInicial;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -9,16 +10,12 @@ import javafx.stage.Stage;
  * JavaFX App
  */
 public class App extends Application {
-
-    //public Stage window;
-    //private Scene scene1, scene2, scene3, scene4, scene5;
     AlgoChess juego;
     private TableroGridPane tablero;
 
     public static void main(String[] args) {
         launch(args);
     }
-
     @Override
     public void start(Stage stage) {
         stage.setTitle("AlgoChess");

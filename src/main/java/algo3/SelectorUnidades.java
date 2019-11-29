@@ -61,7 +61,7 @@ public class SelectorUnidades{
         Text text_catapultaCantidad = new Text("Catapulta:");
         Text text_curanderoCantidad = new Text("Curandero:");
 
-        String puntos_ = String.format("puntos: %s", puntaje);
+        String puntos_ = String.format("Puntos: %s", puntaje);
         Text text_puntos = new Text(puntos_);
 
         //Acomoda los textos y los choice box en el GridPane.
@@ -109,21 +109,23 @@ public class SelectorUnidades{
 
         if (soldadoInfanteria != null){
             condicion = (int)soldadoInfanteria.getValue() + condicion;
+            puntaje = puntaje - 1;
+            display(new TextField("test"));
         }
 
         if(jinete.getValue() != null){
             condicion = (int)jinete.getValue() * 3 + condicion;
-
+            puntaje = puntaje - 3;
         }
 
         if(catapulta.getValue() != null){
             condicion = (int)catapulta.getValue() * 5 + condicion;
-
+            puntaje = puntaje - 5;
         }
 
         if(curandero.getValue() != null){
             condicion = (int)curandero.getValue() * 2 + condicion;
-
+            puntaje = puntaje - 2;
         }
         if(condicion == 20){
             continuar.setDisable(false);

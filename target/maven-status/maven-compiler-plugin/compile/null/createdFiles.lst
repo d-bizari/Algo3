@@ -1,16 +1,1 @@
-Excepciones/NoPuedeCurar.class
-Excepciones/CoordenadaFueraDeRango.class
-Excepciones/NoPuedeAtacar.class
-module-info.class
-algo3/TableroGridPane.class
-Excepciones/CeldaOcupada.class
-Excepciones/PuntosInsuficientesException.class
-Excepciones/ErrorNoHayUnidadAtacante.class
-algo3/SystemInfo.class
-algo3/Controlador.class
-Excepciones/ErrorAutoAtaque.class
-algo3/ContenedorInicial.class
-algo3/BotonIniciarJuego.class
-Excepciones/CeldaDeTerritorioEnemigo.class
-Excepciones/NoPuedeMoverseException.class
-algo3/App.class
+Vista/ContenedorInicial.class

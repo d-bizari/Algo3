@@ -1,6 +1,7 @@
-package algo3;
+package Vista;
 
 import Modelo.AlgoChess;
+import algo3.BotonIniciarJuego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Side;
@@ -45,7 +46,6 @@ public class ContenedorInicial extends VBox {
     }
 
     private void fijarFondo() {
-
         Image imagen = new Image("file:img/imagenInicial.jpg");
         BackgroundPosition position = new BackgroundPosition(Side.LEFT, 0.5,
                 true, Side.BOTTOM, 0, true);
@@ -81,7 +81,7 @@ public class ContenedorInicial extends VBox {
         ChoiceBox<Integer> sectores2 = new ChoiceBox<Integer>();
         sectores2.getItems().add(1);
         sectores2.getItems().add(2);
-        sectores2.setValue(1);
+        sectores2.setValue(2);
         //Jugador 2
         Label sectorJugador2 = new Label("Sector:");
 
