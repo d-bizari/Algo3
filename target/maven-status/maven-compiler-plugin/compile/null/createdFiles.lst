@@ -1,3 +1,5 @@
 Vista/FaseInicial.class
-Vista/VentanaSeleccion.class
+Controlador/BotonSeleccionarUnidades.class
 Controlador/BotonIniciarJuego.class
+Vista/SelectorUnidades.class
+Vista/VentanaSeleccion.class

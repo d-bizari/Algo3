@@ -6,6 +6,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.HashMap;
+
 /**
  * JavaFX App
  */
@@ -22,9 +24,8 @@ public class App extends Application {
 
         juego = new AlgoChess(20,20);
 
-        FaseInicial contenedorInicial = new FaseInicial(stage, juego);
-        Scene escenaInicial = new Scene(contenedorInicial, 640, 480);
-
+        FaseInicial faseInicial = new FaseInicial(stage, juego);
+        Scene escenaInicial = new Scene(faseInicial, 640, 480);
         stage.setScene(escenaInicial);
         stage.setFullScreen(false);
 

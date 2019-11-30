@@ -1,4 +1,4 @@
-package algo3;
+package Controlador;
 
 import Excepciones.CeldaDeTerritorioEnemigo;
 import Excepciones.CeldaOcupada;
@@ -6,6 +6,8 @@ import Excepciones.CoordenadaFueraDeRango;
 import Excepciones.PuntosInsuficientesException;
 import Modelo.AlgoChess;
 import Modelo.Coordenada;
+import algo3.AlertBox;
+import algo3.TableroGridPane;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class Controlador {
+/*public class Controlador {
 
     private Stage stage;
     private AlgoChess juego;
