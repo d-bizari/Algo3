@@ -1,10 +1,12 @@
-package algo3;
+package Controlador;
 
 import Excepciones.CeldaDeTerritorioEnemigo;
 import Excepciones.CeldaOcupada;
 import Excepciones.CoordenadaFueraDeRango;
 import Excepciones.PuntosInsuficientesException;
 import Modelo.AlgoChess;
+import algo3.AlertBox;
+import algo3.Controlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;

@@ -1,7 +1,7 @@
 package algo3;
 
 import Modelo.AlgoChess;
-import Vista.ContenedorInicial;
+import Vista.FaseInicial;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -22,7 +22,7 @@ public class App extends Application {
 
         juego = new AlgoChess(20,20);
 
-        ContenedorInicial contenedorInicial = new ContenedorInicial(stage, juego);
+        FaseInicial contenedorInicial = new FaseInicial(stage, juego);
         Scene escenaInicial = new Scene(contenedorInicial, 640, 480);
 
         stage.setScene(escenaInicial);

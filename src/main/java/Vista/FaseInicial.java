@@ -1,7 +1,7 @@
 package Vista;
 
 import Modelo.AlgoChess;
-import algo3.BotonIniciarJuego;
+import Controlador.BotonIniciarJuego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Side;
@@ -16,9 +16,9 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-public class ContenedorInicial extends VBox {
+public class FaseInicial extends VBox {
 
-    public ContenedorInicial(Stage stage, AlgoChess juego) {
+    public FaseInicial(Stage stage, AlgoChess juego) {
         super();
 
         this.ubicarTituloSubtitulo();
