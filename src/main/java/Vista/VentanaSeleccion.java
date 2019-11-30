@@ -1,4 +1,4 @@
-package algo3;
+package Vista;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;

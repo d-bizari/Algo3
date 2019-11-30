@@ -1,6 +1,7 @@
 package algo3;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -30,6 +31,7 @@ public class SelectorUnidades{
     static ChoiceBox catapulta;
     static ChoiceBox curandero;
     static Button continuar;
+    static Text textPuntos;
 
     public static HashMap<String, Integer> display(TextField nombreJugador){
 
@@ -62,10 +64,10 @@ public class SelectorUnidades{
         Text text_curanderoCantidad = new Text("Curandero:");
 
         String puntos_ = String.format("Puntos: %s", puntaje);
-        Text text_puntos = new Text(puntos_);
+        textPuntos = new Text(puntos_); //FIXME
 
         //Acomoda los textos y los choice box en el GridPane.
-        GridPane.setConstraints(text_puntos, 1, 0);
+        GridPane.setConstraints(textPuntos, 1, 0);
 
         GridPane.setConstraints(text_soldadoCantidad, 1, 2);
         GridPane.setConstraints(soldadoInfanteria, 2, 2);
@@ -87,7 +89,7 @@ public class SelectorUnidades{
         ChoiceBoxListener(catapulta);
         ChoiceBoxListener(curandero);
 
-        grid.getChildren().addAll(text_puntos, text_soldadoCantidad, soldadoInfanteria, text_jineteCantidad, jinete, text_catapultaCantidad, catapulta, text_curanderoCantidad, curandero, continuar);
+        grid.getChildren().addAll(textPuntos, text_soldadoCantidad, soldadoInfanteria, text_jineteCantidad, jinete, text_catapultaCantidad, catapulta, text_curanderoCantidad, curandero, continuar);
 
         continuar.setOnAction(e -> {
             unidadesSeleccionadas.put("Soldado Infanteria", (Integer) soldadoInfanteria.getValue());
@@ -104,40 +106,40 @@ public class SelectorUnidades{
         return unidadesSeleccionadas;
     }
 
-    private static void onChoiceBoxChange(){
-        int condicion = 0;
-
-        if (soldadoInfanteria != null){
-            condicion = (int)soldadoInfanteria.getValue() + condicion;
-            puntaje = puntaje - 1;
-            display(new TextField("test"));
-        }
-
-        if(jinete.getValue() != null){
-            condicion = (int)jinete.getValue() * 3 + condicion;
-            puntaje = puntaje - 3;
-        }
-
-        if(catapulta.getValue() != null){
-            condicion = (int)catapulta.getValue() * 5 + condicion;
-            puntaje = puntaje - 5;
-        }
-
-        if(curandero.getValue() != null){
-            condicion = (int)curandero.getValue() * 2 + condicion;
-            puntaje = puntaje - 2;
-        }
-        if(condicion == 20){
-            continuar.setDisable(false);
-        }else{
-            continuar.setDisable(true);
-        }
+    private static void updatePuntaje(int puntaje){
+        textPuntos.setText(String.format("Puntos: %d", puntaje));
     }
 
     public static void ChoiceBoxListener(ChoiceBox<Integer> choiceBox) {
         choiceBox.getSelectionModel().selectedItemProperty().addListener((v, valorViejo, valorNuevo) -> {
             onChoiceBoxChange();
         });
+    }
+
+    private static void onChoiceBoxChange(){
+        int condicion = 0;
+
+        if (soldadoInfanteria != null){
+            condicion = (int)soldadoInfanteria.getValue() + condicion;
+        }
+
+        if(jinete.getValue() != null){
+            condicion = (int)jinete.getValue() * 3 + condicion;
+        }
+
+        if(catapulta.getValue() != null){
+            condicion = (int)catapulta.getValue() * 5 + condicion;
+        }
+
+        if(curandero.getValue() != null){
+            condicion = (int)curandero.getValue() * 2 + condicion;
+        }
+        updatePuntaje(puntaje - condicion);
+        if(condicion == 20){
+            continuar.setDisable(false);
+        }else{
+            continuar.setDisable(true);
+        }
     }
 
     private static ChoiceBox<Integer> createChoiceBox(int cantidad) {
