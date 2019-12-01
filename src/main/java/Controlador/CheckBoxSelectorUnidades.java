@@ -13,7 +13,8 @@ public class CheckBoxSelectorUnidades implements ChangeListener<Toggle> {
         this.vista = vista;
     }
 
-    @Override
+
+   @Override
     public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
         int puntosTotales = 0;
 
@@ -36,6 +37,6 @@ public class CheckBoxSelectorUnidades implements ChangeListener<Toggle> {
         //TODO hay que mantener registro de los puntos totales de otra meanera
         vista.puntajeNegativo(puntosTotales > 20); //Pinta texto de rojo si el puntaje es negativo
         vista.updatePuntaje(puntosTotales); //Refresca el puntaje total del usuario en la vista
-        vista.habilitarBotonContinuar(puntosTotales <= 20 && puntosTotales >= 10);
+        //vista.habilitarBotonContinuar(puntosTotales <= 20 && puntosTotales >= 10);
     }
 }

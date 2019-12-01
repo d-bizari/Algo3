@@ -145,4 +145,20 @@ public class TableroGridPane{
         tableroGridPane.getChildren().add(pic);
         tableroGridPane.add(pic, y, x);
     }
+
+    public void setUnidadEnCelda(String unidad, int x, int y) {
+       Label label = new Label();
+       label.setPrefWidth(anchoCelda);
+       label.setPrefHeight(altoCelda);
+       Image image = new Image("file:img/"+unidad+".jpg", anchoCelda, altoCelda, false, false);
+       label.setGraphic(new ImageView(image));
+       label.setPadding(new Insets(0, 0, 0, 0));
+       tableroGridPane.add(label, y, x);
+        /*ImageView pic = new ImageView();
+        pic.setFitWidth(40);
+        pic.setFitHeight(40);
+        pic.setImage(image);
+        tableroGridPane.getChildren().add(pic);
+        tableroGridPane.add(pic, y, x);*/
+    }
 }

@@ -2,6 +2,9 @@ package Vista;
 
 import Controlador.BotonSeleccionarUnidades;
 import Controlador.CheckBoxSelectorUnidades;
+import Modelo.AlgoChess;
+import Modelo.Coordenada;
+import algo3.TableroGridPane;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -26,7 +29,7 @@ public class SelectorUnidades{
     final ToggleGroup group;
     private Text textPuntos;
 
-    public SelectorUnidades(String nombreJugador){
+    public SelectorUnidades(String nombreJugador, AlgoChess juego, Coordenada coordenada, TableroGridPane tablero){
         popWidow = new Stage();
         popWidow.setTitle(String.format("%s seleccione la unidad que desea", nombreJugador));
         popWidow.setMinWidth(250);
@@ -38,16 +41,17 @@ public class SelectorUnidades{
 
         //Crea boton de continuar.
         continuar = new Button("Continuar");
-        BotonSeleccionarUnidades continuarEventHandler =  new BotonSeleccionarUnidades(this,continuar);
-        continuar.setDisable(true);
+
+        //BotonSeleccionarUnidades continuarEventHandler = new BotonSeleccionarUnidades(this, continuar, juego, coordenada, nombreJugador);
+
 
         //Crea los choice box para elegir cantidad de unidades.
         group = new ToggleGroup();
 
-        soldadoInfanteria = new RadioButton();
-        jinete            = new RadioButton();
-        catapulta         = new RadioButton();
-        curandero         = new RadioButton();
+        soldadoInfanteria = new RadioButton("Soldado Infanteria");
+        jinete            = new RadioButton("Jinete");
+        catapulta         = new RadioButton("Catapulta");
+        curandero         = new RadioButton("Curandero");
 
         //Agrego al togglegroup
         soldadoInfanteria.setSelected(true);
@@ -66,13 +70,13 @@ public class SelectorUnidades{
 
         //Acomoda los textos y los choice box en el GridPane.
         GridPane.setConstraints(textPuntos, 1, 0);
-        GridPane.setConstraints(text_soldadoCantidad, 1, 2);
+        //GridPane.setConstraints(text_soldadoCantidad, 1, 2);
         GridPane.setConstraints(soldadoInfanteria, 2, 2);
-        GridPane.setConstraints(text_jineteCantidad, 1, 3);
+        //GridPane.setConstraints(text_jineteCantidad, 1, 3);
         GridPane.setConstraints(jinete, 2, 3);
-        GridPane.setConstraints(text_catapultaCantidad, 1, 4);
+        //GridPane.setConstraints(text_catapultaCantidad, 1, 4);
         GridPane.setConstraints(catapulta, 2, 4);
-        GridPane.setConstraints(text_curanderoCantidad, 1, 5);
+        //GridPane.setConstraints(text_curanderoCantidad, 1, 5);
         GridPane.setConstraints(curandero, 2, 5);
         GridPane.setConstraints(continuar, 6,6 );
 
@@ -80,7 +84,8 @@ public class SelectorUnidades{
 
         grid.getChildren().addAll(textPuntos, text_soldadoCantidad, soldadoInfanteria, text_jineteCantidad, jinete, text_catapultaCantidad, catapulta, text_curanderoCantidad, curandero, continuar);
 
-        continuar.setOnAction(continuarEventHandler);
+        //continuar.setOnAction(continuarEventHandler);
+        continuar.setOnAction(new BotonSeleccionarUnidades(this, continuar, juego, coordenada, nombreJugador, obtenerSeleccionado(), tablero));
 
         Scene vista = new Scene(grid);
         popWidow.setScene(vista);
@@ -91,9 +96,9 @@ public class SelectorUnidades{
         textPuntos.setText(String.format("Puntos: %d", puntaje - puntajeTotal));
     }
 
-    public void habilitarBotonContinuar(boolean opt){
+    /*public void habilitarBotonContinuar(boolean opt){
         continuar.setDisable(!opt); //Si llega true, queda en estado habilitado, en caso de false deshabilitado
-    }
+    }*/
 
     public void cerrarVentana(){
         popWidow.close();
@@ -110,6 +115,11 @@ public class SelectorUnidades{
     }
     public boolean getValueCurandero(){
         return curandero.isSelected();
+    }
+
+    public String obtenerSeleccionado() {
+        RadioButton seleccionado = (RadioButton) group.getSelectedToggle();
+        return seleccionado.getText();
     }
 
     public void puntajeNegativo(boolean b) {

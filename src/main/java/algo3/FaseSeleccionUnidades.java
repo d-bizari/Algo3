@@ -38,7 +38,7 @@ public class FaseSeleccionUnidades {
                 if (jugadorEnTurno == "PASAR ETAPA") {
 
                 } else {
-                    new Vista.SelectorUnidades(jugadorEnTurno);
+                    new Vista.SelectorUnidades(jugadorEnTurno, juego, coordenada, tablero);
                 }
                 cambiarTurno();
                 event.consume();
