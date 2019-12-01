@@ -1,30 +1,5 @@
 package Controlador;
 
-import Excepciones.CeldaDeTerritorioEnemigo;
-import Excepciones.CeldaOcupada;
-import Excepciones.CoordenadaFueraDeRango;
-import Excepciones.PuntosInsuficientesException;
-import Modelo.AlgoChess;
-import Modelo.Coordenada;
-import algo3.AlertBox;
-import algo3.TableroGridPane;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.*;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-
-import javafx.scene.input.MouseEvent;
-import java.util.ArrayList;
-import java.util.HashMap;
-
 
 /*public class Controlador {
 

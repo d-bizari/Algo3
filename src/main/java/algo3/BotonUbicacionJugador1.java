@@ -5,6 +5,7 @@ import Excepciones.CeldaOcupada;
 import Excepciones.CoordenadaFueraDeRango;
 import Excepciones.PuntosInsuficientesException;
 import Modelo.AlgoChess;
+import Vista.AlertBox;
 import Vista.VentanaSeleccion;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

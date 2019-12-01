@@ -1,11 +1,7 @@
 package Controlador;
 
-import Excepciones.CeldaDeTerritorioEnemigo;
-import Excepciones.CeldaOcupada;
-import Excepciones.CoordenadaFueraDeRango;
-import Excepciones.PuntosInsuficientesException;
 import Modelo.AlgoChess;
-import algo3.AlertBox;
+import Vista.AlertBox;
 //import Controlador;
 import algo3.FaseSeleccionUnidades;
 import javafx.event.ActionEvent;

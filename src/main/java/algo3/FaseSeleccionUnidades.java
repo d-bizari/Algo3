@@ -3,6 +3,7 @@ package algo3;
 
 import Modelo.AlgoChess;
 import Modelo.Coordenada;
+import Vista.AlertBox;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;

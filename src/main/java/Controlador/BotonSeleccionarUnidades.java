@@ -3,14 +3,11 @@ package Controlador;
 import Modelo.AlgoChess;
 import Modelo.Coordenada;
 import Vista.SelectorUnidades;
-import algo3.AlertBox;
+import Vista.AlertBox;
 import algo3.TableroGridPane;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-
-import java.util.HashMap;
 
 public class BotonSeleccionarUnidades implements EventHandler<ActionEvent>{
     private SelectorUnidades vista;
