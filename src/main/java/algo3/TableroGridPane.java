@@ -106,45 +106,6 @@ public class TableroGridPane{
         return rowIndex;
     }
 
-    public void agregarContenidoCeldaSoldado(int x, int y) {
-        Image image = new Image("file:img/soldadoooo.jpg");
-        ImageView pic = new ImageView();
-        pic.setFitWidth(40);
-        pic.setFitHeight(40);
-        pic.setImage(image);
-        tableroGridPane.getChildren().add(pic);
-        tableroGridPane.add(pic, y, x);
-    }
-
-    public void agregarContenidoCeldaJinete(int x, int y) {
-        Image image = new Image("file:img/Jinete.jpg");
-        ImageView pic = new ImageView();
-        pic.setFitWidth(40);
-        pic.setFitHeight(40);
-        pic.setImage(image);
-        tableroGridPane.getChildren().add(pic);
-        tableroGridPane.add(pic, y, x); //EL GRID SE MANEJA AL REVES, PRIMERO PONE Y Y DESPUES X
-    }
-
-    public void agregarContenidoCeldaCatapulta(int x, int y) {
-        Image image = new Image("file:img/Catapulta.png");
-        ImageView pic = new ImageView();
-        pic.setFitWidth(40);
-        pic.setFitHeight(40);
-        pic.setImage(image);
-        tableroGridPane.getChildren().add(pic);
-        tableroGridPane.add(pic, y, x);
-    }
-
-    public void agregarContenidoCeldaCurandero(int x, int y) {
-        Image image = new Image("file:img/curanderabuenacalidad.jpg");
-        ImageView pic = new ImageView();
-        pic.setFitWidth(40);
-        pic.setFitHeight(40);
-        pic.setImage(image);
-        tableroGridPane.getChildren().add(pic);
-        tableroGridPane.add(pic, y, x);
-    }
 
     public void setUnidadEnCelda(String unidad, int x, int y) {
        Label label = new Label();
