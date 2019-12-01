@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.BotonSeleccionarUnidades;
+import Controlador.ChoiceBoxSelectorUnidades;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -97,7 +98,7 @@ public class SelectorUnidades{
     }
 
     public void ChoiceBoxListener(ChoiceBox<Integer> choiceBox) {
-        Controlador.SelectorUnidades selectorListener = new Controlador.SelectorUnidades(this);
+        ChoiceBoxSelectorUnidades selectorListener = new ChoiceBoxSelectorUnidades(this);
         choiceBox.getSelectionModel().selectedItemProperty().addListener((v, valorViejo, valorNuevo) -> {
             selectorListener.onChange();
         });

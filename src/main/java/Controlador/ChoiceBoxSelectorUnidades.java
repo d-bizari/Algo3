@@ -3,10 +3,10 @@ package Controlador;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
-public class SelectorUnidades {
+public class ChoiceBoxSelectorUnidades {
     private Vista.SelectorUnidades vista;
 
-    public SelectorUnidades(Vista.SelectorUnidades vista){
+    public ChoiceBoxSelectorUnidades(Vista.SelectorUnidades vista){
         this.vista = vista;
     }
 
