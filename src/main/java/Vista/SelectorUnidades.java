@@ -31,8 +31,9 @@ public class SelectorUnidades{
 
     public SelectorUnidades(String nombreJugador, AlgoChess juego, Coordenada coordenada, TableroGridPane tablero){
         popWidow = new Stage();
-        popWidow.setTitle(String.format("%s seleccione la unidad que desea", nombreJugador));
-        popWidow.setMinWidth(250);
+        popWidow.setTitle("Selector de Unidad");
+        popWidow.setMinWidth(300);
+        popWidow.setMinHeight(250);
 
         grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
@@ -42,10 +43,7 @@ public class SelectorUnidades{
         //Crea boton de continuar.
         continuar = new Button("Continuar");
 
-        //BotonSeleccionarUnidades continuarEventHandler = new BotonSeleccionarUnidades(this, continuar, juego, coordenada, nombreJugador);
-
-
-        //Crea los choice box para elegir cantidad de unidades.
+        //Crea los radio button para elegir cantidad de unidades.
         group = new ToggleGroup();
 
         soldadoInfanteria = new RadioButton("Soldado Infanteria");
@@ -60,31 +58,21 @@ public class SelectorUnidades{
         catapulta.setToggleGroup(group);
         curandero.setToggleGroup(group);
 
-        //crea texto que se muestra al lado de cada choice box.
-        Text text_soldadoCantidad   = new Text("Soldado infanteria:");
-        Text text_jineteCantidad    = new Text("Jinete:");
-        Text text_catapultaCantidad = new Text("Catapulta:");
-        Text text_curanderoCantidad = new Text("Curandero:");
-
-        textPuntos = new Text(String.format("Puntos: %s", puntaje));
+        //textPuntos = new Text(String.format("Puntos: %s", puntaje));
+        textPuntos = new Text("Seleccione la unidad que desee colocar");
 
         //Acomoda los textos y los choice box en el GridPane.
         GridPane.setConstraints(textPuntos, 1, 0);
-        //GridPane.setConstraints(text_soldadoCantidad, 1, 2);
-        GridPane.setConstraints(soldadoInfanteria, 2, 2);
-        //GridPane.setConstraints(text_jineteCantidad, 1, 3);
-        GridPane.setConstraints(jinete, 2, 3);
-        //GridPane.setConstraints(text_catapultaCantidad, 1, 4);
-        GridPane.setConstraints(catapulta, 2, 4);
-        //GridPane.setConstraints(text_curanderoCantidad, 1, 5);
-        GridPane.setConstraints(curandero, 2, 5);
-        GridPane.setConstraints(continuar, 6,6 );
+        GridPane.setConstraints(soldadoInfanteria, 1, 2);
+        GridPane.setConstraints(jinete, 1, 3);
+        GridPane.setConstraints(catapulta, 1, 4);
+        GridPane.setConstraints(curandero, 1, 5);
+        GridPane.setConstraints(continuar, 2,10 );
 
         group.selectedToggleProperty().addListener(new CheckBoxSelectorUnidades(this));
 
-        grid.getChildren().addAll(textPuntos, text_soldadoCantidad, soldadoInfanteria, text_jineteCantidad, jinete, text_catapultaCantidad, catapulta, text_curanderoCantidad, curandero, continuar);
+        grid.getChildren().addAll(textPuntos, soldadoInfanteria, jinete, catapulta, curandero, continuar);
 
-        //continuar.setOnAction(continuarEventHandler);
         continuar.setOnAction(new BotonSeleccionarUnidades(this, continuar, juego, coordenada, nombreJugador, obtenerSeleccionado(), tablero));
 
         Scene vista = new Scene(grid);
@@ -93,7 +81,7 @@ public class SelectorUnidades{
     }
 
     public void updatePuntaje(int puntajeTotal){
-        textPuntos.setText(String.format("Puntos: %d", puntaje - puntajeTotal));
+        //textPuntos.setText(String.format("Puntos: %d", puntaje - puntajeTotal));
     }
 
     /*public void habilitarBotonContinuar(boolean opt){

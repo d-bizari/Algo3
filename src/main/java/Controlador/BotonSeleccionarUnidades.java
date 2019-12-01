@@ -67,15 +67,8 @@ public class BotonSeleccionarUnidades implements EventHandler<ActionEvent>{
             AlertBox.display("Error", "Puntos Insuficientes");
         }
         event.consume();
+        vista.cerrarVentana();
     }
-        //HashMap<String, Integer> unidadesSeleccionadas = new HashMap<String, Integer>();
-
-        /*unidadesSeleccionadas.put("Soldado Infanteria", vista.getValueSoldadoInfanteria());
-        unidadesSeleccionadas.put("Jinete", vista.getValueJinete());
-        unidadesSeleccionadas.put("Catapulta", vista.getValueCatapulta());
-        unidadesSeleccionadas.put("Curandero", (Integer) vista.getValueCurandero());*/
-        //TODO enviar el hashMap a donde sea necesario
-        //vista.cerrarVentana();
-    }
+}
 
 
