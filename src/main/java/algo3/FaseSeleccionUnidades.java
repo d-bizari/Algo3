@@ -38,6 +38,14 @@ public class FaseSeleccionUnidades {
                 if (jugadorEnTurno == "PASAR ETAPA") {
 
                 } else {
+                    try{
+                        if(juego.getCelda(coordenada.getCoordenadaX(),coordenada.getCoordenadaY()).estaOcupada()){
+                            AlertBox.display("Aviso - No se puede colocar", "Celda ocupada");
+                            return;
+                        }
+                    }catch (Exception e){
+                        AlertBox.display("Error - Fuera de rango", "Fuera de rango");
+                    }
                     new Vista.SelectorUnidades(jugadorEnTurno, juego, coordenada, tablero);
                 }
                 cambiarTurno();

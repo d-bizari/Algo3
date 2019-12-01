@@ -66,8 +66,8 @@ public class BotonSeleccionarUnidades implements EventHandler<ActionEvent>{
             exc.printStackTrace();
             AlertBox.display("Error", "Puntos Insuficientes");
         }
-        event.consume();
         vista.cerrarVentana();
+        event.consume();
     }
 }
 

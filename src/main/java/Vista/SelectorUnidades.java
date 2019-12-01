@@ -1,7 +1,7 @@
 package Vista;
 
 import Controlador.BotonSeleccionarUnidades;
-import Controlador.CheckBoxSelectorUnidades;
+import Controlador.RadioButtonSelectorUnidades;
 import Modelo.AlgoChess;
 import Modelo.Coordenada;
 import algo3.TableroGridPane;
@@ -69,7 +69,7 @@ public class SelectorUnidades{
         GridPane.setConstraints(curandero, 1, 5);
         GridPane.setConstraints(continuar, 2,10 );
 
-        group.selectedToggleProperty().addListener(new CheckBoxSelectorUnidades(this));
+        group.selectedToggleProperty().addListener(new RadioButtonSelectorUnidades(this));
 
         grid.getChildren().addAll(textPuntos, soldadoInfanteria, jinete, catapulta, curandero, continuar);
 

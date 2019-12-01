@@ -12,6 +12,7 @@ Modelo/Jinete.class
 Excepciones/NoPuedeAtacar.class
 Vista/VentanaSeleccion.class
 algo3/PropiedadUnidad.class
+Controlador/RadioButtonSelectorUnidades.class
 Modelo/Puntaje.class
 module-info.class
 algo3/TableroGridPane.class
@@ -33,7 +34,6 @@ Modelo/Vida.class
 Modelo/Catapulta.class
 Controlador/BotonIniciarJuego.class
 Excepciones/ErrorAutoAtaque.class
-Controlador/CheckBoxSelectorUnidades.class
 Modelo/AlgoChess.class
 Modelo/Tablero.class
 Modelo/SoldadoInfanteria.class

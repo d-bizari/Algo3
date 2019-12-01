@@ -6,10 +6,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Toggle;
 
-public class CheckBoxSelectorUnidades implements ChangeListener<Toggle> {
+public class RadioButtonSelectorUnidades implements ChangeListener<Toggle> {
     private Vista.SelectorUnidades vista;
 
-    public CheckBoxSelectorUnidades(Vista.SelectorUnidades vista){
+    public RadioButtonSelectorUnidades(Vista.SelectorUnidades vista){
         this.vista = vista;
     }
 
