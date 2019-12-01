@@ -64,7 +64,7 @@ public class SelectorUnidades{
         curandero.setToggleGroup(group);
 
         Text titulo = new Text("Seleccione la unidad que desee colocar");
-        textPuntos = new Text(String.format("Puntos disponibles: %d",juego.getPuntosDe(nombreJugador)));
+        textPuntos = new Text(String.format("Puntos disponibles: %d",juego.getPuntosDe(nombreJugador) - 1));
         textPuntos.setFill(Color.GREEN);
 
         //Acomoda los textos y los choice box en el GridPane.
@@ -88,7 +88,7 @@ public class SelectorUnidades{
     }
 
     public void updatePuntaje(int puntos){
-        textPuntos.setText(String.format("Puntos disponibles: %d",juego.getPuntosDe(nombreJugador) - puntos - 1));
+        textPuntos.setText(String.format("Puntos disponibles: %d",juego.getPuntosDe(nombreJugador) - puntos));
     }
 
     /*public void habilitarBotonContinuar(boolean opt){
