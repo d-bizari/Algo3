@@ -2,8 +2,8 @@ Excepciones/NoPuedeCurar.class
 Modelo/EstadoJineteEspada.class
 Vista/SelectorUnidades.class
 Modelo/Jugador.class
-Excepciones/CoordenadaFueraDeRango.class
 algo3/FaseSeleccionUnidades$1.class
+Excepciones/CoordenadaFueraDeRango.class
 Modelo/Coordenada.class
 Vista/FaseInicial.class
 Modelo/AgrupacionInactiva.class
@@ -12,14 +12,14 @@ Modelo/Jinete.class
 Excepciones/NoPuedeAtacar.class
 Vista/VentanaSeleccion.class
 algo3/PropiedadUnidad.class
-module-info.class
-Modelo/Puntaje.class
 Controlador/RadioButtonSelectorUnidades.class
+Modelo/Puntaje.class
+module-info.class
 algo3/TableroGridPane.class
 Modelo/PuedeCurar.class
 Modelo/Curandero.class
-Modelo/EstadoJinete.class
 Modelo/Unidad.class
+Modelo/EstadoJinete.class
 Modelo/EstadoJineteArcoYFlecha.class
 Excepciones/CeldaOcupada.class
 Modelo/AgrupacionActiva.class

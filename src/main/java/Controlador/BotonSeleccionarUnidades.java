@@ -33,7 +33,6 @@ public class BotonSeleccionarUnidades implements EventHandler<ActionEvent>{
     @Override
     public void handle(ActionEvent event) {
         this.unidadElegida = vista.obtenerSeleccionado();
-        AlertBox.display("test",jugador);
         try {
             switch (unidadElegida) {
                 case "Jinete":
