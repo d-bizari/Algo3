@@ -88,7 +88,7 @@ public class SelectorUnidades{
     }
 
     public void updatePuntaje(int puntos){
-        textPuntos.setText(String.format("Puntos disponibles: %d",juego.getPuntosDe(nombreJugador) - puntos));
+        textPuntos.setText(String.format("Puntos disponibles: %d",juego.getPuntosDe(nombreJugador) - puntos - 1));
     }
 
     /*public void habilitarBotonContinuar(boolean opt){
