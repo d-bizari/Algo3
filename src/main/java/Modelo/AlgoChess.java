@@ -26,7 +26,7 @@ public class AlgoChess {
     }
 
     private Jugador identificarJugador(String nombreJugador) {
-        if(jugador1.getNombre() == nombreJugador) {
+        if(jugador1.getNombre().equals(nombreJugador)) {
             return jugador1;
         }
         return jugador2;
