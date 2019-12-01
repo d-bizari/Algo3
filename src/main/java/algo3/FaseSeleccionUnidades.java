@@ -46,10 +46,7 @@ public class FaseSeleccionUnidades {
                     }catch (Exception e){
                         AlertBox.display("Error - Fuera de rango", "Fuera de rango");
                     }
-                    AlertBox.display("TURNO: ", jugadorEnTurno);
-                    AlertBox.display("PUNTOS JUGADOR1", String.format("%s: %d", nombreJugador1, juego.getPuntosDe(nombreJugador1)));
-                    AlertBox.display("PUNTOS JUGADOR2", String.format("%s: %d", nombreJugador2, juego.getPuntosDe(nombreJugador2)));
-                    new Vista.SelectorUnidades(nombreJugador1, juego, coordenada, tablero);
+                    new Vista.SelectorUnidades(jugadorEnTurno, juego, coordenada, tablero);
                     cambiarTurno();
                 }
 
