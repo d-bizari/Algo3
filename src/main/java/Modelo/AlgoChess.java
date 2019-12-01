@@ -49,14 +49,14 @@ public class AlgoChess {
     }
     public void colocarCuranderoPara(String nombreJugador, int x, int y) throws PuntosInsuficientesException, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, CeldaOcupada {
         Coordenada coordenadaUnidad = tablero.getCoordenada(x,y);
-        Curandero curandero = new Curandero(coordenadaUnidad); //PREGUNTAR SI NO SE PUEDE COLOCAR COMO LA BORRO DESPUES????
+        Curandero curandero = new Curandero(coordenadaUnidad);
         Jugador jugador = identificarJugador(nombreJugador);
         curandero.colocarUnidad(jugador);
         this.colocarUnidad(curandero);
     }
     public void colocarJinetePara(String nombreJugador, int x, int y) throws PuntosInsuficientesException, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, CeldaOcupada {
         Coordenada coordenadaUnidad = tablero.getCoordenada(x,y);
-        Jinete jinete = new Jinete(coordenadaUnidad); //PREGUNTAR SI NO SE PUEDE COLOCAR COMO LA BORRO DESPUES????
+        Jinete jinete = new Jinete(coordenadaUnidad);
         Jugador jugador = identificarJugador(nombreJugador);
         jinete.colocarUnidad(jugador);
         this.colocarUnidad(jinete);

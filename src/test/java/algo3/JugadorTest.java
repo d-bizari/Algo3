@@ -67,10 +67,11 @@ public class JugadorTest {
 
         juego.colocarSoldadoInfanteriaPara("Dan",10,4);
         juego.colocarJinetePara("Dan",10,8);
-        juego.colocarCatapultaPara("Val",2,5);
+        //juego.colocarCatapultaPara("Val",2,5);
+        juego.colocarCatapultaPara("Dan",10,10);
 
-        Assert.assertEquals(16,juego.getPuntosDe("Dan"));
-        Assert.assertEquals(15,juego.getPuntosDe("Val"));
+        Assert.assertEquals(11,juego.getPuntosDe("Dan"));
+        Assert.assertEquals(20,juego.getPuntosDe("Val"));
     }
 
 }

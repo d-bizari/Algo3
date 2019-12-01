@@ -40,8 +40,8 @@ public class BotonIniciarJuego extends Button implements EventHandler<ActionEven
             AlertBox.display("Error", "No pueden elegir el mismo sector del tablero");
 
         }else{
-            juego.agregarJugador(nombreJugador1.getText(), (int)sectores1.getValue());
-            juego.agregarJugador(nombreJugador2.getText(), (int)sectores2.getValue());
+            juego.agregarJugador(nombreJugador1.getText(), 1); //(int)sectores1.getValue()
+            juego.agregarJugador(nombreJugador2.getText(), 2); //(int)sectores2.getValue()
             FaseSeleccionUnidades fase1 = new FaseSeleccionUnidades(stage, juego, nombreJugador1.getText(), nombreJugador2.getText());
             fase1.mostrar(stage);
             //Vista.SelectorUnidades view1 = new Vista.SelectorUnidades(nombreJugador1);
