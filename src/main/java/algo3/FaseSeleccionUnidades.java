@@ -43,9 +43,14 @@ public class FaseSeleccionUnidades {
                             AlertBox.display("Aviso - No se puede colocar", "Celda ocupada");
                             return;
                         }
+                        if(!juego.getCelda(coordenada.getCoordenadaX(),coordenada.getCoordenadaY()).esDeSectorAliado(juego.getJugador(jugadorEnTurno))){
+                            AlertBox.display("Aviso - No se puede colocar", "Territorio enemigo");
+                            return;
+                        }
                     }catch (Exception e){
                         AlertBox.display("Error - Fuera de rango", "Fuera de rango");
                     }
+
                     new Vista.SelectorUnidades(jugadorEnTurno, juego, coordenada, tablero);
                     cambiarTurno();
                 }

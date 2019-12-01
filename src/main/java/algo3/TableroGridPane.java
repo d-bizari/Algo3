@@ -78,15 +78,6 @@ public class TableroGridPane{
         return tableroGridPane;
     }
 
-    /*public void clickGrid(javafx.scene.input.MouseEvent event){
-
-        Node clickedNode = event.getPickResult().getIntersectedNode();
-        if (clickedNode != tableroGridPane) {
-            colIndex = GridPane.getColumnIndex(clickedNode);
-            rowIndex = GridPane.getRowIndex(clickedNode);
-        }
-    }*/
-
    public Coordenada clickGrid(javafx.scene.input.MouseEvent event){
 
         Node clickedNode = event.getPickResult().getIntersectedNode();
@@ -115,11 +106,5 @@ public class TableroGridPane{
        label.setGraphic(new ImageView(image));
        label.setPadding(new Insets(0, 0, 0, 0));
        tableroGridPane.add(label, y, x);
-        /*ImageView pic = new ImageView();
-        pic.setFitWidth(40);
-        pic.setFitHeight(40);
-        pic.setImage(image);
-        tableroGridPane.getChildren().add(pic);
-        tableroGridPane.add(pic, y, x);*/
     }
 }

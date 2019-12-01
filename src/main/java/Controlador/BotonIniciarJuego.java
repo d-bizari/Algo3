@@ -42,8 +42,8 @@ public class BotonIniciarJuego extends Button implements EventHandler<ActionEven
         }else{
             juego.agregarJugador(nombreJugador1.getText(), (int)sectores1.getValue());
             juego.agregarJugador(nombreJugador2.getText(), (int)sectores2.getValue());
-            FaseSeleccionUnidades fase1 = new FaseSeleccionUnidades(stage, juego, nombreJugador1.getText(), nombreJugador2.getText());
-            fase1.mostrar(stage);
+            FaseSeleccionUnidades faseSeleccion = new FaseSeleccionUnidades(stage, juego, nombreJugador1.getText(), nombreJugador2.getText());
+            faseSeleccion.mostrar(stage);
             //Vista.SelectorUnidades view1 = new Vista.SelectorUnidades(nombreJugador1);
             //Vista.SelectorUnidades view2 = new Vista.SelectorUnidades(nombreJugador2);
             //Controlador controlador = new Controlador(stage, juego, nombreJugador1, nombreJugador2, (int)sectores1.getValue(), (int)sectores2.getValue());

@@ -22,20 +22,20 @@ public class AlgoChess {
     }
 
     public int getPuntosDe(String jugador){
-        return identificarJugador(jugador).getPuntos();
+        return getJugador(jugador).getPuntos();
     }
 
-    private Jugador identificarJugador(String nombreJugador) {
+    public Jugador getJugador(String nombreJugador) {
         if(jugador1.getNombre().equals(nombreJugador)) {
             return jugador1;
         }
-        return jugador2;
+        return jugador2; //FIXME caso que ingresen un nombre erroneo
     }
 
     public void colocarCatapultaPara(String nombreJugador, int x, int y) throws PuntosInsuficientesException, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, CeldaOcupada {
         Coordenada coordenadaUnidad = tablero.getCoordenada(x,y);
         Catapulta catapulta = new Catapulta(coordenadaUnidad);
-        Jugador jugador = identificarJugador(nombreJugador);
+        Jugador jugador = getJugador(nombreJugador);
         catapulta.colocarUnidad(jugador);
         this.colocarUnidad(catapulta);
     }
@@ -43,21 +43,21 @@ public class AlgoChess {
     public void colocarSoldadoInfanteriaPara(String nombreJugador, int x, int y) throws PuntosInsuficientesException, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, CeldaOcupada {
         Coordenada coordenadaUnidad = tablero.getCoordenada(x,y);
         SoldadoInfanteria soldadoInfanteria = new SoldadoInfanteria(coordenadaUnidad);
-        Jugador jugador = identificarJugador(nombreJugador);
+        Jugador jugador = getJugador(nombreJugador);
         soldadoInfanteria.colocarUnidad(jugador);
         this.colocarUnidad(soldadoInfanteria);
     }
     public void colocarCuranderoPara(String nombreJugador, int x, int y) throws PuntosInsuficientesException, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, CeldaOcupada {
         Coordenada coordenadaUnidad = tablero.getCoordenada(x,y);
         Curandero curandero = new Curandero(coordenadaUnidad);
-        Jugador jugador = identificarJugador(nombreJugador);
+        Jugador jugador = getJugador(nombreJugador);
         curandero.colocarUnidad(jugador);
         this.colocarUnidad(curandero);
     }
     public void colocarJinetePara(String nombreJugador, int x, int y) throws PuntosInsuficientesException, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, CeldaOcupada {
         Coordenada coordenadaUnidad = tablero.getCoordenada(x,y);
         Jinete jinete = new Jinete(coordenadaUnidad);
-        Jugador jugador = identificarJugador(nombreJugador);
+        Jugador jugador = getJugador(nombreJugador);
         jinete.colocarUnidad(jugador);
         this.colocarUnidad(jinete);
     }
@@ -112,7 +112,7 @@ public class AlgoChess {
     }
 
     public Integer getPuntosRestantes(String nombreJugador) {
-        Jugador jugador = identificarJugador(nombreJugador);
+        Jugador jugador = getJugador(nombreJugador);
         return jugador.getPuntos();
     }
 }
