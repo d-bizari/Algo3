@@ -21,39 +21,39 @@ public class BotonSeleccionarUnidades implements EventHandler<ActionEvent>{
     private String unidadElegida;
     private TableroGridPane tablero;
 
-    public BotonSeleccionarUnidades(SelectorUnidades vista, Button b, AlgoChess juego, Coordenada coordena, String nombreJugador, String unidad, TableroGridPane tablero){
+    public BotonSeleccionarUnidades(SelectorUnidades vista, Button b, AlgoChess juego, Coordenada coordena, String nombreJugador, TableroGridPane tablero){
         this.vista = vista;
         this.b = b;
         this.juego = juego;
         this.jugador = nombreJugador;
         this.coordenada = coordena;
-        this.unidadElegida = unidad;
         this.tablero = tablero;
     }
 
     @Override
     public void handle(ActionEvent event) {
+        this.unidadElegida = vista.obtenerSeleccionado();
         try {
             switch (unidadElegida) {
                 case "Jinete":
                     juego.colocarJinetePara(jugador, coordenada.getCoordenadaX(), coordenada.getCoordenadaY());
-                    //tablero.setUnidadEnCelda(unidadElegida, coordenada.getCoordenadaX(),coordenada.getCoordenadaY());
-                    tablero.agregarContenidoCeldaJinete(coordenada.getCoordenadaX(), coordenada.getCoordenadaY());
+                    tablero.setUnidadEnCelda("Jinete", coordenada.getCoordenadaX(),coordenada.getCoordenadaY());
+                    //tablero.agregarContenidoCeldaJinete(coordenada.getCoordenadaX(), coordenada.getCoordenadaY());
                     break;
 
                 case "Soldado Infanteria":
                     juego.colocarSoldadoInfanteriaPara(jugador, coordenada.getCoordenadaX(), coordenada.getCoordenadaY());
-                    tablero.setUnidadEnCelda(unidadElegida, coordenada.getCoordenadaX(),coordenada.getCoordenadaY());
+                    tablero.setUnidadEnCelda("Soldado", coordenada.getCoordenadaX(),coordenada.getCoordenadaY());
                     break;
 
                 case "Catapulta":
                     juego.colocarCatapultaPara(jugador, coordenada.getCoordenadaX(), coordenada.getCoordenadaY());
-                    tablero.setUnidadEnCelda(unidadElegida, coordenada.getCoordenadaX(),coordenada.getCoordenadaY());
+                    tablero.setUnidadEnCelda("Catapulta", coordenada.getCoordenadaX(),coordenada.getCoordenadaY());
                     break;
 
                 case "Curandero":
                     juego.colocarCuranderoPara(jugador, coordenada.getCoordenadaX(), coordenada.getCoordenadaY());
-                    tablero.setUnidadEnCelda(unidadElegida, coordenada.getCoordenadaX(),coordenada.getCoordenadaY());
+                    tablero.setUnidadEnCelda("Curandero", coordenada.getCoordenadaX(),coordenada.getCoordenadaY());
                     break;
             }
         } catch (Excepciones.CeldaDeTerritorioEnemigo enem) {

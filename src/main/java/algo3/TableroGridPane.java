@@ -150,7 +150,7 @@ public class TableroGridPane{
        Label label = new Label();
        label.setPrefWidth(anchoCelda);
        label.setPrefHeight(altoCelda);
-       Image image = new Image("file:img/"+unidad+".jpg", anchoCelda, altoCelda, false, false);
+       Image image = new Image(String.format("file:img/%s.jpg",unidad), anchoCelda, altoCelda, false, false);
        label.setGraphic(new ImageView(image));
        label.setPadding(new Insets(0, 0, 0, 0));
        tableroGridPane.add(label, y, x);

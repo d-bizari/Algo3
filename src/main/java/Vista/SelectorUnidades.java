@@ -4,6 +4,7 @@ import Controlador.BotonSeleccionarUnidades;
 import Controlador.RadioButtonSelectorUnidades;
 import Modelo.AlgoChess;
 import Modelo.Coordenada;
+import algo3.AlertBox;
 import algo3.TableroGridPane;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -73,7 +74,7 @@ public class SelectorUnidades{
 
         grid.getChildren().addAll(textPuntos, soldadoInfanteria, jinete, catapulta, curandero, continuar);
 
-        continuar.setOnAction(new BotonSeleccionarUnidades(this, continuar, juego, coordenada, nombreJugador, obtenerSeleccionado(), tablero));
+        continuar.setOnAction(new BotonSeleccionarUnidades(this, continuar, juego, coordenada, nombreJugador, tablero));
 
         Scene vista = new Scene(grid);
         popWidow.setScene(vista);
