@@ -42,5 +42,5 @@ public class Jugador {
         return cantUnidades == 0;
     }
 
-
+    public int getPuntos() { return puntos.getPuntos(); }
 }

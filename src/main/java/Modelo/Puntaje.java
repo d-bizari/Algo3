@@ -9,6 +9,8 @@ public class Puntaje {
         puntos = 20;
     }
 
+    public int getPuntos(){ return puntos; }
+
     public void descontarPuntos (Integer puntosAdescontar) throws PuntosInsuficientesException {
         puntos = puntos - puntosAdescontar;
         if (puntos < 0) {

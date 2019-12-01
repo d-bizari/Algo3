@@ -20,6 +20,10 @@ public class AlgoChess {
         jugador2 = new Jugador(nombre, sector);
     }
 
+    public int getPuntosDe(String jugador){
+        return identificarJugador(jugador).getPuntos();
+    }
+
     private Jugador identificarJugador(String nombreJugador) {
         if(jugador1.getNombre() == nombreJugador) {
             return jugador1;
@@ -70,27 +74,6 @@ public class AlgoChess {
     }
 
     public void moverUnidadDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango {
-        //Se tiene que manejar desde aca la parte de batallon ya que se necesita el tablero para hacer efectivo el movimiento de
-        // las unidades, ya que el mover de las unidades solo cambia sus respectivas coordenadas, pero no los estados de las
-        // celdas.
-
-        // --------------- implementacion vieja de batallon -----------------------------
-        /*
-        int tempX;
-        int tempY;
-        if(this.getCelda(desdeFil,desdeCol).getUnidad() instanceof SoldadoInfanteria){
-            List<Celda> soldados = new LinkedList<Celda>();
-            soldados.add(this.getCelda(desdeFil,desdeCol));
-            tablero.buscarSoldadosContiguos(desdeFil,desdeCol,soldados);
-            int deltaFil = hastaFil - desdeFil;
-            int deltaCol = hastaCol - desdeCol;
-            for (Celda celda : soldados) {
-                tempX = celda.getUnidad().getCoordenadas().getCoordenadaX();
-                tempY = celda.getUnidad().getCoordenadas().getCoordenadaY();
-                tablero.moverUnidadDesdeHasta(tempX,tempY,tempX + deltaFil,tempY + deltaCol);
-            }
-            return;
-        } */
         tablero.moverUnidadDesdeHasta(desdeFil, desdeCol, hastaFil, hastaCol);
         return;
     }
