@@ -16,6 +16,7 @@ public class AlgoChess {
     public void agregarJugador(String nombre, int sector){
         if(sector == 1){
             jugador1 = new Jugador(nombre, sector);
+            return;
         }
         jugador2 = new Jugador(nombre, sector);
     }
@@ -33,7 +34,7 @@ public class AlgoChess {
 
     public void colocarCatapultaPara(String nombreJugador, int x, int y) throws PuntosInsuficientesException, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, CeldaOcupada {
         Coordenada coordenadaUnidad = tablero.getCoordenada(x,y);
-        Catapulta catapulta = new Catapulta(coordenadaUnidad); //PREGUNTAR SI NO SE PUEDE COLOCAR COMO LA BORRO DESPUES????
+        Catapulta catapulta = new Catapulta(coordenadaUnidad);
         Jugador jugador = identificarJugador(nombreJugador);
         catapulta.colocarUnidad(jugador);
         this.colocarUnidad(catapulta);

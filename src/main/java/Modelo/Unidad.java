@@ -64,6 +64,7 @@ public abstract class Unidad {
         vida.sufrirAtaque(danio);
         if (vida.estaMuerto()) {
             duenio.sufrirAtaque();
+            //TODO liberar lugar en la celda
         }
     }
 

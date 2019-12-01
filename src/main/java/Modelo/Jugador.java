@@ -27,6 +27,8 @@ public class Jugador {
     }
 
     public void sufrirAtaque() {
+        if(cantUnidades == 0)
+            return;
         cantUnidades--;
     }
 
