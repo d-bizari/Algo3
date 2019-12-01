@@ -21,10 +21,10 @@ public class BotonSeleccionarUnidades implements EventHandler<ActionEvent>{
     public void handle(ActionEvent event){
         HashMap<String, Integer> unidadesSeleccionadas = new HashMap<String, Integer>();
 
-        unidadesSeleccionadas.put("Soldado Infanteria", vista.getValueSoldadoInfanteria());
+        /*unidadesSeleccionadas.put("Soldado Infanteria", vista.getValueSoldadoInfanteria());
         unidadesSeleccionadas.put("Jinete", vista.getValueJinete());
         unidadesSeleccionadas.put("Catapulta", vista.getValueCatapulta());
-        unidadesSeleccionadas.put("Curandero", (Integer) vista.getValueCurandero());
+        unidadesSeleccionadas.put("Curandero", (Integer) vista.getValueCurandero());*/
         //TODO enviar el hashMap a donde sea necesario
         vista.cerrarVentana();
     }

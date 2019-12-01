@@ -1,12 +1,10 @@
 package Vista;
 
 import Controlador.BotonSeleccionarUnidades;
-import Controlador.ChoiceBoxSelectorUnidades;
+import Controlador.CheckBoxSelectorUnidades;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -20,22 +18,17 @@ public class SelectorUnidades{
     private int cantidadJinetes;
     private int cantidadCatapulta;
     private int cantidadCurandero;
-    private ChoiceBox soldadoInfanteria;
-    private ChoiceBox jinete;
-    private ChoiceBox catapulta;
-    private ChoiceBox curandero;
+    private RadioButton soldadoInfanteria;
+    private RadioButton jinete;
+    private RadioButton catapulta;
+    private RadioButton curandero;
     private Button continuar;
+    final ToggleGroup group;
     private Text textPuntos;
 
     public SelectorUnidades(TextField nombreJugador){
-        puntaje = 20;
-        cantidadSoldados = 21;
-        cantidadJinetes = 7;
-        cantidadCatapulta = 5;
-        cantidadCurandero = 11;
-
         popWidow = new Stage();
-        popWidow.setTitle(String.format("%s seleccione la cantidad de unidades que desea", nombreJugador.getText()));
+        popWidow.setTitle(String.format("%s seleccione la unidad que desea", nombreJugador.getText()));
         popWidow.setMinWidth(250);
 
         grid = new GridPane();
@@ -49,10 +42,19 @@ public class SelectorUnidades{
         continuar.setDisable(true);
 
         //Crea los choice box para elegir cantidad de unidades.
-        soldadoInfanteria = createChoiceBox(cantidadSoldados);
-        jinete            = createChoiceBox(cantidadJinetes);
-        catapulta         = createChoiceBox(cantidadCatapulta);
-        curandero         = createChoiceBox(cantidadCurandero);
+        group = new ToggleGroup();
+
+        soldadoInfanteria = new RadioButton();
+        jinete            = new RadioButton();
+        catapulta         = new RadioButton();
+        curandero         = new RadioButton();
+
+        //Agrego al togglegroup
+        soldadoInfanteria.setSelected(true);
+        soldadoInfanteria.setToggleGroup(group);
+        jinete.setToggleGroup(group);
+        catapulta.setToggleGroup(group);
+        curandero.setToggleGroup(group);
 
         //crea texto que se muestra al lado de cada choice box.
         Text text_soldadoCantidad   = new Text("Soldado infanteria:");
@@ -74,11 +76,7 @@ public class SelectorUnidades{
         GridPane.setConstraints(curandero, 2, 5);
         GridPane.setConstraints(continuar, 6,6 );
 
-        //Crea listeners para los choice box.
-        ChoiceBoxListener(soldadoInfanteria);
-        ChoiceBoxListener(jinete);
-        ChoiceBoxListener(catapulta);
-        ChoiceBoxListener(curandero);
+        group.selectedToggleProperty().addListener(new CheckBoxSelectorUnidades(this));
 
         grid.getChildren().addAll(textPuntos, text_soldadoCantidad, soldadoInfanteria, text_jineteCantidad, jinete, text_catapultaCantidad, catapulta, text_curanderoCantidad, curandero, continuar);
 
@@ -97,45 +95,21 @@ public class SelectorUnidades{
         continuar.setDisable(!opt); //Si llega true, queda en estado habilitado, en caso de false deshabilitado
     }
 
-    public void ChoiceBoxListener(ChoiceBox<Integer> choiceBox) {
-        ChoiceBoxSelectorUnidades selectorListener = new ChoiceBoxSelectorUnidades(this);
-        choiceBox.getSelectionModel().selectedItemProperty().addListener((v, valorViejo, valorNuevo) -> {
-            selectorListener.onChange();
-        });
-    }
-
     public void cerrarVentana(){
         popWidow.close();
     }
 
-    public int getValueSoldadoInfanteria(){
-        if (soldadoInfanteria.getValue() == null)
-            return -1;
-        return (int)soldadoInfanteria.getValue();
+    public boolean getValueSoldadoInfanteria(){
+         return soldadoInfanteria.isSelected();
     }
-    public int getValueJinete(){
-        if (jinete.getValue() == null)
-            return -1;
-        return (int)jinete.getValue();
+    public boolean getValueJinete(){
+        return jinete.isSelected();
     }
-    public int getValueCatapulta(){
-        if (catapulta.getValue() == null)
-            return -1;
-        return (int)catapulta.getValue();
+    public boolean getValueCatapulta(){
+        return catapulta.isSelected();
     }
-    public int getValueCurandero(){
-        if (curandero.getValue() == null)
-            return -1;
-        return (int)curandero.getValue();
-    }
-
-    private static ChoiceBox<Integer> createChoiceBox(int cantidad) {
-        ChoiceBox choiceBox = new ChoiceBox<Integer>();
-
-        for(int i = 0 ; i<cantidad; i++){
-            choiceBox.getItems().add(i);
-        }
-        return choiceBox;
+    public boolean getValueCurandero(){
+        return curandero.isSelected();
     }
 
     public void puntajeNegativo(boolean b) {
