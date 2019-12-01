@@ -18,6 +18,4 @@ public class Puntaje {
             throw new PuntosInsuficientesException("No tiene puntos suficientes para colocar la unidad");
         }
     }
-
-    public Integer getPuntos() { return puntos;}
 }
