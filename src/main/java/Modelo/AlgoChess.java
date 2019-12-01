@@ -126,4 +126,9 @@ public class AlgoChess {
     public Celda getCelda(int x, int y) throws CoordenadaFueraDeRango {
         return tablero.getCelda(x,y);
     }
+
+    public Integer getPuntosRestantes(String nombreJugador) {
+        Jugador jugador = identificarJugador(nombreJugador);
+        return jugador.getPuntos();
+    }
 }

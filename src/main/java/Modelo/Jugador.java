@@ -43,4 +43,5 @@ public class Jugador {
     }
 
 
+    public Integer getPuntos() { return puntos.getPuntos();}
 }

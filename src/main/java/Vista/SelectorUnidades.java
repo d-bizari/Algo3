@@ -26,9 +26,9 @@ public class SelectorUnidades{
     final ToggleGroup group;
     private Text textPuntos;
 
-    public SelectorUnidades(TextField nombreJugador){
+    public SelectorUnidades(String nombreJugador){
         popWidow = new Stage();
-        popWidow.setTitle(String.format("%s seleccione la unidad que desea", nombreJugador.getText()));
+        popWidow.setTitle(String.format("%s seleccione la unidad que desea", nombreJugador));
         popWidow.setMinWidth(250);
 
         grid = new GridPane();
