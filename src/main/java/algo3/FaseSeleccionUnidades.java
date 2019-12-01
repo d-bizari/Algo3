@@ -36,7 +36,8 @@ public class FaseSeleccionUnidades {
                 Label turno = new Label(jugadorEnTurno);
                 Coordenada coordenada = tablero.clickGrid(event);
                 if (jugadorEnTurno == "PASAR ETAPA") {
-
+                    FaseJuego fase2  = new FaseJuego(stage, juego, nombreJugador1, nombreJugador2, tablero);
+                    fase2.mostrar(stage);
                 } else {
                     try{
                         if(juego.getCelda(coordenada.getCoordenadaX(),coordenada.getCoordenadaY()).estaOcupada()){
