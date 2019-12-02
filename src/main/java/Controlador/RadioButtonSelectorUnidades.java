@@ -36,6 +36,7 @@ public class RadioButtonSelectorUnidades implements ChangeListener<Toggle> {
 
         vista.puntajeNegativo(puntosTotales); //Pinta texto de rojo si el puntaje es negativo
         vista.updatePuntaje(puntosTotales); //Refresca el puntaje total del usuario en la vista
+       vista.updateBoton(puntosTotales);
         //vista.habilitarBotonContinuar(puntosTotales <= 20 && puntosTotales >= 10);
     }
 }

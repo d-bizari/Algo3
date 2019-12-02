@@ -18,7 +18,7 @@ public class Curandero extends PuedeCurar {
         //No hace nada
     }
 
-    public void atacar(Unidad unidad, Celda celda) throws ErrorAutoAtaque {
+    public void atacar(Unidad unidad, Celda celda, Agrupacion agrupacion) throws ErrorAutoAtaque {
         if(coordenada.estanADistanciaCercana(this, unidad)) {
             unidad.sufrirAtaque(this.danioCuerpoACuerpo, celda);
         } else {

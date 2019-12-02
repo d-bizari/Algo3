@@ -93,9 +93,11 @@ public class Tablero {
 
         Celda celdaAliada = getCelda(desdeFil, desdeCol);
         Celda celdaEnemiga = getCelda(hastaFil, hastaCol);
+        Agrupacion unaAgrupacion = this.getCelda(desdeFil,desdeCol).getUnidad().getAgrupacion(); //Puede devolver Una agrupacion activa o inactiva
+        this.enviarInvitacionAUnidadesContiguas(this.getCelda(desdeFil,desdeCol), unaAgrupacion);
         List<Unidad> enemigosCercanos = this.ObtenerEnemigosCercanos(celdaAliada);
         List<Unidad> aliadosCercanos = this.ObtenerAliadosCercanos(celdaAliada);
-        celdaAliada.atacar(celdaEnemiga, enemigosCercanos, aliadosCercanos);
+        celdaAliada.atacar(celdaEnemiga, enemigosCercanos, aliadosCercanos, unaAgrupacion);
     }
 
     public void moverUnidadDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango {

@@ -119,5 +119,15 @@ public class SelectorUnidades{
         else
             textPuntos.setFill(Color.GREEN);
     }
+
+    public void updateBoton(int puntos) {
+        if(juego.getPuntosDe(nombreJugador) - puntos == 0){
+            continuar.setText("Siguiente!");
+            continuar.setStyle("-fx-base: #008000;");
+        }else{
+            continuar.setText("Continuar");
+            continuar.setStyle(null);
+        }
+    }
 }
 

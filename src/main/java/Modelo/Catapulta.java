@@ -23,7 +23,7 @@ public class Catapulta extends NoMovibleYNoCura {
         //No hace nada
     }
 
-    public void atacar(Unidad unidad, Celda celda) throws ErrorAutoAtaque {
+    public void atacar(Unidad unidad, Celda celda, Agrupacion agrupacion) throws ErrorAutoAtaque {
         if(coordenada.estanADistanciaLejana(this, unidad)) {
             unidad.sufrirAtaque(this.danioADistancia, celda);
         }

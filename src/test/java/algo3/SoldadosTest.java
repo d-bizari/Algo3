@@ -1,5 +1,9 @@
 package Modelo;
 
+import Excepciones.CeldaDeTerritorioEnemigo;
+import Excepciones.CeldaOcupada;
+import Excepciones.CoordenadaFueraDeRango;
+import Excepciones.PuntosInsuficientesException;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -138,8 +142,25 @@ public class SoldadosTest {
         Assert.assertTrue(celda2.estaOcupada());
     }
     @Test
-    public void TestNoSePuedenMoverHaciaLaCeldaDeAlgunMiembro(){
+    public void testAtaqueEnModoBatallon() throws CoordenadaFueraDeRango {
+        AlgoChess juego = new AlgoChess(20,20);
+        juego.agregarJugador("wola", 1);
+        juego.agregarJugador("malo",2);
+
+        try{
+            juego.colocarSoldadoInfanteriaPara("wola",9,11);
+            juego.colocarSoldadoInfanteriaPara("wola",9,10);
+            juego.colocarSoldadoInfanteriaPara("wola",9,9);
+
+            juego.colocarSoldadoInfanteriaPara("malo",10,10);
+
+            juego.atacarDesdeHasta(9,10,10,10);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Assert.assertEquals(70,juego.getCelda(10,10).getUnidad().verVidaRestante());
 
     }
-    //TODO hacer mas tests!
+
 }

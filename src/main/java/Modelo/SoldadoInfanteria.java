@@ -12,11 +12,20 @@ public class SoldadoInfanteria extends NoCura {
         this.coordenada = coordenadaUnidad;
     }
 
-    public void atacar(Unidad unidad, Celda celda) throws ErrorAutoAtaque {
+    public void atacar(Unidad unidad, Celda celda, Agrupacion agrupacion) throws ErrorAutoAtaque {
         if(coordenada.estanADistanciaCercana(this, unidad)) {
-            unidad.sufrirAtaque(this.danioCuerpoACuerpo, celda);
+
+            if(agrupacion.tieneBatallon()){
+                unidad.sufrirAtaque(this.danioCuerpoACuerpo * agrupacion.getCantidadDeMiembros(), celda);
+            }else{
+                unidad.sufrirAtaque(this.danioCuerpoACuerpo, celda);
+            }
         } else {
-            unidad.sufrirAtaque(this.danioADistancia, celda);
+            if(agrupacion.tieneBatallon()){
+                unidad.sufrirAtaque(this.danioADistancia * agrupacion.getCantidadDeMiembros(), celda);
+            }else{
+                unidad.sufrirAtaque(this.danioADistancia, celda);
+            }
         }
     }
 
