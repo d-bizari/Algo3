@@ -1,5 +1,6 @@
 package algo3;
 
+import Excepciones.CoordenadaFueraDeRango;
 import Modelo.AlgoChess;
 import Modelo.Coordenada;
 import Modelo.Tablero;
@@ -51,19 +52,9 @@ public class TableroGridPane{
 
 
     private void setColoresEnTablero(){
-        Label label;
         for (int x = 0; x < m; x++) {
             for (int y = 0; y < n; y++) {
-                label = new Label();
-
-                label.setPrefWidth(anchoCelda);
-                label.setPrefHeight(altoCelda);
-
-                Image image = new Image("file:img/sector" + getNumeroSector(x) + ".png",anchoCelda,altoCelda,false,false);
-                label.setGraphic(new ImageView(image));
-
-                label.setPadding(new Insets(0, 0, 0, 0));
-                tableroGridPane.add(label, y, x);
+                setColor(x, y);
             }
         }
 
@@ -107,20 +98,32 @@ public class TableroGridPane{
        label.setPadding(new Insets(0, 0, 0, 0));
        tableroGridPane.add(label, y, x);
     }
-
-    public void moverUnidad(String unidad, Coordenada coordenadaDesde, Coordenada coordenadaHasta) {
-        limpiarUnidad(coordenadaDesde.getCoordenadaX(), coordenadaDesde.getCoordenadaY());
-        setUnidadEnCelda(unidad, coordenadaHasta.getCoordenadaX(), coordenadaHasta.getCoordenadaY());
-    }
-
-    private void limpiarUnidad(int x, int y) {
+    
+    public void setColor(int x, int y) {
         Label label = new Label();
+
         label.setPrefWidth(anchoCelda);
         label.setPrefHeight(altoCelda);
+
         Image image = new Image("file:img/sector" + getNumeroSector(x) + ".png",anchoCelda,altoCelda,false,false);
         label.setGraphic(new ImageView(image));
+
         label.setPadding(new Insets(0, 0, 0, 0));
         tableroGridPane.add(label, y, x);
+
+    }
+
+    public void actualizar() throws CoordenadaFueraDeRango {
+        for (int x = 0; x < m; x++) {
+            for(int y = 0; y < n; y++) {
+                String tipoUnidad = algoChess.getTipoDeUnidadEnPosicion(x, y);
+                if (tipoUnidad.equals("NOHAYUNIDAD")) {
+                    this.setColor(x, y);
+                } else {
+                    this.setUnidadEnCelda(tipoUnidad, x, y);
+                }
+            }
+        }
     }
 
 }
