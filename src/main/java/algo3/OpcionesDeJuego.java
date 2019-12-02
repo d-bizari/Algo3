@@ -2,8 +2,10 @@ package algo3;
 
 import Controlador.BotonMoverUnidad;
 import Modelo.AlgoChess;
+import Modelo.Tablero;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -11,13 +13,19 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 
-public class OpcionesDeJuego<TableroGridPanetablero> {
+public class OpcionesDeJuego {
     VBox caja;
     AlgoChess juego;
     String jugador;
     TableroGridPane tablero;
-    public OpcionesDeJuego() {
+    Stage popWindow;
+
+    public OpcionesDeJuego(AlgoChess juego, TableroGridPane tablero, String jugador) {
+        this.jugador = jugador;
+        this.juego = juego;
+        this.tablero = tablero;
         this.caja = new VBox();
         this.ubicarTitulo();
         caja.setAlignment(Pos.TOP_CENTER);
@@ -25,6 +33,10 @@ public class OpcionesDeJuego<TableroGridPanetablero> {
         caja.setPadding(new Insets(25));
 
         this.fijarBotones();
+
+        popWindow =  new Stage();
+        popWindow.setScene(new Scene(caja));
+        popWindow.showAndWait();
 
 
     }

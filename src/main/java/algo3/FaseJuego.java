@@ -1,5 +1,7 @@
 package algo3;
 
+import Controlador.BotonJugar;
+import Controlador.BotonMoverUnidad;
 import Modelo.AlgoChess;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -42,11 +44,15 @@ public class FaseJuego {
         botonJugar1.setText("Jugar");
         botonJugar1.setStyle("-fx-base: #ff763d;");
         botonJugar1.setPrefSize(120, 30);
+        BotonJugar jugar1 = new BotonJugar(juego, tablero, nombreJugador1);
+        botonJugar1.setOnAction(jugar1);
 
         Button botonJugar2 = new Button();
         botonJugar2.setText("Jugar");
         botonJugar2.setStyle("-fx-base: #ff763d;");
         botonJugar2.setPrefSize(120, 30);
+        BotonJugar jugar2 = new BotonJugar(juego, tablero, nombreJugador2);
+        botonJugar1.setOnAction(jugar2);
 
         BorderPane caja = new BorderPane();
         caja.setLeft(botonJugar1);
