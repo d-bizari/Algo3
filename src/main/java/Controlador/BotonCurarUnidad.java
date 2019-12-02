@@ -12,7 +12,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
-public class BotonAtacarUnidad implements EventHandler<ActionEvent> {
+public class BotonCurarUnidad implements EventHandler<ActionEvent> {
     private AlgoChess juego;
     private TableroGridPane tablero;
     private Coordenada coordenadaDesde;
@@ -22,7 +22,7 @@ public class BotonAtacarUnidad implements EventHandler<ActionEvent> {
     private boolean aux;
     private FaseJuego faseJuego;
 
-    public BotonAtacarUnidad(AlgoChess juego, TableroGridPane tablero, String nombreJugador, OpcionesDeJuego vista, FaseJuego faseJuego) {
+    public BotonCurarUnidad(AlgoChess juego, TableroGridPane tablero, String nombreJugador, OpcionesDeJuego vista, FaseJuego faseJuego) {
         this.juego = juego;
         this.tablero = tablero;
         this.jugador = nombreJugador;
@@ -50,11 +50,11 @@ public class BotonAtacarUnidad implements EventHandler<ActionEvent> {
         } else if (coordenadaHasta == null) {
             coordenadaHasta = coordenada;
             try {
-                juego.atacarDesdeHasta(coordenadaDesde.getCoordenadaX(), coordenadaDesde.getCoordenadaY(), coordenadaHasta.getCoordenadaX(), coordenadaHasta.getCoordenadaY());
+                juego.curarDesdeHasta(coordenadaDesde.getCoordenadaX(), coordenadaDesde.getCoordenadaY(), coordenadaHasta.getCoordenadaX(), coordenadaHasta.getCoordenadaY());
                 tablero.actualizar();
             }
-            catch (ErrorAutoAtaque | ErrorNoHayUnidadAtacante | CoordenadaFueraDeRango exc) {
-                AlertBox.display("Atencion", "no puede atacar");
+            catch (NoPuedeCurar | ErrorAutoAtaque | ErrorNoHayUnidadAtacante |CoordenadaFueraDeRango exc) {
+                AlertBox.display("Atencion", "no puede curar");
 
             }
             faseJuego.cambiarTurno(jugador);
@@ -62,8 +62,3 @@ public class BotonAtacarUnidad implements EventHandler<ActionEvent> {
         }
     }
 }
-
-
-
-
-

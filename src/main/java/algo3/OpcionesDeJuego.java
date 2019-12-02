@@ -1,6 +1,7 @@
 package algo3;
 
 import Controlador.BotonAtacarUnidad;
+import Controlador.BotonCurarUnidad;
 import Controlador.BotonMoverUnidad;
 import Modelo.AlgoChess;
 import Modelo.Tablero;
@@ -30,8 +31,6 @@ public class OpcionesDeJuego {
         this.tablero = tablero;
         this.faseJuego = faseJuego;
 
-        faseJuego.cambiarTurno(jugador);
-
         this.caja = new VBox();
         this.ubicarTitulo();
         caja.setAlignment(Pos.TOP_CENTER);
@@ -57,7 +56,7 @@ public class OpcionesDeJuego {
     }
 
     public void fijarBotones() {
-        BotonMoverUnidad botonMoverUnidad = new BotonMoverUnidad(juego, tablero, jugador, this);
+        BotonMoverUnidad botonMoverUnidad = new BotonMoverUnidad(juego, tablero, jugador, this, faseJuego);
 
         Button botonMover = new Button();
         botonMover.setText("Mover");
@@ -65,7 +64,7 @@ public class OpcionesDeJuego {
         botonMover.setPrefSize(120, 30);
         botonMover.setOnAction(botonMoverUnidad);
 
-        BotonAtacarUnidad botonAtacarUnidad = new BotonAtacarUnidad(juego, tablero, jugador, this);
+        BotonAtacarUnidad botonAtacarUnidad = new BotonAtacarUnidad(juego, tablero, jugador, this, faseJuego);
 
         Button botonAtacar = new Button();
         botonAtacar.setText("Atacar");
@@ -73,7 +72,15 @@ public class OpcionesDeJuego {
         botonAtacar.setPrefSize(120, 30);
         botonAtacar.setOnAction(botonAtacarUnidad);
 
-        caja.getChildren().addAll(botonMover, botonAtacar);
+        BotonCurarUnidad botonCurarUnidad = new BotonCurarUnidad(juego, tablero, jugador, this, faseJuego);
+
+        Button botonCurar = new Button();
+        botonCurar.setText("Curar");
+        botonCurar.setStyle("-fx-base: #ff763d;");
+        botonCurar.setPrefSize(120, 30);
+        botonCurar.setOnAction(botonCurarUnidad);
+
+        caja.getChildren().addAll(botonMover, botonAtacar, botonCurar);
 
     }
 

@@ -3,6 +3,7 @@ package algo3;
 import Controlador.BotonJugar;
 import Controlador.BotonMoverUnidad;
 import Modelo.AlgoChess;
+import Vista.AlertBox;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -34,6 +35,11 @@ public class FaseJuego {
     }
 
     public void cambiarTurno(String jugador) {
+        if (juego.seTermino()) {
+            botonJugar1.setDisable(true);
+            botonJugar2.setDisable(true);
+            AlertBox.display("JUEGO TERMINADO", "Se termino el juego");
+        }
         if (nombreJugador1.equals(jugador)) {
             jugadorEnTurno = nombreJugador2;
             botonJugar1.setDisable(true);
