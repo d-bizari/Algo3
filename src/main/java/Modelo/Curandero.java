@@ -5,7 +5,7 @@ import Excepciones.ErrorAutoAtaque;
 public class Curandero extends PuedeCurar {
 
     public Curandero (Coordenada coordenadaUnidad) {
-        this.vida = new Vida(100);
+        this.vida = new Vida(75);
         this.costo = 2;
         this.danioCuerpoACuerpo = 0;
         this.danioADistancia = 0;

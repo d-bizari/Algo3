@@ -48,7 +48,7 @@ public class BotonAtacarUnidad implements EventHandler<ActionEvent> {
             coordenadaHasta = coordenada;
             try {
                 juego.atacarDesdeHasta(coordenadaDesde.getCoordenadaX(), coordenadaDesde.getCoordenadaY(), coordenadaHasta.getCoordenadaX(), coordenadaHasta.getCoordenadaY());
-                //TODO LIMPIAR CASILLERO CUANDO UNA UNIDAD MUERE
+                tablero.actualizar();
             }
             catch (ErrorAutoAtaque | ErrorNoHayUnidadAtacante | CoordenadaFueraDeRango exc) {
                 AlertBox.display("Atencion", "no puede moverse");

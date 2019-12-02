@@ -50,8 +50,7 @@ public class BotonMoverUnidad implements EventHandler<ActionEvent> {
             coordenadaHasta = coordenada;
             try {
                 juego.moverUnidadDesdeHasta(coordenadaDesde.getCoordenadaX(), coordenadaDesde.getCoordenadaY(), coordenadaHasta.getCoordenadaX(), coordenadaHasta.getCoordenadaY());
-                String unidad = juego.getTipoDeUnidadEnPosicion(coordenadaDesde.getCoordenadaX(), coordenadaDesde.getCoordenadaY());
-                tablero.moverUnidad(unidad, coordenadaDesde, coordenadaHasta);
+                tablero.actualizar();
 
             }
             catch (NoPuedeMoverseException | CeldaOcupada | CoordenadaFueraDeRango exc) {
