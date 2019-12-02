@@ -29,7 +29,7 @@ public abstract class Unidad {
         }
     }*/
 
-    private int cientoCincoPorcientoDe(int danio) {
+    /*private int cientoCincoPorcientoDe(int danio) {
         int danioTotal = danio + (danio*5)/100;
         return danioTotal;
     }
@@ -41,7 +41,7 @@ public abstract class Unidad {
             unidad.sufrirAtaque(cientoCincoPorcientoDe(this.danioADistancia), celda);
         }
     }
-
+*/
     public int getCosto(){
         return costo;
     }
@@ -107,5 +107,12 @@ public abstract class Unidad {
     public abstract boolean puedeAyudarJinete();
 
     public abstract String getTipo();
+
+    public void recibirPenalizacion() {
+        vida.recibirPenalizacion();
+    }
+    public void cancelarPenalizacion() {
+        vida.cancelarPenalizacion();
+    }
     //if(this.agrupacion == null)
 }
