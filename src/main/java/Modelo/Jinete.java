@@ -21,7 +21,7 @@ public class Jinete extends NoCura {
         //No hace nada
     }
 
-    public void atacar(Unidad otraUnidad) throws ErrorAutoAtaque {
+    public void atacar(Unidad otraUnidad, Celda celda) throws ErrorAutoAtaque {
         if (this.enemigosCercanos.size()!=0 && this.aliadosCercanos.size()==0) {
             estado = new EstadoJineteEspada();
         } else if (puedenAyudar() || this.enemigosCercanos.size()==0) {
@@ -29,7 +29,7 @@ public class Jinete extends NoCura {
         } else {
             estado = new EstadoJineteNoAtaca();
         }
-        estado.atacar(this, otraUnidad);
+        estado.atacar(this, otraUnidad, celda);
     }
 
     @Override

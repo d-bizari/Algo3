@@ -21,7 +21,7 @@ public abstract class Unidad {
     public abstract void mover(Coordenada coordenada) throws NoPuedeMoverseException;
     public abstract void curar(Unidad unidad) throws NoPuedeCurar;
     public abstract void recibirInvitacionAAgrupacion(Agrupacion unaAgrupacion); //TODO ver si habria que retornar algo!
-    public abstract void atacar(Unidad unidad) throws ErrorAutoAtaque;/* {
+    public abstract void atacar(Unidad unidad, Celda celda) throws ErrorAutoAtaque;/* {
         if(coordenada.estanADistanciaCercana(this, unidad)) {
             unidad.sufrirAtaque(this.danioCuerpoACuerpo);
         } else {
@@ -34,11 +34,11 @@ public abstract class Unidad {
         return danioTotal;
     }
 
-    public void atacarConPenalizacion(Unidad unidad) {
+    public void atacarConPenalizacion(Unidad unidad, Celda celda) {
         if(coordenada.estanADistanciaCercana(this, unidad)) {
-            unidad.sufrirAtaque(cientoCincoPorcientoDe(this.danioCuerpoACuerpo));
+            unidad.sufrirAtaque(cientoCincoPorcientoDe(this.danioCuerpoACuerpo), celda);
         } else {
-            unidad.sufrirAtaque(cientoCincoPorcientoDe(this.danioADistancia));
+            unidad.sufrirAtaque(cientoCincoPorcientoDe(this.danioADistancia), celda);
         }
     }
 
@@ -60,11 +60,11 @@ public abstract class Unidad {
         return coordenada;
     }
 
-    public void sufrirAtaque(int danio) {
+    public void sufrirAtaque(int danio, Celda celda) {
         vida.sufrirAtaque(danio);
         if (vida.estaMuerto()) {
             duenio.sufrirAtaque();
-            //TODO liberar lugar en la celda
+            celda.vaciar(); //TODO verificar que funcione bien
         }
     }
 

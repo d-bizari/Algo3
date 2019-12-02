@@ -12,11 +12,11 @@ public class SoldadoInfanteria extends NoCura {
         this.coordenada = coordenadaUnidad;
     }
 
-    public void atacar(Unidad unidad) throws ErrorAutoAtaque {
+    public void atacar(Unidad unidad, Celda celda) throws ErrorAutoAtaque {
         if(coordenada.estanADistanciaCercana(this, unidad)) {
-            unidad.sufrirAtaque(this.danioCuerpoACuerpo);
+            unidad.sufrirAtaque(this.danioCuerpoACuerpo, celda);
         } else {
-            unidad.sufrirAtaque(this.danioADistancia);
+            unidad.sufrirAtaque(this.danioADistancia, celda);
         }
     }
 

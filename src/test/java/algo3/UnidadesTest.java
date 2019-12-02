@@ -255,4 +255,20 @@ public class UnidadesTest {
 
         Assert.assertEquals(100, juego.verVida(11,4));
     }
+
+    @Test
+    public void testUnidadMuertaDesapareceDelTablero() throws CeldaDeTerritorioEnemigo, CoordenadaFueraDeRango, PuntosInsuficientesException, CeldaOcupada, ErrorAutoAtaque, ErrorNoHayUnidadAtacante {
+        AlgoChess juego = new AlgoChess(20,20);
+        juego.agregarJugador("maria",1);
+        juego.agregarJugador("jose",2);
+
+        juego.colocarJinetePara("maria",9,3);
+        juego.colocarSoldadoInfanteriaPara("jose",11,4);
+
+        for (int i = 0; i < 40 ; i++) {
+            juego.atacarDesdeHasta(9,3,11,4);
+        }
+
+        Assert.assertFalse(juego.getCelda(11,4).estaOcupada());
+    }
 }

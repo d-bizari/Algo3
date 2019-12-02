@@ -59,9 +59,9 @@ public class Celda {
         this.unidad.recibirEnemigosCercanos(enemigos);
         this.unidad.recibirAliadosCercanos(aliados);
         if(!esDeSectorAliado(this.unidad.getDueño())){
-            this.unidad.atacarConPenalizacion(celdaEnemiga.getUnidad());
+            this.unidad.atacarConPenalizacion(celdaEnemiga.getUnidad(), celdaEnemiga);
         }
-        this.unidad.atacar(celdaEnemiga.getUnidad());
+        this.unidad.atacar(celdaEnemiga.getUnidad(), celdaEnemiga);
     }
 
     public void curar(Celda celdaLastimada) throws NoPuedeCurar {
