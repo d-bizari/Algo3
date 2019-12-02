@@ -106,16 +106,21 @@ public class Tablero {
         for(Unidad uni: unaAgrupacion.getMiembros()){
             Celda celdaNueva = this.getCelda(uni.getCoordenadas().getCoordenadaX() + deltaX,uni.getCoordenadas().getCoordenadaY() + deltaY);
             Celda celdaActual = this.getCelda(uni.getCoordenadas().getCoordenadaX(),uni.getCoordenadas().getCoordenadaY());
+
             try {
+                Coordenada coordenadaAMover = getCoordenada(uni.getCoordenadas().getCoordenadaX() + deltaX,uni.getCoordenadas().getCoordenadaY() + deltaY);
+                celdaActual.getUnidad().mover(coordenadaAMover); //Puede tirar
                 celdaNueva.colocarUnidad(celdaActual.getUnidad());
             }catch (CeldaOcupada e){
-                if(unaAgrupacion.tieneBatallon())
+                if(unaAgrupacion.tieneBatallon()) {
                     continue;
+                }
+                celdaActual.getUnidad().mover(getCoordenada(desdeFil,desdeCol)); //Vuelvo a poner bien las coordenadas
                 throw new CeldaOcupada();
+            }catch (NoPuedeMoverseException e){
+                throw new NoPuedeMoverseException();
             }
             celdaActual.vaciar();
-            Coordenada coordenadaAMover = getCoordenada(uni.getCoordenadas().getCoordenadaX() + deltaX,uni.getCoordenadas().getCoordenadaY() + deltaY);
-            celdaNueva.getUnidad().mover(coordenadaAMover);
         }
     }
 
