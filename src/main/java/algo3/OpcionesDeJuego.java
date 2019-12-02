@@ -50,7 +50,7 @@ public class OpcionesDeJuego {
     }
 
     public void fijarBotones() {
-        BotonMoverUnidad botonMoverUnidad = new BotonMoverUnidad(juego, tablero, jugador);
+        BotonMoverUnidad botonMoverUnidad = new BotonMoverUnidad(juego, tablero, jugador, this);
 
         Button botonMover = new Button();
         botonMover.setText("Mover");
@@ -66,4 +66,6 @@ public class OpcionesDeJuego {
         caja.getChildren().addAll(botonMover, botonAtacar);
 
     }
+
+    public void cerrar() { popWindow.close(); }
 }

@@ -21,6 +21,7 @@ public class FaseSeleccionUnidades {
     private String jugadorEnTurno;
     public static double width;
     public static double heigth;
+    private Scene scene;
 
     public FaseSeleccionUnidades(Stage stage, AlgoChess juego, String jugador1, String jugador2) {
         this.stage = stage;
@@ -31,11 +32,12 @@ public class FaseSeleccionUnidades {
         this.heigth = Screen.getPrimary().getVisualBounds().getHeight()*0.5;
         this.tablero = new TableroGridPane(juego, width,heigth);
         this.jugadorEnTurno = this.nombreJugador1;
+        this.scene = new Scene(tablero.getVisual(),width,heigth);
     }
 
 
     public void mostrar() {
-        ((this.tablero).getVisual()).addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+        scene.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent event){
@@ -64,8 +66,10 @@ public class FaseSeleccionUnidades {
                 event.consume();
             }
         });
-        Scene scene = new Scene(tablero.getVisual(),width,heigth);
+
         stage.setScene(scene);
+        stage.setWidth(width);
+        stage.setHeight(heigth);
     }
 
     public void cambiarTurno() {

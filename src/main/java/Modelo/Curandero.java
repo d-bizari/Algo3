@@ -34,4 +34,8 @@ public class Curandero extends PuedeCurar {
     }
 
     public boolean puedeAyudarJinete() { return false;}
+
+    public String getTipo() {
+        return "Curandero";
+    }
 }

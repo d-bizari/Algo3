@@ -1,31 +1,69 @@
 package Controlador;
 
+import Excepciones.CeldaOcupada;
+import Excepciones.CoordenadaFueraDeRango;
+import Excepciones.NoPuedeMoverseException;
 import Modelo.AlgoChess;
 import Modelo.Coordenada;
+import Vista.AlertBox;
+import algo3.OpcionesDeJuego;
 import algo3.TableroGridPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 
-public class BotonMoverUnidad extends Button implements EventHandler<ActionEvent> {
+public class BotonMoverUnidad implements EventHandler<ActionEvent> {
      private AlgoChess juego;
      private TableroGridPane tablero;
      private Coordenada coordenadaDesde;
      private Coordenada coordenadaHasta;
      private String jugador;
+     private OpcionesDeJuego vista;
+     private boolean aux;
 
-     public BotonMoverUnidad(AlgoChess juego, TableroGridPane tablero, String nombreJugador) {
+     public BotonMoverUnidad(AlgoChess juego, TableroGridPane tablero, String nombreJugador, OpcionesDeJuego vista) {
          this.juego = juego;
          this.tablero = tablero;
          this.jugador = nombreJugador;
+         this.vista = vista;
+         this.coordenadaDesde = null;
+         this.coordenadaHasta = null;
      }
 
      @Override
     public void handle(ActionEvent actionEvent) {
-         //Algun alertbox que indique que debe seleccionar la posicion desde donde quiere moverse
-         //Como conseguir la coordenada clickeando
-         //Algun alertbox que indique que debe seleccionar la posicion a la cual se quiere mover
-         //Como conseguir la coordenada
-         //Llame a mover unidad desde hasta
+         vista.cerrar();
+         ((this.tablero).getVisual()).addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+             @Override
+             public void handle(MouseEvent event){
+                 agregarCoordenada(actionEvent, tablero.clickGrid(event));
+                 event.consume();
+             }});
+
      }
+
+     public void agregarCoordenada(ActionEvent event, Coordenada coordenada) {
+        if (coordenadaDesde == null) {
+            coordenadaDesde = coordenada;
+        } else if (coordenadaHasta == null) {
+            coordenadaHasta = coordenada;
+            try {
+                juego.moverUnidadDesdeHasta(coordenadaDesde.getCoordenadaX(), coordenadaDesde.getCoordenadaY(), coordenadaHasta.getCoordenadaX(), coordenadaHasta.getCoordenadaY());
+                String unidad = juego.getTipoDeUnidadEnPosicion(coordenadaDesde.getCoordenadaX(), coordenadaDesde.getCoordenadaY());
+                tablero.moverUnidad(unidad, coordenadaDesde, coordenadaHasta);
+                System.out.print("Movida exitosa");
+
+
+            }
+            catch (NoPuedeMoverseException | CeldaOcupada | CoordenadaFueraDeRango exc) {
+                AlertBox.display("Atencion", "no puede moverse");
+            }
+            event.consume();
+        }
+    }
 }
+
+
+
+

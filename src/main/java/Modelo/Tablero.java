@@ -204,5 +204,11 @@ public class Tablero {
         }
         return contiguos;
     }
+
+    public String getTipoDeUnidadEnPosicion(int x, int y) throws CoordenadaFueraDeRango{
+        Celda celda = getCelda(x, y);
+        return celda.getUnidad().getTipo();
+
+    }
 }
 

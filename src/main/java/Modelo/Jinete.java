@@ -49,4 +49,8 @@ public class Jinete extends NoCura {
     }
 
     public boolean puedeAyudarJinete() { return false;}
+
+    public String getTipo() {
+        return "Jinete";
+    }
 }

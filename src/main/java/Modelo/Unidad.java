@@ -105,5 +105,7 @@ public abstract class Unidad {
     }
 
     public abstract boolean puedeAyudarJinete();
+
+    public abstract String getTipo();
     //if(this.agrupacion == null)
 }

@@ -38,4 +38,8 @@ public class Catapulta extends NoMovibleYNoCura {
 
 
     public boolean puedeAyudarJinete() { return false;}
+
+    public String getTipo() {
+        return "Catapulta";
+    }
 }

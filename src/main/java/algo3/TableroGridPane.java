@@ -52,25 +52,25 @@ public class TableroGridPane{
 
     private void setColoresEnTablero(){
         Label label;
-        for (int y = 0; y < n; y++) {
-            for (int x = 0; x < m; x++) {
+        for (int x = 0; x < m; x++) {
+            for (int y = 0; y < n; y++) {
                 label = new Label();
 
                 label.setPrefWidth(anchoCelda);
                 label.setPrefHeight(altoCelda);
 
-                Image image = new Image("file:img/sector" + getNumeroSector(y) + ".png",anchoCelda,altoCelda,false,false);
+                Image image = new Image("file:img/sector" + getNumeroSector(x) + ".png",anchoCelda,altoCelda,false,false);
                 label.setGraphic(new ImageView(image));
 
                 label.setPadding(new Insets(0, 0, 0, 0));
-                tableroGridPane.add(label, x, y);
+                tableroGridPane.add(label, y, x);
             }
         }
 
     }
 
-    private String getNumeroSector(double y) {
-        if (y<m/2) {return "1";}
+    private String getNumeroSector(double x) {
+        if (x<m/2) {return "1";}
         return "2";
     }
 
@@ -107,4 +107,20 @@ public class TableroGridPane{
        label.setPadding(new Insets(0, 0, 0, 0));
        tableroGridPane.add(label, y, x);
     }
+
+    public void moverUnidad(String unidad, Coordenada coordenadaDesde, Coordenada coordenadaHasta) {
+        limpiarUnidad(coordenadaDesde.getCoordenadaX(), coordenadaDesde.getCoordenadaY());
+        setUnidadEnCelda(unidad, coordenadaHasta.getCoordenadaX(), coordenadaHasta.getCoordenadaY());
+    }
+
+    private void limpiarUnidad(int x, int y) {
+        Label label = new Label();
+        label.setPrefWidth(anchoCelda);
+        label.setPrefHeight(altoCelda);
+        Image image = new Image("file:img/sector" + getNumeroSector(x) + ".png",anchoCelda,altoCelda,false,false);
+        label.setGraphic(new ImageView(image));
+        label.setPadding(new Insets(0, 0, 0, 0));
+        tableroGridPane.add(label, y, x);
+    }
+
 }

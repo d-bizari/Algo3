@@ -32,4 +32,8 @@ public class SoldadoInfanteria extends NoCura {
     }
 
     public boolean puedeAyudarJinete() { return true;}
+
+    public String getTipo() {
+        return "Soldado";
+    }
 }

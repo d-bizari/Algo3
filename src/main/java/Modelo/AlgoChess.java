@@ -115,4 +115,8 @@ public class AlgoChess {
         Jugador jugador = getJugador(nombreJugador);
         return jugador.getPuntos();
     }
+
+    public String getTipoDeUnidadEnPosicion(int x, int y) throws CoordenadaFueraDeRango {
+        return tablero.getTipoDeUnidadEnPosicion(x,y);
+    }
 }
