@@ -6,6 +6,7 @@ import Excepciones.NoPuedeMoverseException;
 import Modelo.AlgoChess;
 import Modelo.Coordenada;
 import Vista.AlertBox;
+import algo3.FaseJuego;
 import algo3.OpcionesDeJuego;
 import algo3.TableroGridPane;
 import javafx.event.ActionEvent;
@@ -20,15 +21,17 @@ public class BotonMoverUnidad implements EventHandler<ActionEvent> {
      private Coordenada coordenadaHasta;
      private String jugador;
      private OpcionesDeJuego vista;
+     private FaseJuego faseJuego;
      private boolean aux;
 
-     public BotonMoverUnidad(AlgoChess juego, TableroGridPane tablero, String nombreJugador, OpcionesDeJuego vista) {
+     public BotonMoverUnidad(AlgoChess juego, TableroGridPane tablero, String nombreJugador, OpcionesDeJuego vista, FaseJuego faseJuego) {
          this.juego = juego;
          this.tablero = tablero;
          this.jugador = nombreJugador;
          this.vista = vista;
          this.coordenadaDesde = null;
          this.coordenadaHasta = null;
+         this.faseJuego = faseJuego;
      }
 
      @Override
@@ -56,6 +59,7 @@ public class BotonMoverUnidad implements EventHandler<ActionEvent> {
             catch (NoPuedeMoverseException | CeldaOcupada | CoordenadaFueraDeRango exc) {
                 AlertBox.display("Atencion", "no puede moverse");
             }
+            faseJuego.cambiarTurno(jugador);
             event.consume();
         }
     }
