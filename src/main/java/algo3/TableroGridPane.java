@@ -25,8 +25,8 @@ public class TableroGridPane{
 
     private AlgoChess algoChess;
 
-    private double altoCelda = 40;
-    private double anchoCelda = 40;
+    private double altoCelda = 35;
+    private double anchoCelda = 35;
 
     private int n;
     private int m;

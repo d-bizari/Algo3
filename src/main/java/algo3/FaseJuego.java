@@ -3,6 +3,7 @@ package algo3;
 import Modelo.AlgoChess;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -24,8 +25,8 @@ public class FaseJuego {
         this.jugadorEnTurno = this.nombreJugador1;
     }
 
-    public void mostrar(Stage stage) {
-        crearEscena(stage);
+    public void mostrar() {
+        crearEscena();
     }
 
     public void cambiarTurno() {
@@ -36,7 +37,7 @@ public class FaseJuego {
         }
     }
 
-    public void crearEscena(Stage stage) {
+    public void crearEscena() {
         Button botonJugar1 = new Button();
         botonJugar1.setText("Jugar");
         botonJugar1.setStyle("-fx-base: #ff763d;");
@@ -47,8 +48,10 @@ public class FaseJuego {
         botonJugar2.setStyle("-fx-base: #ff763d;");
         botonJugar2.setPrefSize(120, 30);
 
-        HBox caja = new HBox();
-        caja.getChildren().addAll(botonJugar1, tablero.getVisual(), botonJugar2);
+        BorderPane caja = new BorderPane();
+        caja.setLeft(botonJugar1);
+        caja.setCenter(tablero.getVisual());
+        caja.setRight(botonJugar2);
         stage.setScene(new Scene(caja));
     }
 }

@@ -44,6 +44,7 @@ public class OpcionesDeJuego<TableroGridPanetablero> {
         botonMover.setText("Mover");
         botonMover.setStyle("-fx-base: #ff763d;");
         botonMover.setPrefSize(120, 30);
+        botonMover.setOnAction(botonMoverUnidad);
 
         Button botonAtacar = new Button();
         botonAtacar.setText("Atacar");

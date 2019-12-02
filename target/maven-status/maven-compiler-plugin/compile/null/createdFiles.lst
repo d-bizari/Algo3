@@ -27,8 +27,8 @@ Modelo/EstadoJineteEspada.class
 Vista/SelectorUnidades.class
 algo3/FaseSeleccionUnidades$1.class
 Vista/VentanaSeleccion.class
-Controlador/RadioButtonSelectorUnidades.class
 module-info.class
+Controlador/RadioButtonSelectorUnidades.class
 Modelo/PuedeCurar.class
 Modelo/Unidad.class
 Modelo/EstadoJineteArcoYFlecha.class
@@ -39,7 +39,6 @@ Modelo/Catapulta.class
 Excepciones/ErrorAutoAtaque.class
 Modelo/AlgoChess.class
 Modelo/Tablero.class
-algo3/AlertBox.class
 Modelo/Celda.class
 Modelo/EstadoJineteNoAtaca.class
 algo3/BotonUbicacionJugador1.class
