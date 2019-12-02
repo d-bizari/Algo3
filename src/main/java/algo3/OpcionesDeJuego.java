@@ -1,5 +1,6 @@
 package algo3;
 
+import Controlador.BotonAtacarUnidad;
 import Controlador.BotonMoverUnidad;
 import Modelo.AlgoChess;
 import Modelo.Tablero;
@@ -21,16 +22,22 @@ public class OpcionesDeJuego {
     String jugador;
     TableroGridPane tablero;
     Stage popWindow;
+    FaseJuego faseJuego;
 
-    public OpcionesDeJuego(AlgoChess juego, TableroGridPane tablero, String jugador) {
+    public OpcionesDeJuego(AlgoChess juego, TableroGridPane tablero, String jugador, FaseJuego faseJuego) {
         this.jugador = jugador;
         this.juego = juego;
         this.tablero = tablero;
+        this.faseJuego = faseJuego;
+
+        faseJuego.cambiarTurno(jugador);
+
         this.caja = new VBox();
         this.ubicarTitulo();
         caja.setAlignment(Pos.TOP_CENTER);
         caja.setSpacing(20);
         caja.setPadding(new Insets(25));
+
 
         this.fijarBotones();
 
@@ -58,10 +65,13 @@ public class OpcionesDeJuego {
         botonMover.setPrefSize(120, 30);
         botonMover.setOnAction(botonMoverUnidad);
 
+        BotonAtacarUnidad botonAtacarUnidad = new BotonAtacarUnidad(juego, tablero, jugador, this);
+
         Button botonAtacar = new Button();
         botonAtacar.setText("Atacar");
         botonAtacar.setStyle("-fx-base: #ff763d;");
         botonAtacar.setPrefSize(120, 30);
+        botonAtacar.setOnAction(botonAtacarUnidad);
 
         caja.getChildren().addAll(botonMover, botonAtacar);
 

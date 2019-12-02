@@ -17,6 +17,8 @@ public class FaseJuego {
     private String nombreJugador2;
     private TableroGridPane tablero;
     private String jugadorEnTurno;
+    Button botonJugar1;
+    Button botonJugar2;
 
     public FaseJuego (Stage stage, AlgoChess juego, String jugador1, String jugador2, TableroGridPane tablero) {
         this.stage = stage;
@@ -31,28 +33,33 @@ public class FaseJuego {
         crearEscena();
     }
 
-    public void cambiarTurno() {
-        if (jugadorEnTurno.equals(nombreJugador1)) {
+    public void cambiarTurno(String jugador) {
+        if (nombreJugador1.equals(jugador)) {
             jugadorEnTurno = nombreJugador2;
+            botonJugar1.setDisable(true);
+            botonJugar2.setDisable(false);
         } else {
             jugadorEnTurno = nombreJugador1;
+            botonJugar2.setDisable(true);
+            botonJugar1.setDisable(false);
         }
     }
 
     public void crearEscena() {
-        Button botonJugar1 = new Button();
+        botonJugar1 = new Button();
         botonJugar1.setText("Jugar");
         botonJugar1.setStyle("-fx-base: #ff763d;");
         botonJugar1.setPrefSize(120, 30);
-        BotonJugar jugar1 = new BotonJugar(juego, tablero, nombreJugador1);
+        BotonJugar jugar1 = new BotonJugar(juego, tablero, nombreJugador1, this);
         botonJugar1.setOnAction(jugar1);
 
-        Button botonJugar2 = new Button();
+        botonJugar2 = new Button();
         botonJugar2.setText("Jugar");
         botonJugar2.setStyle("-fx-base: #ff763d;");
         botonJugar2.setPrefSize(120, 30);
-        BotonJugar jugar2 = new BotonJugar(juego, tablero, nombreJugador2);
-        botonJugar1.setOnAction(jugar2);
+        BotonJugar jugar2 = new BotonJugar(juego, tablero, nombreJugador2, this);
+        botonJugar2.setOnAction(jugar2);
+        botonJugar2.setDisable(true);
 
         BorderPane caja = new BorderPane();
         caja.setLeft(botonJugar1);
