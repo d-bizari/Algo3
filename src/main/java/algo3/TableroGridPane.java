@@ -98,7 +98,7 @@ public class TableroGridPane{
        label.setPadding(new Insets(0, 0, 0, 0));
        tableroGridPane.add(label, y, x);
     }
-    
+
     public void setColor(int x, int y) {
         Label label = new Label();
 

@@ -4,10 +4,12 @@ public class Vida {
 
     protected int vidaMaxima;
     protected int vidaActual;
+    protected boolean penalizacion;
 
     public Vida(int vida) {
         vidaMaxima = vida;
         this.vidaActual = vida;
+        penalizacion = false;
     }
 
     public void ganarVida(int cantVida) {
@@ -18,6 +20,10 @@ public class Vida {
     }
 
     public void sufrirAtaque(int danio) {
+
+        if (penalizacion) {
+            danio = this.cientoCincoPorcientoDe(danio);
+        }
         vidaActual = vidaActual - danio;
     }
 
@@ -30,5 +36,14 @@ public class Vida {
 
     public int verVidaRestante(){
         return vidaActual;
+    }
+
+    public void recibirPenalizacion() { penalizacion = true; }
+
+    public void cancelarPenalizacion() { penalizacion = false; }
+
+    private int cientoCincoPorcientoDe(int danio) {
+        int danioTotal = danio + (danio*5)/100;
+        return danioTotal;
     }
 }

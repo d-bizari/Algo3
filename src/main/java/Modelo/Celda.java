@@ -34,6 +34,11 @@ public class Celda {
         if(ocupada){
             throw new CeldaOcupada();
         }
+        if(unidad.getDueño().getSector() != this.sector) {
+            unidad.recibirPenalizacion();
+        } else {
+            unidad.cancelarPenalizacion();
+        }
         this.unidad = unidad;
         this.ocupada = true;
     }
@@ -58,9 +63,9 @@ public class Celda {
         }
         this.unidad.recibirEnemigosCercanos(enemigos);
         this.unidad.recibirAliadosCercanos(aliados);
-        if(!esDeSectorAliado(this.unidad.getDueño())){
+        /*if(!esDeSectorAliado(this.unidad.getDueño())){
             this.unidad.atacarConPenalizacion(celdaEnemiga.getUnidad(), celdaEnemiga);
-        }
+        }*/
         this.unidad.atacar(celdaEnemiga.getUnidad(), celdaEnemiga);
     }
 
