@@ -1,8 +1,11 @@
 package algo3;
 
+import Controlador.BotonJugar;
+import Controlador.BotonMoverUnidad;
 import Modelo.AlgoChess;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -24,8 +27,8 @@ public class FaseJuego {
         this.jugadorEnTurno = this.nombreJugador1;
     }
 
-    public void mostrar(Stage stage) {
-        crearEscena(stage);
+    public void mostrar() {
+        crearEscena();
     }
 
     public void cambiarTurno() {
@@ -36,19 +39,25 @@ public class FaseJuego {
         }
     }
 
-    public void crearEscena(Stage stage) {
+    public void crearEscena() {
         Button botonJugar1 = new Button();
         botonJugar1.setText("Jugar");
         botonJugar1.setStyle("-fx-base: #ff763d;");
         botonJugar1.setPrefSize(120, 30);
+        BotonJugar jugar1 = new BotonJugar(juego, tablero, nombreJugador1);
+        botonJugar1.setOnAction(jugar1);
 
         Button botonJugar2 = new Button();
         botonJugar2.setText("Jugar");
         botonJugar2.setStyle("-fx-base: #ff763d;");
         botonJugar2.setPrefSize(120, 30);
+        BotonJugar jugar2 = new BotonJugar(juego, tablero, nombreJugador2);
+        botonJugar1.setOnAction(jugar2);
 
-        HBox caja = new HBox();
-        caja.getChildren().addAll(botonJugar1, tablero.getVisual(), botonJugar2);
+        BorderPane caja = new BorderPane();
+        caja.setLeft(botonJugar1);
+        caja.setCenter(tablero.getVisual());
+        caja.setRight(botonJugar2);
         stage.setScene(new Scene(caja));
     }
 }
