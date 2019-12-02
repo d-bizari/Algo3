@@ -63,21 +63,23 @@ public class SelectorUnidades{
         curandero.setToggleGroup(group);
 
         Text titulo = new Text("Seleccione la unidad que desee colocar");
-        textPuntos = new Text(String.format("Puntos disponibles: %d",juego.getPuntosDe(nombreJugador) - 1));
+        Text textPuntosDisponibles = new Text(String.format("Puntos disponibles: %d",juego.getPuntosDe(nombreJugador)));
+        textPuntos = new Text(String.format("Puntos post-Compra: %d",juego.getPuntosDe(nombreJugador) - 1));
         textPuntos.setFill(Color.GREEN);
 
         //Acomoda los textos y los choice box en el GridPane.
         GridPane.setConstraints(titulo, 1, 0);
-        GridPane.setConstraints(textPuntos,4,0);
-        GridPane.setConstraints(soldadoInfanteria, 1, 3);
-        GridPane.setConstraints(jinete, 1, 4);
-        GridPane.setConstraints(catapulta, 1, 5);
-        GridPane.setConstraints(curandero, 1, 6);
+        GridPane.setConstraints(textPuntosDisponibles,4,0);
+        GridPane.setConstraints(textPuntos,4,1);
+        GridPane.setConstraints(soldadoInfanteria, 1, 2);
+        GridPane.setConstraints(jinete, 1, 3);
+        GridPane.setConstraints(catapulta, 1, 4);
+        GridPane.setConstraints(curandero, 1, 5);
         GridPane.setConstraints(continuar, 4,9 );
 
         group.selectedToggleProperty().addListener(new RadioButtonSelectorUnidades(this));
 
-        grid.getChildren().addAll(titulo, textPuntos,soldadoInfanteria, jinete, catapulta, curandero, continuar);
+        grid.getChildren().addAll(titulo, textPuntos,textPuntosDisponibles,soldadoInfanteria, jinete, catapulta, curandero, continuar);
 
         continuar.setOnAction(new BotonSeleccionarUnidades(this, continuar, juego, coordenada, nombreJugador, tablero));
 
@@ -87,17 +89,12 @@ public class SelectorUnidades{
     }
 
     public void updatePuntaje(int puntos){
-        textPuntos.setText(String.format("Puntos disponibles: %d",juego.getPuntosDe(nombreJugador) - puntos));
+        textPuntos.setText(String.format("Puntos post-Compra: %d",juego.getPuntosDe(nombreJugador) - puntos));
     }
-
-    /*public void habilitarBotonContinuar(boolean opt){
-        continuar.setDisable(!opt); //Si llega true, queda en estado habilitado, en caso de false deshabilitado
-    }*/
 
     public void cerrarVentana(){
         popWidow.close();
     }
-
     public boolean getValueSoldadoInfanteria(){
          return soldadoInfanteria.isSelected();
     }
