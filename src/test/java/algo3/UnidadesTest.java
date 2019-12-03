@@ -271,4 +271,27 @@ public class UnidadesTest {
 
         Assert.assertFalse(juego.getCelda(11,4).estaOcupada());
     }
+
+    @Test
+    public void testCatapultaDaniaUnidadesContiguas() throws CeldaDeTerritorioEnemigo, CoordenadaFueraDeRango, PuntosInsuficientesException, CeldaOcupada, ErrorAutoAtaque, ErrorNoHayUnidadAtacante {
+        AlgoChess juego = new AlgoChess(20,20);
+        juego.agregarJugador("Dan",1);
+        juego.agregarJugador("Val",2);
+
+        juego.colocarCatapultaPara("Dan",1,9);
+
+        juego.colocarSoldadoInfanteriaPara("Val",19,4);
+        juego.colocarSoldadoInfanteriaPara("Val",19,3);
+        juego.colocarJinetePara("Val",19,2);
+        juego.colocarJinetePara("Val",19,5);
+        juego.colocarCuranderoPara("Val",18,5);
+
+        juego.atacarDesdeHasta(1,9,19,4);
+
+        Assert.assertEquals(80,juego.getCelda(19,3).getUnidad().verVidaRestante());
+        Assert.assertEquals(80,juego.getCelda(19,2).getUnidad().verVidaRestante());
+        Assert.assertEquals(80,juego.getCelda(19,5).getUnidad().verVidaRestante());
+        Assert.assertEquals(55,juego.getCelda(18,5).getUnidad().verVidaRestante());
+        Assert.assertEquals(80,juego.getCelda(19,4).getUnidad().verVidaRestante());
+    }
 }

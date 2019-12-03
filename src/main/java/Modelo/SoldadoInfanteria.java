@@ -12,7 +12,7 @@ public class SoldadoInfanteria extends NoCura {
         this.coordenada = coordenadaUnidad;
     }
 
-    public void atacar(Unidad unidad, Celda celda, Agrupacion agrupacion) throws ErrorAutoAtaque {
+    public void atacar(Unidad unidad, Celda celda, Agrupacion agrupacion, Tablero tablero) throws ErrorAutoAtaque {
         if(coordenada.estanADistanciaCercana(this, unidad)) {
 
             if(agrupacion.tieneBatallon()){

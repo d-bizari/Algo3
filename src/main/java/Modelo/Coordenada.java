@@ -95,7 +95,7 @@ public class Coordenada {
         int modDiferenciax = moduloDiferencia(x1,x2);
         int modDiferenciay = moduloDiferencia(y1,y2);
 
-        return modDiferenciax>maxDistanciaMedia && modDiferenciay>maxDistanciaMedia;
+        return modDiferenciax>maxDistanciaMedia || modDiferenciay>maxDistanciaMedia;
     }
 
     public boolean estaADistancia1(Coordenada coordUni) {

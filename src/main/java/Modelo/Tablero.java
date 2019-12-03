@@ -97,7 +97,7 @@ public class Tablero {
         this.enviarInvitacionAUnidadesContiguas(this.getCelda(desdeFil,desdeCol), unaAgrupacion);
         List<Unidad> enemigosCercanos = this.ObtenerEnemigosCercanos(celdaAliada);
         List<Unidad> aliadosCercanos = this.ObtenerAliadosCercanos(celdaAliada);
-        celdaAliada.atacar(celdaEnemiga, enemigosCercanos, aliadosCercanos, unaAgrupacion);
+        celdaAliada.atacar(celdaEnemiga, enemigosCercanos, aliadosCercanos, unaAgrupacion, this);
     }
 
     public void moverUnidadDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango {
@@ -184,18 +184,20 @@ public class Tablero {
 
         while (!(unidades.isEmpty())){
             temp = unidades.remove();
-            visitados.add(temp);
-            temp.recibirInvitacionAAgrupacion(unaAgrupacion);
-            try{
-                celdaTemp = getCelda(temp.getCoordenadas().getCoordenadaX(),temp.getCoordenadas().getCoordenadaY());
-            }catch (Exception e){
-                System.out.println(e.getMessage()); //TODO implementar un mejor manejo de errores
-                return;
-            }
-            unidadesTemp = obtenerUnidadesADistancia1(celdaTemp);
-            for(Unidad uni : unidadesTemp){
-                if(!visitados.contains(uni)){
-                    unidades.add(uni);
+            if(!visitados.contains(temp)){
+                visitados.add(temp);
+                temp.recibirInvitacionAAgrupacion(unaAgrupacion);
+                try{
+                    celdaTemp = getCelda(temp.getCoordenadas().getCoordenadaX(),temp.getCoordenadas().getCoordenadaY());
+                }catch (Exception e){
+                    System.out.println(e.getMessage()); //TODO implementar un mejor manejo de errores
+                    return;
+                }
+                unidadesTemp = obtenerUnidadesADistancia1(celdaTemp);
+                for(Unidad uni : unidadesTemp){
+                    if(!visitados.contains(uni)){
+                        unidades.add(uni);
+                    }
                 }
             }
         }
@@ -219,6 +221,37 @@ public class Tablero {
         }
         return "NOHAYUNIDAD";
 
+    }
+
+    public List<Unidad> getUnidadesContiguas(Coordenada coordenadas) throws CoordenadaFueraDeRango {
+        Queue<Unidad> unidades = obtenerUnidadesADistancia1(getCelda(coordenadas.getCoordenadaX(),coordenadas.getCoordenadaY()));
+        unidades.add(getCelda(coordenadas.getCoordenadaX(),coordenadas.getCoordenadaY()).getUnidad());
+        List<Unidad> unidadesContiguas = new ArrayList<Unidad>();
+        List<Unidad> visitados = new ArrayList<Unidad>();
+        Queue<Unidad> unidadesTemp;
+        Unidad temp;
+        Celda celdaTemp;
+
+        while (!(unidades.isEmpty())){
+            temp = unidades.remove();
+            if(!visitados.contains(temp)){
+                visitados.add(temp);
+                unidadesContiguas.add(temp);
+                try{
+                    celdaTemp = getCelda(temp.getCoordenadas().getCoordenadaX(),temp.getCoordenadas().getCoordenadaY());
+                }catch (Exception e){
+                    System.out.println(e.getMessage()); //TODO implementar un mejor manejo de errores
+                    return new ArrayList<Unidad>();
+                }
+                unidadesTemp = obtenerUnidadesADistancia1(celdaTemp);
+                for(Unidad uni : unidadesTemp){
+                    if(!visitados.contains(uni)){
+                        unidades.add(uni);
+                    }
+                }
+            }
+        }
+        return unidadesContiguas;
     }
 }
 

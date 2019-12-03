@@ -53,7 +53,7 @@ public class Celda {
         return this.sector == jugador.getSector();
     }
 
-    public void atacar(Celda celdaEnemiga, List<Unidad> enemigos, List<Unidad> aliados, Agrupacion agrupacion) throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante {
+    public void atacar(Celda celdaEnemiga, List<Unidad> enemigos, List<Unidad> aliados, Agrupacion agrupacion, Tablero tablero) throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante {
         celdaEstaOcupadaPorEnemigo(celdaEnemiga);
         if(!estaOcupada()) {
             throw new ErrorNoHayUnidadAtacante();
@@ -66,7 +66,7 @@ public class Celda {
         /*if(!esDeSectorAliado(this.unidad.getDueño())){
             this.unidad.atacarConPenalizacion(celdaEnemiga.getUnidad(), celdaEnemiga);
         }*/
-        this.unidad.atacar(celdaEnemiga.getUnidad(), celdaEnemiga, agrupacion);
+        this.unidad.atacar(celdaEnemiga.getUnidad(), celdaEnemiga, agrupacion, tablero);
     }
 
     public void curar(Celda celdaLastimada) throws NoPuedeCurar {

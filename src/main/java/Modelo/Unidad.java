@@ -21,7 +21,7 @@ public abstract class Unidad {
     public abstract void mover(Coordenada coordenada) throws NoPuedeMoverseException;
     public abstract void curar(Unidad unidad) throws NoPuedeCurar;
     public abstract void recibirInvitacionAAgrupacion(Agrupacion unaAgrupacion); //TODO ver si habria que retornar algo!
-    public abstract void atacar(Unidad unidad, Celda celda, Agrupacion agrupacion) throws ErrorAutoAtaque;/* {
+    public abstract void atacar(Unidad unidad, Celda celda, Agrupacion agrupacion, Tablero tablero) throws ErrorAutoAtaque;/* {
         if(coordenada.estanADistanciaCercana(this, unidad)) {
             unidad.sufrirAtaque(this.danioCuerpoACuerpo);
         } else {

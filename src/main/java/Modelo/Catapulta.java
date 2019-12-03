@@ -3,6 +3,8 @@ package Modelo;
 import Excepciones.ErrorAutoAtaque;
 import Excepciones.NoPuedeMoverseException;
 
+import java.util.List;
+
 public class Catapulta extends NoMovibleYNoCura {
 
     public Catapulta (Coordenada coordenadaUnidad) {
@@ -23,9 +25,17 @@ public class Catapulta extends NoMovibleYNoCura {
         //No hace nada
     }
 
-    public void atacar(Unidad unidad, Celda celda, Agrupacion agrupacion) throws ErrorAutoAtaque {
+    public void atacar(Unidad unidad, Celda celda, Agrupacion agrupacion, Tablero tablero) throws ErrorAutoAtaque {
         if(coordenada.estanADistanciaLejana(this, unidad)) {
-            unidad.sufrirAtaque(this.danioADistancia, celda);
+            //unidad.sufrirAtaque(this.danioADistancia, celda);
+            try{
+                List<Unidad> unidadesContiguas = tablero.getUnidadesContiguas(unidad.getCoordenadas());
+                for(Unidad uni : unidadesContiguas){
+                    uni.sufrirAtaque(this.danioADistancia, celda);
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
     }
 
