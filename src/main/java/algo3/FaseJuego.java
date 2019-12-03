@@ -35,12 +35,12 @@ public class FaseJuego {
     }
 
     public void cambiarTurno(String jugador) {
-        if (juego.seTermino() != null) {
+        String ganador = juego.seTermino();
+        if (ganador != null) {
             botonJugar1.setDisable(true);
             botonJugar2.setDisable(true);
-            AlertBox.display("JUEGO TERMINADO", "Se termino el juego");
-        }
-        if (nombreJugador1.equals(jugador)) {
+            new VentanaJuegoTerminado(ganador, stage);
+        } else if (nombreJugador1.equals(jugador)) {
             jugadorEnTurno = nombreJugador2;
             botonJugar1.setDisable(true);
             botonJugar2.setDisable(false);
