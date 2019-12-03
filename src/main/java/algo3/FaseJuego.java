@@ -4,10 +4,17 @@ import Controlador.BotonJugar;
 import Controlador.BotonMoverUnidad;
 import Modelo.AlgoChess;
 import Vista.AlertBox;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class FaseJuego {
@@ -52,25 +59,64 @@ public class FaseJuego {
     }
 
     public void crearEscena() {
-        botonJugar1 = new Button();
-        botonJugar1.setText("Jugar");
-        botonJugar1.setStyle("-fx-base: #ff763d;");
-        botonJugar1.setPrefSize(120, 30);
-        BotonJugar jugar1 = new BotonJugar(juego, tablero, nombreJugador1, this);
-        botonJugar1.setOnAction(jugar1);
 
-        botonJugar2 = new Button();
-        botonJugar2.setText("Jugar");
-        botonJugar2.setStyle("-fx-base: #ff763d;");
-        botonJugar2.setPrefSize(120, 30);
-        BotonJugar jugar2 = new BotonJugar(juego, tablero, nombreJugador2, this);
-        botonJugar2.setOnAction(jugar2);
-        botonJugar2.setDisable(true);
+        //Jugador 1
+        VBox jugador1 = new VBox();
+        jugador1.setPrefWidth(125);
+        this.ubicarTextos(nombreJugador1, this.getColorSector(juego.getSector(nombreJugador1)), jugador1);
+        this.fijarBoton(nombreJugador1, jugador1);
+        jugador1.setAlignment(Pos.CENTER);
 
+        //jugador 2
+        VBox jugador2 = new VBox();
+        jugador2.setPrefWidth(125);
+        this.ubicarTextos(nombreJugador2, this.getColorSector(juego.getSector(nombreJugador2)), jugador2);
+        this.fijarBoton(nombreJugador2, jugador2);
+        jugador2.setAlignment(Pos.CENTER);
+
+        //Layout y Scene
         BorderPane caja = new BorderPane();
-        caja.setLeft(botonJugar1);
+        caja.setLeft(jugador1);
         caja.setCenter(tablero.getVisual());
-        caja.setRight(botonJugar2);
+        caja.setRight(jugador2);
         stage.setScene(new Scene(caja));
+    }
+
+    public void ubicarTextos(String nombre, String Sector, VBox caja) {
+        Label nombreJugador = new Label(nombre);
+        nombreJugador.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
+        nombreJugador.setTextAlignment(TextAlignment.CENTER);
+        nombreJugador.setTextFill(Color.web("000000"));
+
+        Label sectorJugador = new Label(String.format("Sector %s", Sector));
+        sectorJugador.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
+        sectorJugador.setTextAlignment(TextAlignment.CENTER);
+        sectorJugador.setTextFill(Color.web("000000"));
+
+        caja.getChildren().addAll(nombreJugador, sectorJugador);
+    }
+
+    public void fijarBoton(String nombreJugador, VBox caja) {
+        Button botonJugar = new Button();
+        botonJugar.setText("Jugar");
+        botonJugar.setStyle("-fx-base: #ff763d;");
+        botonJugar.setPrefSize(120, 30);
+        botonJugar.setAlignment(Pos.CENTER);
+        BotonJugar jugar = new BotonJugar(juego, tablero, nombreJugador, this);
+        botonJugar.setOnAction(jugar);
+        if (nombreJugador.equals(nombreJugador1)) {
+            botonJugar1 = botonJugar;
+        } else {
+            botonJugar2 = botonJugar;
+            botonJugar2.setDisable(true);
+        }
+        caja.getChildren().addAll(botonJugar);
+    }
+
+    private String getColorSector(int Sector) {
+        if (Sector == 1) {
+            return "Rosa";
+        }
+        return "Gris";
     }
 }

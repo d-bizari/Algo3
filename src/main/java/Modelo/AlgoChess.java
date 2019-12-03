@@ -120,4 +120,8 @@ public class AlgoChess {
     public String getTipoDeUnidadEnPosicion(int x, int y) throws CoordenadaFueraDeRango {
         return tablero.getTipoDeUnidadEnPosicion(x,y);
     }
+
+    public int getSector(String nombreJugador) {
+        return getJugador(nombreJugador).getSector();
+    }
 }
