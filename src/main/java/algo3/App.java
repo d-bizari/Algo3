@@ -2,11 +2,10 @@ package algo3;
 
 import Modelo.AlgoChess;
 import Vista.FaseInicial;
+import Vista.TableroGridPane;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.util.HashMap;
 
 /**
  * JavaFX App

@@ -1,6 +1,6 @@
 package Controlador;
 
-import algo3.VentanaJuegoTerminado;
+import Vista.VentanaJuegoTerminado;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;

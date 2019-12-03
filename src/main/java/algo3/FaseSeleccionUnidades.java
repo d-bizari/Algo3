@@ -4,6 +4,7 @@ package algo3;
 import Modelo.AlgoChess;
 import Modelo.Coordenada;
 import Vista.AlertBox;
+import Vista.TableroGridPane;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -28,8 +29,8 @@ public class FaseSeleccionUnidades {
         this.juego = juego;
         this.nombreJugador1 = jugador1;
         this.nombreJugador2 = jugador2;
-        this.width = Screen.getPrimary().getVisualBounds().getWidth()*0.5;
-        this.heigth = Screen.getPrimary().getVisualBounds().getHeight()*0.5;
+        this.width = Screen.getPrimary().getVisualBounds().getWidth() * 0.9;
+        this.heigth = Screen.getPrimary().getVisualBounds().getHeight() * 0.9;
         this.tablero = new TableroGridPane(juego, width,heigth);
         this.jugadorEnTurno = this.nombreJugador1;
         this.scene = new Scene(tablero.getVisual(),width,heigth);

@@ -1,10 +1,9 @@
 package Controlador;
 
 import Modelo.AlgoChess;
-import Modelo.Coordenada;
 import algo3.FaseJuego;
-import algo3.OpcionesDeJuego;
-import algo3.TableroGridPane;
+import Vista.OpcionesDeJuego;
+import Vista.TableroGridPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;

@@ -1,4 +1,4 @@
-package algo3;
+package Vista;
 
 import Controlador.BotonCerrarJuego;
 import Controlador.BotonMoverUnidad;

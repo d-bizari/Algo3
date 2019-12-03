@@ -4,7 +4,6 @@ import Controlador.BotonSeleccionarUnidades;
 import Controlador.RadioButtonSelectorUnidades;
 import Modelo.AlgoChess;
 import Modelo.Coordenada;
-import algo3.TableroGridPane;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;

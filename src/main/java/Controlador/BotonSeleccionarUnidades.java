@@ -4,7 +4,7 @@ import Modelo.AlgoChess;
 import Modelo.Coordenada;
 import Vista.SelectorUnidades;
 import Vista.AlertBox;
-import algo3.TableroGridPane;
+import Vista.TableroGridPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;

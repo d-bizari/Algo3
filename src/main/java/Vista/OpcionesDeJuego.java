@@ -1,10 +1,11 @@
-package algo3;
+package Vista;
 
 import Controlador.BotonAtacarUnidad;
 import Controlador.BotonCurarUnidad;
 import Controlador.BotonMoverUnidad;
 import Modelo.AlgoChess;
-import Modelo.Tablero;
+import Vista.TableroGridPane;
+import algo3.FaseJuego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
