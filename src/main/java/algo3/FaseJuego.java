@@ -35,7 +35,7 @@ public class FaseJuego {
     }
 
     public void cambiarTurno(String jugador) {
-        if (juego.seTermino()) {
+        if (juego.seTermino() != null) {
             botonJugar1.setDisable(true);
             botonJugar2.setDisable(true);
             AlertBox.display("JUEGO TERMINADO", "Se termino el juego");

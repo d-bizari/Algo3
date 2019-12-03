@@ -87,15 +87,13 @@ public class AlgoChess {
         return tablero.getCantColumnas();
     }
 
-    public boolean seTermino(){
+    public String seTermino(){
         if(jugador1.perdio()) {
-            System.out.print("Perdió:" + jugador1.getNombre());
-            return true;
+            return jugador2.getNombre();
         } else if (jugador2.perdio()) {
-            System.out.print("Perdió:" + jugador2.getNombre());
-            return true;
+            return jugador1.getNombre();
         }
-        return false;
+        return null;
     }
 
     public Coordenada getCoordenadasUnidadEn(int x, int y) throws CoordenadaFueraDeRango {

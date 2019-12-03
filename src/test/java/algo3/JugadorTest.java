@@ -42,7 +42,7 @@ public class JugadorTest {
 
         }
 
-        Assert.assertTrue(juego.seTermino());
+        Assert.assertEquals("maria",juego.seTermino());
     }
 
     @Test (expected = ErrorAutoAtaque.class)
