@@ -89,10 +89,13 @@ public class Tablero {
         celda.colocarUnidad(unidad);
     }
 
-    public void atacarDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante, CoordenadaFueraDeRango {
+    public void atacarDesdeHasta(Jugador jugador, int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante, CoordenadaFueraDeRango, UnidadEnemiga {
 
         Celda celdaAliada = getCelda(desdeFil, desdeCol);
         Celda celdaEnemiga = getCelda(hastaFil, hastaCol);
+        if (celdaAliada.getUnidad().getDueño()!= jugador) {
+            throw new UnidadEnemiga();
+        }
         Agrupacion unaAgrupacion = this.getCelda(desdeFil,desdeCol).getUnidad().getAgrupacion(); //Puede devolver Una agrupacion activa o inactiva
         this.enviarInvitacionAUnidadesContiguas(this.getCelda(desdeFil,desdeCol), unaAgrupacion);
         List<Unidad> enemigosCercanos = this.ObtenerEnemigosCercanos(celdaAliada);
@@ -100,9 +103,12 @@ public class Tablero {
         celdaAliada.atacar(celdaEnemiga, enemigosCercanos, aliadosCercanos, unaAgrupacion, this);
     }
 
-    public void moverUnidadDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango {
+    public void moverUnidadDesdeHasta(Jugador jugador, int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango, UnidadEnemiga {
         int deltaX = hastaFil - desdeFil;
         int deltaY = hastaCol - desdeCol;
+        if (this.getCelda(desdeFil, desdeCol).getUnidad().getDueño()!= jugador) {
+            throw new UnidadEnemiga();
+        }
         Agrupacion unaAgrupacion = this.getCelda(desdeFil,desdeCol).getUnidad().getAgrupacion(); //Puede devolver Una agrupacion activa o inactiva
         this.enviarInvitacionAUnidadesContiguas(this.getCelda(desdeFil,desdeCol), unaAgrupacion);
         for(Unidad uni: unaAgrupacion.getMiembros()){
@@ -131,9 +137,12 @@ public class Tablero {
         return celda.getUnidad().verVidaRestante();
     }
 
-    public void curarDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws NoPuedeCurar, ErrorAutoAtaque, ErrorNoHayUnidadAtacante, CoordenadaFueraDeRango {
+    public void curarDesdeHasta(Jugador jugador, int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws NoPuedeCurar, ErrorAutoAtaque, ErrorNoHayUnidadAtacante, CoordenadaFueraDeRango, UnidadEnemiga {
         Celda celdaCuradora = getCelda(desdeFil, desdeCol);
         Celda celdaLastimada = getCelda(hastaFil, hastaCol);
+        if (celdaCuradora.getUnidad().getDueño()!=jugador) {
+            throw new UnidadEnemiga();
+        }
         celdaCuradora.curar(celdaLastimada);
     }
 

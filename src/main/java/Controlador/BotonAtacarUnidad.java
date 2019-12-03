@@ -50,8 +50,11 @@ public class BotonAtacarUnidad implements EventHandler<ActionEvent> {
         } else if (coordenadaHasta == null) {
             coordenadaHasta = coordenada;
             try {
-                juego.atacarDesdeHasta(coordenadaDesde.getCoordenadaX(), coordenadaDesde.getCoordenadaY(), coordenadaHasta.getCoordenadaX(), coordenadaHasta.getCoordenadaY());
+                juego.atacarDesdeHasta(jugador, coordenadaDesde.getCoordenadaX(), coordenadaDesde.getCoordenadaY(), coordenadaHasta.getCoordenadaX(), coordenadaHasta.getCoordenadaY());
                 tablero.actualizar();
+            }
+            catch(UnidadEnemiga seleccion) {
+                AlertBox.display("Atencion", "ha seleccionado una unidad enemiga");
             }
             catch (ErrorAutoAtaque | ErrorNoHayUnidadAtacante | CoordenadaFueraDeRango exc) {
                 AlertBox.display("Atencion", "no puede atacar");

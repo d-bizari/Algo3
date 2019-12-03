@@ -3,6 +3,7 @@ package Controlador;
 import Excepciones.CeldaOcupada;
 import Excepciones.CoordenadaFueraDeRango;
 import Excepciones.NoPuedeMoverseException;
+import Excepciones.UnidadEnemiga;
 import Modelo.AlgoChess;
 import Modelo.Coordenada;
 import Vista.AlertBox;
@@ -52,9 +53,12 @@ public class BotonMoverUnidad implements EventHandler<ActionEvent> {
         } else if (coordenadaHasta == null) {
             coordenadaHasta = coordenada;
             try {
-                juego.moverUnidadDesdeHasta(coordenadaDesde.getCoordenadaX(), coordenadaDesde.getCoordenadaY(), coordenadaHasta.getCoordenadaX(), coordenadaHasta.getCoordenadaY());
+                juego.moverUnidadDesdeHasta(jugador, coordenadaDesde.getCoordenadaX(), coordenadaDesde.getCoordenadaY(), coordenadaHasta.getCoordenadaX(), coordenadaHasta.getCoordenadaY());
                 tablero.actualizar();
 
+            }
+            catch(UnidadEnemiga seleccion) {
+                AlertBox.display("Atencion", "ha seleccionado una unidad enemiga");
             }
             catch (NoPuedeMoverseException | CeldaOcupada | CoordenadaFueraDeRango exc) {
                 AlertBox.display("Atencion", "no puede moverse");

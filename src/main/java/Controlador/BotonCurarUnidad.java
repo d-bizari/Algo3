@@ -50,8 +50,11 @@ public class BotonCurarUnidad implements EventHandler<ActionEvent> {
         } else if (coordenadaHasta == null) {
             coordenadaHasta = coordenada;
             try {
-                juego.curarDesdeHasta(coordenadaDesde.getCoordenadaX(), coordenadaDesde.getCoordenadaY(), coordenadaHasta.getCoordenadaX(), coordenadaHasta.getCoordenadaY());
+                juego.curarDesdeHasta(jugador, coordenadaDesde.getCoordenadaX(), coordenadaDesde.getCoordenadaY(), coordenadaHasta.getCoordenadaX(), coordenadaHasta.getCoordenadaY());
                 tablero.actualizar();
+            }
+            catch(UnidadEnemiga seleccion) {
+                AlertBox.display("Atencion", "ha seleccionado una unidad enemiga");
             }
             catch (NoPuedeCurar | ErrorAutoAtaque | ErrorNoHayUnidadAtacante |CoordenadaFueraDeRango exc) {
                 AlertBox.display("Atencion", "no puede curar");

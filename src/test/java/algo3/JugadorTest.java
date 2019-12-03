@@ -19,7 +19,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void pierdeElJugadorQueNoTieneMasUnidades() throws PuntosInsuficientesException, CeldaOcupada, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, ErrorNoHayUnidadAtacante, ErrorAutoAtaque {
+    public void pierdeElJugadorQueNoTieneMasUnidades() throws PuntosInsuficientesException, CeldaOcupada, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, ErrorNoHayUnidadAtacante, ErrorAutoAtaque, UnidadEnemiga {
         AlgoChess juego = new AlgoChess(20,20);
 
         juego.agregarJugador("maria", 1);
@@ -35,10 +35,10 @@ public class JugadorTest {
         juego.colocarSoldadoInfanteriaPara("jose", 11,4);
 
         for(int i= 0; i < 50; i++){
-            juego.atacarDesdeHasta(9,1,11,1);
-            juego.atacarDesdeHasta(9,2,11,2);
-            juego.atacarDesdeHasta(9,3,11,3);
-            juego.atacarDesdeHasta(9,4,11,4);
+            juego.atacarDesdeHasta("maria",9,1,11,1);
+            juego.atacarDesdeHasta("maria",9,2,11,2);
+            juego.atacarDesdeHasta("maria",9,3,11,3);
+            juego.atacarDesdeHasta("maria",9,4,11,4);
 
         }
 
@@ -46,7 +46,7 @@ public class JugadorTest {
     }
 
     @Test (expected = ErrorAutoAtaque.class)
-    public void testNoSePuedeAutoAtacar () throws PuntosInsuficientesException, CeldaOcupada, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, ErrorNoHayUnidadAtacante, ErrorAutoAtaque {
+    public void testNoSePuedeAutoAtacar () throws PuntosInsuficientesException, CeldaOcupada, CoordenadaFueraDeRango, CeldaDeTerritorioEnemigo, ErrorNoHayUnidadAtacante, ErrorAutoAtaque, UnidadEnemiga {
         AlgoChess juego = new AlgoChess(20,20);
 
         juego.agregarJugador("maria", 1);
@@ -55,7 +55,7 @@ public class JugadorTest {
         juego.agregarJugador("jose", 2);
         juego.colocarJinetePara("jose", 11,1);
 
-        juego.atacarDesdeHasta(9, 1, 9, 1);
+        juego.atacarDesdeHasta("maria",9, 1, 9, 1);
     }
 
     @Test

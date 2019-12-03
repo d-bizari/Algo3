@@ -24,7 +24,7 @@ public class SoldadosTest {
             juego.colocarSoldadoInfanteriaPara("wola",2,1);
             juego.colocarSoldadoInfanteriaPara("wola",2,3);
             //Muevo una pieza
-            juego.moverUnidadDesdeHasta(2,3,5,3);
+            juego.moverUnidadDesdeHasta("wola",2,3,5,3);
             //Obtengo celdas siguientes
             celda1 = juego.getCelda(5,2);
             celda2 = juego.getCelda(5,1);
@@ -56,7 +56,7 @@ public class SoldadosTest {
             juego.colocarSoldadoInfanteriaPara("wola",2,3);
             juego.colocarSoldadoInfanteriaPara("wola",2,4);
             //Muevo una pieza
-            juego.moverUnidadDesdeHasta(2,3,5,3);
+            juego.moverUnidadDesdeHasta("wola",2,3,5,3);
             //Obtengo celdas siguientes
             celda1 = juego.getCelda(5,1);
             celda1bis = juego.getCelda(2,1);
@@ -90,7 +90,7 @@ public class SoldadosTest {
             juego.colocarSoldadoInfanteriaPara("wola",2,3);
             juego.colocarJinetePara("wola",4,1);
             //Muevo una pieza
-            juego.moverUnidadDesdeHasta(2,3,3,3);
+            juego.moverUnidadDesdeHasta("wola",2,3,3,3);
             //Obtengo celdas siguientes
             celda1 = juego.getCelda(3,1);
             celda2 = juego.getCelda(3,2);
@@ -104,7 +104,7 @@ public class SoldadosTest {
         Assert.assertTrue(celda3.estaOcupada());
 
         try{
-            juego.moverUnidadDesdeHasta(3,2,4,2);
+            juego.moverUnidadDesdeHasta("wola",3,2,4,2);
             //Obtengo celdas siguientes
             celda1 = juego.getCelda(3,1);
             celda2 = juego.getCelda(4,2);
@@ -130,7 +130,7 @@ public class SoldadosTest {
             juego.colocarSoldadoInfanteriaPara("wola",2,2);
             juego.colocarSoldadoInfanteriaPara("wola",2,1);
             //Muevo una pieza
-            juego.moverUnidadDesdeHasta(2,1,5,1);
+            juego.moverUnidadDesdeHasta("wola",2,1,5,1);
             //Obtengo celdas siguientes
             celda1 = juego.getCelda(5,2);
             celda2 = juego.getCelda(5,1);
@@ -154,7 +154,7 @@ public class SoldadosTest {
 
             juego.colocarSoldadoInfanteriaPara("malo",10,10);
 
-            juego.atacarDesdeHasta(9,10,10,10);
+            juego.atacarDesdeHasta("wola",9,10,10,10);
         } catch (Exception e) {
             e.printStackTrace();
         }

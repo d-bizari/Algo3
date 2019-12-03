@@ -66,16 +66,19 @@ public class AlgoChess {
         tablero.colocarUnidad(unidad);
     }
 
-    public void atacarDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante, CoordenadaFueraDeRango {
-       tablero.atacarDesdeHasta(desdeFil, desdeCol, hastaFil, hastaCol);
+    public void atacarDesdeHasta(String nombreJugador, int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws ErrorAutoAtaque, ErrorNoHayUnidadAtacante, CoordenadaFueraDeRango, UnidadEnemiga {
+        Jugador jugador = getJugador(nombreJugador);
+        tablero.atacarDesdeHasta(jugador, desdeFil, desdeCol, hastaFil, hastaCol);
     }
 
-    public void curarDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws NoPuedeCurar, ErrorAutoAtaque, ErrorNoHayUnidadAtacante, CoordenadaFueraDeRango {
-        tablero.curarDesdeHasta(desdeFil, desdeCol, hastaFil, hastaCol);
+    public void curarDesdeHasta(String nombreJugador, int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws NoPuedeCurar, ErrorAutoAtaque, ErrorNoHayUnidadAtacante, CoordenadaFueraDeRango, UnidadEnemiga {
+        Jugador jugador = getJugador(nombreJugador);
+        tablero.curarDesdeHasta(jugador, desdeFil, desdeCol, hastaFil, hastaCol);
     }
 
-    public void moverUnidadDesdeHasta(int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango {
-        tablero.moverUnidadDesdeHasta(desdeFil, desdeCol, hastaFil, hastaCol);
+    public void moverUnidadDesdeHasta(String nombreJugador, int desdeFil, int desdeCol, int hastaFil, int hastaCol) throws CeldaOcupada, NoPuedeMoverseException, CoordenadaFueraDeRango, UnidadEnemiga {
+        Jugador jugador = getJugador(nombreJugador);
+        tablero.moverUnidadDesdeHasta(jugador, desdeFil, desdeCol, hastaFil, hastaCol);
         return;
     }
 
