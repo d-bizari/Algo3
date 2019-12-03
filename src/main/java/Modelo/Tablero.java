@@ -111,7 +111,7 @@ public class Tablero {
 
             try {
                 Coordenada coordenadaAMover = getCoordenada(uni.getCoordenadas().getCoordenadaX() + deltaX,uni.getCoordenadas().getCoordenadaY() + deltaY);
-                celdaActual.getUnidad().mover(coordenadaAMover); //Puede tirar
+                celdaActual.getUnidad().mover(coordenadaAMover); //Puede tirar excepcion de catapulta o duenio
                 celdaNueva.colocarUnidad(celdaActual.getUnidad());
             }catch (CeldaOcupada e){
                 if(unaAgrupacion.tieneBatallon()) {

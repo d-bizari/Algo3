@@ -31,7 +31,7 @@ public class Catapulta extends NoMovibleYNoCura {
             try{
                 List<Unidad> unidadesContiguas = tablero.getUnidadesContiguas(unidad.getCoordenadas());
                 for(Unidad uni : unidadesContiguas){
-                    uni.sufrirAtaque(this.danioADistancia, celda);
+                    uni.sufrirAtaque(this.danioADistancia, tablero.getCelda(uni.getCoordenadas().getCoordenadaX(),uni.getCoordenadas().getCoordenadaY()));
                 }
             }catch (Exception e){
                 e.printStackTrace();
