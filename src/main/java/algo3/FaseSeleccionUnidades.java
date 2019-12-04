@@ -5,10 +5,19 @@ import Modelo.AlgoChess;
 import Modelo.Coordenada;
 import Vista.AlertBox;
 import Vista.TableroGridPane;
+import Vista.VentanaCaracteristicasUnidades;
+import Vista.VentanaInstruccionesSeleccionUnidades;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -23,6 +32,7 @@ public class FaseSeleccionUnidades {
     public static double width;
     public static double heigth;
     private Scene scene;
+    private BorderPane borderPane;
 
     public FaseSeleccionUnidades(Stage stage, AlgoChess juego, String jugador1, String jugador2) {
         this.stage = stage;
@@ -33,12 +43,13 @@ public class FaseSeleccionUnidades {
         this.heigth = Screen.getPrimary().getVisualBounds().getHeight() * 0.9;
         this.tablero = new TableroGridPane(juego, width,heigth);
         this.jugadorEnTurno = this.nombreJugador1;
-        this.scene = new Scene(tablero.getVisual(),width,heigth);
+        this.crearScene();
+
     }
 
 
     public void mostrar() {
-        scene.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+        borderPane.getCenter().addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent event){
@@ -81,6 +92,40 @@ public class FaseSeleccionUnidades {
                 this.jugadorEnTurno = "PASAR_ETAPA";
             }
         }
+    }
+
+    public void crearScene() {borderPane = new BorderPane();
+        //Construccion boton caracteristicas
+        Button botonCaracteristicas = new Button();
+        botonCaracteristicas.setText("Unidades");
+        botonCaracteristicas.setStyle("-fx-base: #ff763d;");
+        botonCaracteristicas.setMinSize(150, 40);
+        botonCaracteristicas.setWrapText(true);
+        botonCaracteristicas.setAlignment(Pos.CENTER);
+        botonCaracteristicas.setOnAction(actionEvent -> new VentanaCaracteristicasUnidades());
+
+        //Construccion boton instrucciones
+        Button botonInstrucciones = new Button();
+        botonInstrucciones.setText("Instrucciones");
+        botonInstrucciones.setStyle("-fx-base: #ff763d;");
+        botonInstrucciones.setMinSize(150, 40);
+        botonInstrucciones.setAlignment(Pos.CENTER);
+        botonInstrucciones.setOnAction(actionEvent -> new VentanaInstruccionesSeleccionUnidades());
+
+        VBox caja = new VBox();
+        caja.setAlignment(Pos.BASELINE_CENTER);
+        caja.setSpacing(20);
+        caja.setPadding(new Insets(25));
+        caja.setPrefWidth(155);
+        caja.getChildren().addAll(botonInstrucciones, botonCaracteristicas);
+
+        //Escena
+        borderPane.setLeft(caja);
+        borderPane.setCenter(tablero.getVisual());
+
+        this.scene = new Scene(borderPane);
+
+
     }
 
 }
