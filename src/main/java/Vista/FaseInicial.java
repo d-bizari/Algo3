@@ -40,7 +40,7 @@ public class FaseInicial extends VBox {
     }
 
     private void iniciarMusica() {
-        String musicFile = "soundFX/hola.mp3";
+        String musicFile = "SoundFX/hola.mp3";
         Media sound = new Media(new File(musicFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
