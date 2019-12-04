@@ -10,6 +10,10 @@ import Vista.TableroGridPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import java.io.File;
 
 public class BotonCurarUnidad implements EventHandler<ActionEvent> {
     private AlgoChess juego;
@@ -51,6 +55,8 @@ public class BotonCurarUnidad implements EventHandler<ActionEvent> {
             try {
                 juego.curarDesdeHasta(jugador, coordenadaDesde.getCoordenadaX(), coordenadaDesde.getCoordenadaY(), coordenadaHasta.getCoordenadaX(), coordenadaHasta.getCoordenadaY());
                 tablero.actualizar();
+                reproducirSonido();
+
             }
             catch(UnidadEnemiga seleccion) {
                 AlertBox.display("Atencion", "ha seleccionado una unidad enemiga");
@@ -62,5 +68,12 @@ public class BotonCurarUnidad implements EventHandler<ActionEvent> {
             faseJuego.cambiarTurno(jugador);
             event.consume();
         }
+    }
+
+    private void reproducirSonido() {
+        String musicFile = "soundFX/Curandero.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
     }
 }

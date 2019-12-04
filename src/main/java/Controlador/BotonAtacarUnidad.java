@@ -73,23 +73,25 @@ public class BotonAtacarUnidad implements EventHandler<ActionEvent> {
     }
 
     private void reproducirSonido(String tipoDeUnidadEnPosicion) {
-        String musicFile = "soundFX/Catapulta.mp3";
-        Media sound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
+        String musicFile = "soundFX/Jinete.mp3";
 
         switch (tipoDeUnidadEnPosicion){
             case "Jinete":
-
+                musicFile = "soundFX/Jinete.mp3";
                 break;
 
-            case "Soldado Infanteria":
+            case "Soldado":
+                musicFile = "soundFX/Soldado.mp3";
                 break;
 
             case "Catapulta":
+                musicFile = "soundFX/Catapulta.mp3";
                 break;
 
         }
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
     }
 }
 
