@@ -36,7 +36,6 @@ public class BotonAtacarUnidad implements EventHandler<ActionEvent> {
         this.coordenadaDesde = null;
         this.coordenadaHasta = null;
         this.faseJuego = faseJuego;
-        new Media();
     }
 
     @Override
@@ -74,7 +73,7 @@ public class BotonAtacarUnidad implements EventHandler<ActionEvent> {
     }
 
     private void reproducirSonido(String tipoDeUnidadEnPosicion) {
-        String musicFile = "StayTheNight.mp3";     // For example
+        String musicFile = "soundFX/Catapulta.mp3";
 
         Media sound = new Media(new File(musicFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
