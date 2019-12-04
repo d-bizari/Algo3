@@ -61,7 +61,7 @@ public class SelectorUnidades{
         catapulta.setToggleGroup(group);
         curandero.setToggleGroup(group);
 
-        Text titulo = new Text("Seleccione la unidad que desee colocar");
+        Text titulo = new Text(nombreJugador +" seleccione la unidad que desee colocar");
         Text textPuntosDisponibles = new Text(String.format("Puntos disponibles: %d",juego.getPuntosDe(nombreJugador)));
         textPuntos = new Text(String.format("Puntos post-Compra: %d",juego.getPuntosDe(nombreJugador) - 1));
         textPuntos.setFill(Color.GREEN);
