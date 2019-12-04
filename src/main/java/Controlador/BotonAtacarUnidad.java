@@ -74,7 +74,6 @@ public class BotonAtacarUnidad implements EventHandler<ActionEvent> {
 
     private void reproducirSonido(String tipoDeUnidadEnPosicion) {
         String musicFile = "soundFX/Catapulta.mp3";
-
         Media sound = new Media(new File(musicFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();

@@ -10,11 +10,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 public class FaseInicial extends VBox {
 
@@ -30,6 +34,15 @@ public class FaseInicial extends VBox {
         this.fijarFondo();
 
         this.fijarBotones(stage, juego);
+        this.iniciarMusica();
+    }
+
+    private void iniciarMusica() {
+        String musicFile = "soundFX/hola.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+
     }
 
     private void ubicarTituloSubtitulo() {
