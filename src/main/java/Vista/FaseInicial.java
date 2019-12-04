@@ -20,6 +20,8 @@ import javafx.stage.Stage;
 
 import java.io.File;
 
+import static javafx.scene.media.MediaPlayer.INDEFINITE;
+
 public class FaseInicial extends VBox {
 
     public FaseInicial(Stage stage, AlgoChess juego) {
@@ -42,6 +44,8 @@ public class FaseInicial extends VBox {
         Media sound = new Media(new File(musicFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
+        mediaPlayer.setVolume(0.7);
+        mediaPlayer.setCycleCount(INDEFINITE);
 
     }
 
