@@ -29,6 +29,9 @@ public class TableroGridPane{
     private double altoCelda = 35;
     private double anchoCelda = 35;
 
+    private double ancho;
+    private double alto;
+
     private int n;
     private int m;
 
@@ -41,6 +44,8 @@ public class TableroGridPane{
 
         n = algoChess.getCantColumnasTablero();
         m = algoChess.getCantFilasTablero();
+        this.alto = alto;
+        this.ancho = ancho;
 
         tableroGridPane = new GridPane();
         tableroGridPane.setAlignment(Pos.CENTER);
@@ -126,4 +131,6 @@ public class TableroGridPane{
         }
     }
 
+    public double getAncho() { return ancho;
+    }
 }

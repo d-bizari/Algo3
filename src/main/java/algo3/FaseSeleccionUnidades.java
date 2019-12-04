@@ -71,6 +71,7 @@ public class FaseSeleccionUnidades {
                     new Vista.SelectorUnidades(jugadorEnTurno, juego, coordenada, tablero);
                     cambiarTurno();
                 if (jugadorEnTurno.equals("PASAR_ETAPA")) {
+                    borderPane.getCenter().removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
                     FaseJuego fase2  = new FaseJuego(stage, juego, nombreJugador1, nombreJugador2, tablero);
                     fase2.mostrar();
                 }
